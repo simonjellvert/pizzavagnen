@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'jellecoding.herokuapp.com',
+    'pizzavagnen.herokuapp.com',
     '8000-simonjellvert-pizzavagne-i9sz0az98m.us2.codeanyapp.com',
     'pizzavagnen-eb78667e7b70.herokuapp.com'
     ]
@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'user',
+    'events',
+    'staff',
 ]
 
 MIDDLEWARE = [
