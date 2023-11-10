@@ -1,0 +1,30 @@
+body {
+    background-color: white;
+}
+
+/* Navbar */
+
+.logotype {
+    height: 100px;
+    width: 50px;
+}
+
+.navbar {
+    height: 50px;
+    background-color: white;
+}
+
+.nav-item{
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.nav-item:hover {
+    border: 1px solid white;
+    color: white;
+}
+
+.nav-link{
+    color: white;
+}
