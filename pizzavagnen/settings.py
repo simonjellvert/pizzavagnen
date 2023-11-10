@@ -35,6 +35,8 @@ ALLOWED_HOSTS = [
     'pizzavagnen-eb78667e7b70.herokuapp.com'
     ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-simonjellvert-pizzavagne-i9sz0az98m.us2.codeanyapp.com']
 
 # Application definition
 
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'user',
     'events',
     'staff',
+    'pizzavagnen',
 ]
 
 MIDDLEWARE = [
