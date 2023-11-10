@@ -32,6 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'jellecoding.herokuapp.com'
     '8000-simonjellvert-pizzavagne-i9sz0az98m.us2.codeanyapp.com'
+    'pizzavagnen-eb78667e7b70.herokuapp.com'
     ]
 
 
