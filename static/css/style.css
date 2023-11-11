@@ -28,7 +28,14 @@ body {
     color: black;
 }
 
+
+
+
+
+
 /* Hovering effects */
+
+
 .navbar-nav .nav-item .nav-link::before {
     background-color: transparent;
     transition: background-color 0.3s ease;
@@ -36,7 +43,6 @@ body {
 
 .navbar-nav .nav-item .nav-link:hover::before {
     background-color: #333;
-    /* Change to your desired background color */
 }
 
 .navbar-nav .nav-item .nav-link.about:hover::before {
@@ -75,6 +81,11 @@ body {
     height: 70px;
     content: 'Hantera Bokning';
 }
+
+
+
+
+
 
 /* Medium screens and down */
 
