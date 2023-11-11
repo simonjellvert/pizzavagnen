@@ -4,27 +4,90 @@ body {
 
 /* Navbar */
 
-.logotype {
-    height: 100px;
-    width: 50px;
+#logotype {
+    height: 150px;
+    width: auto;
 }
 
 .navbar {
-    height: 50px;
     background-color: white;
 }
 
-.nav-item{
+.navbar-toggler {
+    border: none;
+}
+
+.nav-item {
     margin: 5px;
-    border: 1px solid black;
-    border-radius: 5px;
+    height: 70px;
+    width: 150px;
+    margin: 0 30px 0 30px;
 }
 
-.nav-item:hover {
-    border: 1px solid white;
-    color: white;
+.nav-link {
+    color: black;
 }
 
-.nav-link{
+/* Hovering effects */
+.navbar-nav .nav-item .nav-link::before {
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover::before {
+    background-color: #333;
+    /* Change to your desired background color */
+}
+
+.navbar-nav .nav-item .nav-link.about:hover::before {
     color: white;
+    content: 'Så här fungerar det';
+}
+
+.navbar-nav .nav-item .nav-link.about::before {
+    content: 'Om Vagnen';
+}
+
+.navbar-nav .nav-item .nav-link.review:hover::before {
+    color: white;
+    content: 'Så här tycker våra kunder';
+}
+
+.navbar-nav .nav-item .nav-link.review::before {
+    content: 'Recensioner';
+}
+
+.navbar-nav .nav-item .nav-link.booking:hover::before {
+    color: white;
+    content: 'Boka oss till ditt event';
+}
+
+.navbar-nav .nav-item .nav-link.booking::before {
+    content: 'Boka Vagnen';
+}
+
+.navbar-nav .nav-item .nav-link.login:hover::before {
+    color: white;
+    content: 'Logga In';
+}
+
+.navbar-nav .nav-item .nav-link.login::before {
+    height: 70px;
+    content: 'Hantera Bokning';
+}
+
+/* Medium screens and down */
+
+@media (max-width: 990px) {
+
+    .navbar-nav {
+        border-radius: 5px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-item {
+        margin: 1px;
+    }
+
 }
