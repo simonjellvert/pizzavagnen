@@ -35,25 +35,20 @@
         <h3>Kommande Evenemang</h1>
     </div>
     <!-- Cards generated from admin page -->
-    <div class="col-12 mt-3 left">
+    <div class="container mx-auto">
         <div class="row">
             {% for post in post_list %}
-            <div class="col-md-4">
-                <div class="card mb-4">
+            <div class="card-group">
+                <div class="card">
+                    {% if "placeholder" in post.featured_image.url %}
+                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"/>
+                    {% else %}
+                    <img src=" {{ post.featured_image.url }} " class="card-img-top"/>
+                    {% endif %}
                     <div class="card-body">
-                        <div class="image-container">
-                            {% if "placeholder" in post.featured_image.url %}
-                            <img class="card-img-top"
-                                src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                            {% else %}
-                            <img class="card-img-top" src=" {{ post.featured_image.url }}">
-                            {% endif %}
-                        </div>
-                            <h2 class="card-title">{{ post.title }}</h2>
-                            <h3 class="card-date">{{ post.event_date }}</h3>
-                            <p class="card-text">{{ post.excerpt }}</p>
-                        <hr />
-                        <p class="card-text text-muted h6">{{ post.created_on}}</p>
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <h6 class="card-date">{{ post.event_date }}</h6>
+                        <p class="card-text">{{ post.excerpt }}</p>
                     </div>
                 </div>
             </div>
@@ -62,9 +57,9 @@
         <div class="row">
             {% endif %}
             {% endfor %}
-
         </div>
     </div>
+
     <!-- If more than six events, the page i paginated -->
     {% if is_paginated %}
     <nav aria-label="Page navigation">
