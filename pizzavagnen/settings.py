@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'events',
     'staff',
     'pizzavagnen',
+    'home',
 ]
 
 MIDDLEWARE = [
