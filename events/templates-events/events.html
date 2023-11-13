@@ -1,0 +1,68 @@
+{% extends base.html %} {% load static %} {% block content %}
+
+<!-- Image section -->
+<section>
+  <img src="" alt="" />
+</section>
+
+<!-- About section -->
+<section>
+  <h1>Det här är PizzaVagnen!</h1>
+  <p>
+    Vagnen drivs av Sebastian och Petter, två vänner som delar glädjen av att
+    att hamra i sig en god slice pizza när tillfälle ges!
+    <br />
+    Vi är alltid på rull och tar oss dit ni befinner er. Vill ni boka oss till
+    ert event klickar ni på länken nedan.
+    <br />
+    Är vi inte hos ert företag eller i din grannes trädgård så har vi ställt upp
+    vagnen på öppna evenemang, så som konserter, idrottsevenemang eller liknande för att servera
+    dig något gott att äta.
+    <br />
+    Vi ser fram emot att få träffa just dig!
+  </p>
+</section>
+
+<!-- Upcoming events section -->
+<section>
+  <h1>Kommande Evenemang</h1>
+  <!-- Cards generated from admin page -->
+<div class="col-12 mt-3 left">
+    <div class="row">
+        {% for post in post_list %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="image-container">
+                        {% if "placeholder" in post.featured_image.url %}
+                        <img class="card-img-top"
+                            src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                        {% else %}
+                        <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                        {% endif %}
+                        <div class="image-flash">
+                            <p class="author">Author: {{ post.author }}</p>
+                        </div>
+                    </div>
+                    <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                        <h2 class="card-title">{{ post.title }}</h2>
+                        <p class="card-text">{{ post.excerpt }}</p>
+                    </a>
+                    <hr />
+                    <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
+                        {{ post.number_of_likes }}</p>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+    </div>
+    <div class="row">
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+</div>
+</section>
+
+{% endblock %}
