@@ -86,6 +86,13 @@ body {
   content: "Logga In";
 }
 
+/* Events page */
+.card-group {
+    width: 300px;
+    height: 350px;
+}
+
+
 /* Medium screens and down */
 
 @media (max-width: 990px) {
