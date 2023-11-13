@@ -6,7 +6,7 @@ from .models import Post
 
 class PostList(generic.ListView):
     model = Post
-    template_name = 'events.html'
+    template_name = 'events/events.html'
     paginate_by = 6
 
     def get_queryset(self):

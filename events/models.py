@@ -14,7 +14,7 @@ class Post(models.Model):
         default='placeholder',
         )
     author = models.ForeignKey(
-        User, 
+        User,
         on_delete=models.CASCADE,
         related_name="event_posts",
         name="Signerat"
@@ -25,7 +25,7 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     
     class Meta:
-        ordering = ['-created_on']
+        ordering = ['created_on']
         verbose_name_plural = "Posts"
 
     def __str__(self):
