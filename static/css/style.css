@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+
 body {
     background-color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Navbar */
@@ -7,6 +11,12 @@ body {
 #logotype {
     height: 150px;
     width: auto;
+}
+
+.navbar .container {
+    width: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar {
@@ -20,12 +30,13 @@ body {
 .nav-item {
     margin: 5px;
     height: 70px;
-    width: 150px;
+    width: 200px;
     margin: 0 30px 0 30px;
 }
 
 .nav-link {
     color: black;
+    text-transform: uppercase;
 }
 
 
@@ -35,51 +46,44 @@ body {
 
 /* Hovering effects */
 
-
-.navbar-nav .nav-item .nav-link::before {
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-}
-
-.navbar-nav .nav-item .nav-link:hover::before {
-    background-color: #333;
-}
-
 .navbar-nav .nav-item .nav-link.about:hover::before {
-    color: white;
+    color: black;
     content: 'Så här fungerar det';
 }
 
 .navbar-nav .nav-item .nav-link.about::before {
     content: 'Om Vagnen';
+    color: black;
 }
 
 .navbar-nav .nav-item .nav-link.review:hover::before {
-    color: white;
+    color: black;
     content: 'Så här tycker våra kunder';
 }
 
 .navbar-nav .nav-item .nav-link.review::before {
     content: 'Recensioner';
+    color: black;
 }
 
 .navbar-nav .nav-item .nav-link.booking:hover::before {
-    color: white;
-    content: 'Boka oss till ditt event';
+    color: black;
+    content: 'Så kommer vi till dig!';
 }
 
 .navbar-nav .nav-item .nav-link.booking::before {
     content: 'Boka Vagnen';
+    color: black;
 }
 
 .navbar-nav .nav-item .nav-link.login:hover::before {
-    color: white;
-    content: 'Logga In';
+    color: black;
+    content: 'För att hantera din bokning';
 }
 
 .navbar-nav .nav-item .nav-link.login::before {
     height: 70px;
-    content: 'Hantera Bokning';
+    content: 'Logga In';
 }
 
 
