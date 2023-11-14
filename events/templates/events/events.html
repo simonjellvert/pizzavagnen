@@ -13,7 +13,7 @@
 <section>
     <div class="container text-center mx-auto">
         <hr class="mx-auto" style="width: 75%;">
-        <h2 class="mt-5">Det här är PizzaVagnen!</h2>
+        <h3 class="mt-5">Det här är PizzaVagnen!</h2>
         <p>
             Vagnen drivs av Sebastian och Petter, två vänner som delar glädjen av att
             att hamra i sig en god slice pizza när tillfälle ges!
@@ -34,7 +34,7 @@
 <section>
     <div class="container text-center mt-5">
         <hr class="mx-auto" style="width: 50%;">
-        <h3 class="mt-5">Kommande Evenemang</h1>
+        <h4 class="mt-5">Kommande Evenemang</h1>
     </div>
     <!-- Cards generated from admin page -->
     <div class="container">
@@ -66,10 +66,10 @@
     <nav aria-label="Page navigation">
         <ul class="pagination mt-4 justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; FÖRRA </a></li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NÄSTA &raquo;</a></li>
     
             {% endif %}
         </ul>

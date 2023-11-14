@@ -102,7 +102,15 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
     background-color: white;
     text-transform: uppercase;
-    border-radius: 2px;
+    border-radius: 10px;
+}
+
+.page-link:before {
+    color: black;
+}
+
+.page-link:hover {
+    color: black;
 }
 
 
