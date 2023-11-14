@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'pizzavagnen.herokuapp.com',
-    '8000-simonjellvert-pizzavagne-i9sz0az98m.us2.codeanyapp.com',
+    '8000-simonjellvert-pizzavagne-71mig31tz7.us2.codeanyapp.com',
     'pizzavagnen-eb78667e7b70.herokuapp.com'
     ]
 
