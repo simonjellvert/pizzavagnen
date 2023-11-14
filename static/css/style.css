@@ -5,6 +5,11 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+
 /* Navbar */
 
 #logotype {
@@ -87,9 +92,17 @@ body {
 }
 
 /* Events page */
-.card-group {
-    width: 300px;
-    height: 350px;
+
+.card {
+  width: 400px;
+  height: auto;
+}
+
+.page-link {
+    color: black;
+    background-color: white;
+    text-transform: uppercase;
+    border-radius: 2px;
 }
 
 

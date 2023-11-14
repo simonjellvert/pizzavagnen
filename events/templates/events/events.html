@@ -12,7 +12,8 @@
 <!-- About section -->
 <section>
     <div class="container text-center mx-auto">
-        <h2>Det här är PizzaVagnen!</h1>
+        <hr class="mx-auto" style="width: 75%;">
+        <h2 class="mt-5">Det här är PizzaVagnen!</h2>
         <p>
             Vagnen drivs av Sebastian och Petter, två vänner som delar glädjen av att
             att hamra i sig en god slice pizza när tillfälle ges!
@@ -31,14 +32,15 @@
 
 <!-- Upcoming events section -->
 <section>
-    <div class="container text-center">
-        <h3>Kommande Evenemang</h1>
+    <div class="container text-center mt-5">
+        <hr class="mx-auto" style="width: 50%;">
+        <h3 class="mt-5">Kommande Evenemang</h1>
     </div>
     <!-- Cards generated from admin page -->
-    <div class="container mx-auto">
-        <div class="row mx-auto">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
             {% for post in post_list %}
-            <div class="card-group">
+            <div class="card-group mt-4"  style="width: 400px; height: auto;">
                 <div class="card">
                     {% if "placeholder" in post.featured_image.url %}
                     <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"/>
@@ -46,15 +48,14 @@
                     <img src=" {{ post.featured_image.url }} " class="card-img-top"/>
                     {% endif %}
                     <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <h6 class="card-date">{{ post.event_date }}</h6>
-                        <p class="card-text">{{ post.excerpt }}</p>
+                        <h5 class="card-title text-center">{{ post.title }}</h5>
+                        <h6 class="card-date text-center">{{ post.formatted_event_date }}</h6>
                     </div>
                 </div>
             </div>
-            {% if forloop.counter|divisibleby:3 %}
+            {% if forloop.counter|divisibleby:2 %}
         </div>
-        <div class="row">
+        <div class="row d-flex align-items-center justify-content-center">
             {% endif %}
             {% endfor %}
         </div>
@@ -63,7 +64,7 @@
     <!-- If more than six events, the page i paginated -->
     {% if is_paginated %}
     <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination mt-4 justify-content-center">
             {% if page_obj.has_previous %}
             <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
             {% endif %}
