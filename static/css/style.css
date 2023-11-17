@@ -16,6 +16,21 @@ h6 {
     font-weight: 300;
 }
 
+/* Log out button */
+
+#logout {
+    background: black;
+}
+
+.logout-button {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    border: 1px solid red;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
 /* Navbar */
 
 #logotype {
@@ -51,7 +66,8 @@ h6 {
     justify-content: center;
 }
 
-.before-hover-content, .hover-content {
+.before-hover-content,
+.hover-content {
     position: absolute;
     top: 50%;
     left: 50%;
