@@ -38,14 +38,25 @@ h6 {
 }
 
 .nav-item {
-    margin: 5px;
-    height: 70px;
-    width: 200px;
+    height: 50px;
+    width: 230px;
+    position: relative;
 }
 
 .nav-link {
     color: black;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.before-hover-content, .hover-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.2;
 }
 
 /* Footer */
@@ -57,44 +68,99 @@ h6 {
 
 /* Hovering effects */
 
-.navbar-nav .nav-item .nav-link.events:hover::before {
+/* Events button */
+.navbar-nav .nav-item .nav-link.events .before-hover-content {
     color: black;
-    content: "Och vart vi befinner oss";
-    top: 100%;
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
 }
 
-.navbar-nav .nav-item .nav-link.events::before {
-    color: black;
+.navbar-nav .nav-item .nav-link.events .hover-content {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
 }
 
-.navbar-nav .nav-item .nav-link.review:hover::before {
-    color: black;
-    content: "Så här tycker våra kunder";
-}
-
-.navbar-nav .nav-item .nav-link.review::before {
-    content: "Recensioner";
+.navbar-nav .nav-item .nav-link.events:hover .hover-content {
+    opacity: 1;
     color: black;
 }
 
-.navbar-nav .nav-item .nav-link.booking:hover::before {
-    color: black;
-    content: "Så kommer vi till dig!";
-}
-
-.navbar-nav .nav-item .nav-link.booking::before {
-    content: "Boka Vagnen";
+.navbar-nav .nav-item .nav-link.events:hover .before-hover-content {
+    opacity: 0;
     color: black;
 }
 
-.navbar-nav .nav-item .nav-link.login:hover::before {
+/* Review button */
+.navbar-nav .nav-item .nav-link.review .before-hover-content {
     color: black;
-    content: "Och hantera din bokning";
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
 }
 
-.navbar-nav .nav-item .nav-link.login::before {
-    height: 70px;
-    content: "";
+.navbar-nav .nav-item .nav-link.review .hover-content {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.review:hover .hover-content {
+    opacity: 1;
+    color: black;
+}
+
+.navbar-nav .nav-item .nav-link.review:hover .before-hover-content {
+    opacity: 0;
+    color: black;
+}
+
+/* Booking button */
+.navbar-nav .nav-item .nav-link.booking .before-hover-content {
+    color: black;
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.booking .hover-content {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.booking:hover .hover-content {
+    opacity: 1;
+    color: black;
+}
+
+.navbar-nav .nav-item .nav-link.booking:hover .before-hover-content {
+    opacity: 0;
+    color: black;
+}
+
+/* Login button */
+.navbar-nav .nav-item .nav-link.login .before-hover-content {
+    color: black;
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.login .hover-content {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.login:hover .hover-content {
+    opacity: 1;
+    color: black;
+}
+
+.navbar-nav .nav-item .nav-link.login:hover .before-hover-content {
+    opacity: 0;
+    color: black;
+}
+
+.hvr-sweep-to-bottom:before {
+    background: #6dbf9c;
+    height: auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 /* Home Page */
