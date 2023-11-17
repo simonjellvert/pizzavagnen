@@ -31,9 +31,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'pizzavagnen.herokuapp.com',
-    '8000-simonjellvert-pizzavagne-71mig31tz7.us2.codeanyapp.com',
+    '8000-simonjellvert-pizzavagne-i9sz0az98m.us2.codeanyapp.com',
     'pizzavagnen-eb78667e7b70.herokuapp.com'
-    ]
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-simonjellvert-pizzavagne-i9sz0az98m.us2.codeanyapp.com']
@@ -64,7 +64,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL ='/'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'

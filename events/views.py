@@ -12,4 +12,3 @@ class PostList(generic.ListView):
     def get_queryset(self):
         return Post.objects.filter(
             status=1, event_date__gte=timezone.now()).order_by('event_date')
-
