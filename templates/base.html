@@ -25,7 +25,7 @@
 
 <body>
     <!-- If user is logged in, display log out button at top of the screen -->
-    {% if user.is_autenticated %}
+    {% if user.is_authenticated %}
     <div class="d-flex justify-content-end align-items-end" id="logout">
             <a class="logout-button hvr-sweep-to-top" href="{% url 'account_logout' %}">Logga Ut</a>
     </div>
@@ -73,7 +73,7 @@
                     </li>
                     <!-- If logged in, display log out rather than log in -->
                     {% if user.is_authenticated %}
-                    <li class="nav-item d-flex align-items-center justify-content-center">
+                    <li class="nav-item d-flex align-items-center justify-content-center text-white" style="background: red;">
                         <a class="nav-link logout" href="{% url 'home' %}">
                             <span class="before-hover-content">Logga Ut</span>
                         </a>
