@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
         type="text/css" />
     <link rel="stylesheet" href="/static/css/style.css" />
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> -->
     <title>PizzaVagnen</title>
 </head>
 
@@ -75,15 +74,15 @@
                     <!-- If logged in, display log out rather than log in -->
                     {% if user.is_authenticated %}
                     <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
-                        <a class="nav-link login" href="#">
-                            <span class="before-hover-content">Logga In</span>
-                            <span class="hover-content">Och hantera din bokning</span>
+                        <a class="nav-link logout" href="{% url 'home' %}">
+                            <span class="before-hover-content">Logga Ut</span>
                         </a>
                     </li>
                     {% else %}
                     <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
-                        <a class="nav-link logout" href="#">
-                            <span class="before-hover-content">Logga Ut</span>
+                        <a class="nav-link login" href="{% url 'account_login' %}">
+                            <span class="before-hover-content">Logga In</span>
+                            <span class="hover-content">Och hantera din bokning</span>
                         </a>
                     </li>
                     {% endif %}

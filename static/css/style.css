@@ -16,6 +16,10 @@ h6 {
     font-weight: 300;
 }
 
+p {
+    text-transform: uppercase;
+}
+
 /* Log out button */
 
 .logout-button {
@@ -258,6 +262,17 @@ h6 {
 
 .page-link:hover {
     color: black;
+}
+
+/* Log in page */
+.login-image {
+    filter: brightness(0.25);
+}
+
+.login-form {
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
 }
 
 /* Medium screens and down */
