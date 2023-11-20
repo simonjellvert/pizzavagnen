@@ -7,67 +7,35 @@
 {% block content %}
 <hr class="mx-auto" style="width: 75%" />
 <section class="d-flex align-items-center justify-content-center">
-    <div class="hero position-relative">
+    <div class="hero-signup position-relative">
         <div class="container">
-            <img class="img-fluid login-image" src="/static/img/333064805_760223689005819_9082627831218226945_n.jpg"
-                alt="Sebbe och Petter i vagnen" />
+            <img class="img-fluid d-flex align-items-center justify-content-center signup-image" src="/static/img/pizza-roller.2.jpg"
+                alt="Pizza" />
 
-            <div
-                class="mx-auto login-form top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
+            <div class="mx-auto signup-form top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
                 <div class="row">
                     <h3 class="mb-3">{% trans "Skapa Ett Konto" %}</h3>
-                    <p style="font-size: small;">Välkommen till PizzaVagnen! <br>När ditt konto är skapat kommer du kunna skapa och hantera bokningar samt lämna recensioner om ditt besök hos oss.</p>
+                    <p class="resposive-text-size">Välkommen till PizzaVagnen! <br>När ditt konto är skapat kommer du kunna skapa och hantera bokningar samt lämna recensioner om ditt besök hos oss.</p>
                     <hr style="color: white;">
-                    <p style="font-size: small;">Varsågod och fyll i fälten
+                    <p class="resposive-text-size">Varsågod och fyll i fälten
                     </p>
                 </div>
 
-                <div class="row m-3">
-                    <form action="{% url 'account_login' %}" method="post"  style="font-size: small;">
+                <div class="row mb-3">
+                    <form action="{% url 'account_login' %}" method="post"  class="resposive-text-size">
                         {% csrf_token %}
                         {{ form.as_p }}
                         {% if redirect_field_value %}
                         <input class="input-fields" type="hidden" name="{{ redirect_field_name }}"
                             value="{{ redirect_field_value }}" />
                         {% endif %}
-                        <button class="btn btn-signup" type="submit">{% trans "Skapa Konto" %}</button>
+                        <button class="btn btn-signup create-button mt-3" type="submit">{% trans "Skapa Konto" %}</button>
                     </form>
-                    {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+                    {% include "socialaccount/snippets/login.html" with page_layout="entrance" class="resposive-text-size" %}
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-
-
-
-
-
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    <p>
-        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-    </p>
-    {% url 'account_signup' as action_url %}
-    {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-        {% slot body %}
-            {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button tags="prominent,signup" type="submit" %}
-                {% trans "Sign Up" %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
-    {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-{% endblock content %}
+{% endblock %}

@@ -246,8 +246,6 @@ p {
     padding: 30px 10px 30px 10px;
     position: absolute;
     color: white;
-    border: 1px solid white;
-    border-radius: 10px;
 }
 
 .login-form a {
@@ -260,6 +258,37 @@ p {
     border: 1px solid white;
     border-radius: 5px;
 }
+
+/* -------------------- Sign up page */
+.signup-form {
+    width: 95%;
+    padding: 30px 10px 30px 10px;
+    position: absolute;
+    color: white;
+}
+
+.resposive-text-size input {
+    font-size: medium;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.signup-image {
+    filter: brightness(0.25);
+    width: 100%;
+    max-height: 768px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.hero-signup {
+    margin: 15px 15px 0 15px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
 
 /* -------------------- Medium screens and down */
 
@@ -292,6 +321,10 @@ p {
     .container {
         max-width: 100%;
     }
+
+    .resposive-text-size {
+        font-size: medium;
+    }
 }
 
 /* -------------------- Small screens */
@@ -311,6 +344,19 @@ p {
     }
 
     .logout-button {
+        font-size: x-small;
+    }
+
+    .resposive-text-size {
+        font-size: x-small;
+    }
+
+    .resposive-text-size input {
+        font-size: x-small;
+
+    }
+
+    .create-button {
         font-size: x-small;
     }
 
