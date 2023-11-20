@@ -13,22 +13,23 @@
                 <img class="img-fluid login-image" src="/static/img/333064805_760223689005819_9082627831218226945_n.jpg"
                     alt="Sebbe och Petter i vagnen" />
 
-                <div class="login-form position-absolute top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
+                <div class="mx-auto login-form top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
                     <div class="col">
-                        <h3 class="text-white">{% trans "Sign In" %}</h3>
-
-                        <p class="text-white">{% blocktrans %}If you have not created an account yet, then please
-                        <a class="text-white" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+                        <h2 class="mb-3">{% trans "Logga In" %}</h2>
+                        <p>Fyll i dina uppgifter i fälten</p>
+                        <hr style="color: white;">
+                        <p>{% blocktrans %}Om du inte har skapat ett konto än, så kan du göra det 
+                        <a href="{{ signup_url }}">här!</a>{% endblocktrans %}</p>
                     </div>
                         
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <form class="text-white" action="{% url 'account_login' %}" method="post">
+                    <div class="col m-3">
+                        <form action="{% url 'account_login' %}" method="post">
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 {% if redirect_field_value %}
-                                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                                    <input class="input-fields" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                                 {% endif %}
-                                <button class="btn btn-signup" type="submit">{% trans "Sign In" %}</button>
+                                <button class="btn btn-signup" type="submit">{% trans "Logga In" %}</button>
                         </form>
                         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
                     </div>

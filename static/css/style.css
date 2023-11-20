@@ -59,6 +59,8 @@ p {
     height: 50px;
     width: 230px;
     position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .nav-link {
@@ -185,44 +187,10 @@ p {
 }
 
 /* Log out button */
-.navbar-nav .nav-item .nav-link.logout .before-hover-content {
-    color: white;
-    background: red;
-    opacity: 1;
-    transition: opacity 0.2s ease-in;
-}
 
-.navbar-nav .nav-item .nav-link.logout .hover-content {
-    opacity: 0;
-    transition: opacity 0.2s ease-in;
-}
-
-.navbar-nav .nav-item .nav-link.logout:hover .hover-content {
-    opacity: 1;
-    color: black;
-}
-
-.navbar-nav .nav-item .nav-link.logout:hover .before-hover-content {
-    opacity: 0;
-    color: black;
-}
-
-.hvr-sweep-to-bottom:before {
-    background: #6dbf9c;
-    height: auto;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.hvr-sweep-to-bottom .nav-link.logout:before {
-    background: red;
-    height: auto;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
 
 /* Social links */
-.btn i:hover {
+.btn:hover {
     border: 1px solid #6dbf9c;
     border-radius: 5px;
 }
@@ -270,13 +238,23 @@ p {
 }
 
 .login-form {
-    padding: 10px;
-    border: 2px solid white;
+    width: 75%;
+    padding: 30px 10px 30px 10px;
+    position: absolute;
+    color: white;
+    border: 1px solid white;
     border-radius: 10px;
 }
 
-.helptext {
+.login-form a {
     color: white;
+}
+
+.btn-signup {
+    text-transform: uppercase;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 
 /* Medium screens and down */
@@ -302,3 +280,28 @@ p {
         border-radius: 10px;
         padding: 15px;
     }
+
+    .login-image {
+        width: 100%;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width:768px) {
+    .hero {
+        margin: 0;
+    }
+    
+    .login-form {
+        width: 90%;
+        border: none;
+    }
+
+    .login-form p {
+        font-size: x-small;
+    }
+
+}

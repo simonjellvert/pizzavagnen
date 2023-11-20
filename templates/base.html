@@ -73,7 +73,7 @@
                     </li>
                     <!-- If logged in, display log out rather than log in -->
                     {% if user.is_authenticated %}
-                    <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
+                    <li class="nav-item d-flex align-items-center justify-content-center">
                         <a class="nav-link logout" href="{% url 'home' %}">
                             <span class="before-hover-content">Logga Ut</span>
                         </a>
