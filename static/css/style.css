@@ -18,14 +18,13 @@ h6 {
 
 /* Log out button */
 
-#logout {
-    background: black;
-}
-
 .logout-button {
+    margin-right: 30px;
+    padding: 5px;
     text-transform: uppercase;
     text-decoration: none;
     color: white;
+    background: red;
     border: 1px solid red;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -83,6 +82,15 @@ h6 {
 }
 
 /* Hovering effects */
+
+/* Log out button */
+.logout-button:hover {
+    opacity: 1.0;
+}
+
+.hvr-sweep-to-top:before {
+    background: rgba(0, 0, 0, 0.2);
+}
 
 /* Events button */
 .navbar-nav .nav-item .nav-link.events .before-hover-content {
@@ -172,11 +180,47 @@ h6 {
     color: black;
 }
 
+/* Log out button */
+.navbar-nav .nav-item .nav-link.logout .before-hover-content {
+    color: white;
+    background: red;
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.logout .hover-content {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.logout:hover .hover-content {
+    opacity: 1;
+    color: black;
+}
+
+.navbar-nav .nav-item .nav-link.logout:hover .before-hover-content {
+    opacity: 0;
+    color: black;
+}
+
 .hvr-sweep-to-bottom:before {
     background: #6dbf9c;
     height: auto;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.hvr-sweep-to-bottom .nav-link.logout:before {
+    background: red;
+    height: auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Social links */
+.btn i:hover {
+    border: 1px solid #6dbf9c;
+    border-radius: 5px;
 }
 
 /* Home Page */
@@ -219,6 +263,10 @@ h6 {
 /* Medium screens and down */
 
 @media (max-width: 990px) {
+    .logout-button {
+        font-size: x-small;
+    }
+    
     .navbar-nav {
         border-radius: 5px;
         width: 100%;
@@ -228,4 +276,10 @@ h6 {
     .nav-item {
         margin: 1px;
     }
-}
+
+    .hero {
+        width: 100%;
+        margin: 15px 15px 0 15px;
+        border-radius: 10px;
+        padding: 15px;
+    }
