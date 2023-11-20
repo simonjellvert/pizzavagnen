@@ -275,6 +275,10 @@ p {
     border-radius: 10px;
 }
 
+.helptext {
+    color: white;
+}
+
 /* Medium screens and down */
 
 @media (max-width: 990px) {

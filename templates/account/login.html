@@ -22,7 +22,7 @@
                     </div>
                         
                     <div class="row d-flex justify-content-center align-items-center">
-                        <form class="" action="{% url 'account_login' %}" method="post">
+                        <form class="text-white" action="{% url 'account_login' %}" method="post">
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 {% if redirect_field_value %}
