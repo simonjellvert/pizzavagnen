@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 
+/* -------------------- Initial styling */
+
 body {
     background-color: white;
     font-family: "Roboto", sans-serif;
@@ -20,11 +22,12 @@ p {
     text-transform: uppercase;
 }
 
-/* Log out button */
+/* -------------------- Log out button */
 
 .logout-button {
     margin-right: 30px;
     padding: 5px;
+    font-size: small;
     text-transform: uppercase;
     text-decoration: none;
     color: white;
@@ -34,7 +37,7 @@ p {
     border-bottom-left-radius: 5px;
 }
 
-/* Navbar */
+/* -------------------- Navbar */
 
 #logotype {
     height: 150px;
@@ -64,11 +67,14 @@ p {
 }
 
 .nav-link {
-    color: black;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.logout {
+    color: white;
 }
 
 .before-hover-content,
@@ -80,16 +86,16 @@ p {
     line-height: 1.2;
 }
 
-/* Footer */
+/* -------------------- Footer */
 
 .upper-footer {
     background: white;
     width: 100%;
 }
 
-/* Hovering effects */
+/* -------------------- Hovering effects */
 
-/* Log out button */
+/* Log out button, top right corner */
 .logout-button:hover {
     opacity: 1.0;
 }
@@ -100,7 +106,6 @@ p {
 
 /* Events button */
 .navbar-nav .nav-item .nav-link.events .before-hover-content {
-    color: black;
     opacity: 1;
     transition: opacity 0.2s ease-in;
 }
@@ -112,17 +117,14 @@ p {
 
 .navbar-nav .nav-item .nav-link.events:hover .hover-content {
     opacity: 1;
-    color: black;
 }
 
 .navbar-nav .nav-item .nav-link.events:hover .before-hover-content {
     opacity: 0;
-    color: black;
 }
 
 /* Review button */
 .navbar-nav .nav-item .nav-link.review .before-hover-content {
-    color: black;
     opacity: 1;
     transition: opacity 0.2s ease-in;
 }
@@ -134,17 +136,14 @@ p {
 
 .navbar-nav .nav-item .nav-link.review:hover .hover-content {
     opacity: 1;
-    color: black;
 }
 
 .navbar-nav .nav-item .nav-link.review:hover .before-hover-content {
     opacity: 0;
-    color: black;
 }
 
 /* Booking button */
 .navbar-nav .nav-item .nav-link.booking .before-hover-content {
-    color: black;
     opacity: 1;
     transition: opacity 0.2s ease-in;
 }
@@ -156,17 +155,14 @@ p {
 
 .navbar-nav .nav-item .nav-link.booking:hover .hover-content {
     opacity: 1;
-    color: black;
 }
 
 .navbar-nav .nav-item .nav-link.booking:hover .before-hover-content {
     opacity: 0;
-    color: black;
 }
 
 /* Login button */
 .navbar-nav .nav-item .nav-link.login .before-hover-content {
-    color: black;
     opacity: 1;
     transition: opacity 0.2s ease-in;
 }
@@ -178,20 +174,16 @@ p {
 
 .navbar-nav .nav-item .nav-link.login:hover .hover-content {
     opacity: 1;
-    color: black;
 }
 
 .navbar-nav .nav-item .nav-link.login:hover .before-hover-content {
     opacity: 0;
-    color: black;
 }
 
 /* Log out button */
-
-.hvr-sweep-to-bottom:before {
-    background: #6dbf9c;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+.navbar-nav .nav-item .nav-link.logout:hover {
+    color: white;
+    font-size: large;
 }
 
 /* Social links */
@@ -200,7 +192,14 @@ p {
     border-radius: 5px;
 }
 
-/* Home Page */
+/* -------------------- Sweep effect */
+.hvr-sweep-to-bottom:before {
+    background: #6dbf9c;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* -------------------- Home Page */
 
 .hero {
     width: 75%;
@@ -215,7 +214,7 @@ p {
     border-radius: 10px;
 }
 
-/* Events page */
+/* -------------------- Events page */
 
 .card {
     width: 400px;
@@ -237,7 +236,7 @@ p {
     color: black;
 }
 
-/* Log in page */
+/* -------------------- Log in page */
 .login-image {
     filter: brightness(0.25);
 }
@@ -262,11 +261,11 @@ p {
     border-radius: 5px;
 }
 
-/* Medium screens and down */
+/* -------------------- Medium screens and down */
 
 @media (max-width: 990px) {
     .logout-button {
-        font-size: x-small;
+        font-size: small;
     }
     
     .navbar-nav {
@@ -295,6 +294,8 @@ p {
     }
 }
 
+/* -------------------- Small screens */
+
 @media (max-width:768px) {
     .hero {
         margin: 0;
@@ -306,6 +307,10 @@ p {
     }
 
     .login-form p {
+        font-size: x-small;
+    }
+
+    .logout-button {
         font-size: x-small;
     }
 
