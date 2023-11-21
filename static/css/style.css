@@ -172,7 +172,7 @@ p {
     transition: opacity 0.2s ease-in;
 }
 
-.navbar-nav .nav-item .nav-link.login:hover .hover-content {
+.navbar-nav .nav-item .nav-link.logiA .hover-content {
     opacity: 1;
 }
 
@@ -180,10 +180,23 @@ p {
     opacity: 0;
 }
 
-/* Log out button */
-.navbar-nav .nav-item .nav-link.logout:hover {
-    color: white;
-    font-size: large;
+/* Account button */
+.navbar-nav .nav-item .nav-link.account .before-hover-content {
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.account .hover-content {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+.navbar-nav .nav-item .nav-link.account:hover .hover-content {
+    opacity: 1;
+}
+
+.navbar-nav .nav-item .nav-link.account:hover .before-hover-content {
+    opacity: 0;
 }
 
 /* Social links */
