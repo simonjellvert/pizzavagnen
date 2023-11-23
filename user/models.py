@@ -9,6 +9,8 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
+    groups = models.ManyToManyField(Group, related_name)
+
     USERNAME_FIELD = email
     REQUIRED_FIELDS = []
 
