@@ -71,7 +71,7 @@
                             <span class="hover-content">Så kommer vi till dig!</span>
                         </a>
                     </li>
-                    <!-- If logged in, display log out rather than log in -->
+                    <!-- If logged in, display my account button -->
                     {% if user.is_authenticated %}
                     <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
                         <a class="nav-link account" href="{% url 'account_logout' %}">
@@ -79,6 +79,7 @@
                             <span class="hover-content">Hantera uppgifter</span>
                         </a>
                     </li>
+                    <!-- If logged out, display log in button -->
                     {% else %}
                     <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
                         <a class="nav-link login" href="{% url 'account_login' %}">

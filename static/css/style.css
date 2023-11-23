@@ -22,7 +22,7 @@ p {
     text-transform: uppercase;
 }
 
-/* -------------------- Log out button */
+/* -------------------- Log out button, top of screen */
 
 .logout-button {
     margin-right: 30px;
@@ -172,7 +172,7 @@ p {
     transition: opacity 0.2s ease-in;
 }
 
-.navbar-nav .nav-item .nav-link.logiA .hover-content {
+.navbar-nav .nav-item .nav-link.login:hover .hover-content {
     opacity: 1;
 }
 
