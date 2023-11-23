@@ -1,41 +1,46 @@
-{% extends "base.html" %}
-{% load static %}
-{% load i18n %}
-{% load allauth account socialaccount %}
-{% block head_title %}
-    {% trans "Sign In" %}
-{% endblock head_title %}
+{% extends "base.html" %} 
+{% load static %} 
+{% load i18n %} 
+{% load allauth account socialaccount %} 
+{% block head_title %} 
+{% trans "Sign In" %} 
+{% endblock head_title %} 
 {% block content %}
-    <hr class="mx-auto" style="width: 75%" />
-    <section class="d-flex align-items-center justify-content-center">
-        <div class="hero position-relative">
-            <div class="container">
-                <img class="img-fluid login-image" src="/static/img/333064805_760223689005819_9082627831218226945_n.jpg"
-                    alt="Sebbe och Petter i vagnen" />
+<hr class="mx-auto" style="width: 75%" />
+<section class="d-flex align-items-center justify-content-center">
+    <div class="hero position-relative">
+        <div class="container">
+            <img class="img-fluid login-image" src="/static/img/333064805_760223689005819_9082627831218226945_n.jpg"
+                alt="Sebbe och Petter i vagnen" />
 
-                <div class="mx-auto login-form top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
-                    <div class="col">
-                        <h2 class="mb-3">{% trans "Logga In" %}</h2>
-                        <p>Fyll i dina uppgifter i fälten</p>
-                        <hr style="color: white;">
-                        <p>{% blocktrans %}Om du inte har skapat ett konto än, så kan du göra det 
-                        <a href="{{ signup_url }}">här!</a>{% endblocktrans %}</p>
-                    </div>
-                        
-                    <div class="col m-3">
-                        <form action="{% url 'account_login' %}" method="post">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                {% if redirect_field_value %}
-                                    <input class="input-fields" type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                                {% endif %}
-                                <button class="btn btn-signup" type="submit">{% trans "Logga In" %}</button>
-                        </form>
-                        {% include "socialaccount/snippets/login.html" with page_layout="entrance" class="resposive-text-size" %}
-                    </div>
+            <div
+                class="mx-auto login-form top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
+                <div class="col">
+                    <h2 class="mb-3">{% trans "Logga In" %}</h2>
+                    <p>Fyll i dina uppgifter i fälten</p>
+                    <hr style="color: white" />
+                    <p>
+                        {% blocktrans %}Om du inte har skapat ett konto än, så kan du göra
+                        det <a href="{{ signup_url }}">här!</a>{% endblocktrans %}
+                    </p>
+                </div>
+
+                <div class="col m-3">
+                    <form action="{% url 'account_login' %}" method="post">
+                        {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
+                        <input class="input-fields" type="hidden" name="{{ redirect_field_name }}"
+                            value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <button class="btn btn-signup" type="submit">
+                            {% trans "Logga In" %}
+                        </button>
+                    </form>
+                    {% include "socialaccount/snippets/login.html" with
+                    page_layout="entrance" class="resposive-text-size" %}
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 {% endblock %}

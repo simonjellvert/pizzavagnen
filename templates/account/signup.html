@@ -1,9 +1,9 @@
-{% extends "base.html" %}
-{% load static %}
-{% load allauth i18n socialaccount %}
-{% block head_title %}
-{% trans "Signup" %}
-{% endblock head_title %}
+{% extends "base.html" %} 
+{% load static %} 
+{% load allauth i18n socialaccount %} 
+{% block head_title %} 
+{% trans "Signup" %} 
+{% endblock head_title %} 
 {% block content %}
 <hr class="mx-auto" style="width: 75%" />
 <section class="d-flex align-items-center justify-content-center">
@@ -26,8 +26,29 @@
                 </div>
 
                 <div class="row mb-3">
-                    <form action="{% url 'account_login' %}" method="post" class="resposive-text-size">
-                        {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
+                    <form action="{% url 'account_signup' %}" method="post" class="resposive-text-size">
+                        {% csrf_token %} 
+                        <div class="mb-3 text-center">
+                            <label for="id_first_name">First Name:</label>
+                            <input type="text" name="first_name" id="id_first_name" value="{{ form.first_name.value }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_last_name">Last Name:</label>
+                            <input type="text" name="last_name" id="id_last_name" value="{{ form.last_name.value }}" required>
+                        </div>
+                        <div class="mb-3"></div>
+                            <label for="id_email">Email:</label>
+                            <input type="email" name="email" id="id_email" value="{{ form.email.value }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_password1">Password:</label>
+                            <input type="password" name="password1" id="id_password1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_password2">Confirm Password:</label>
+                            <input type="password" name="password2" id="id_password2" required>
+                        </div>
+                        {% if redirect_field_value %}
                         <input class="input-fields" type="hidden" name="{{ redirect_field_name }}"
                             value="{{ redirect_field_value }}" />
                         {% endif %}
@@ -35,8 +56,6 @@
                             {% trans "Skapa Konto" %}
                         </button>
                     </form>
-                    {% include "socialaccount/snippets/login.html" with
-                    page_layout="entrance" class="resposive-text-size" %}
                 </div>
             </div>
         </div>
