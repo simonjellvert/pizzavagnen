@@ -370,4 +370,9 @@ p {
   .create-button {
     font-size: x-small;
   }
+
+  .signup-button {
+    font-size: x-small;
+    margin-top: none;
+  }
 }
