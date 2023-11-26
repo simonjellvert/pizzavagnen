@@ -66,7 +66,6 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'

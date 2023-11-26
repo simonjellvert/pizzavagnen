@@ -14,7 +14,7 @@ class CustomUser(AbstractUser):
     user_permissions = models.ManyToManyField(
         'auth.Permission', related_name='customuser_set', blank=True)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
     def __str__(self):
