@@ -302,6 +302,14 @@ p {
   padding: 15px;
 }
 
+input {
+    color: white;
+}
+
+.input-margin {
+    margin-bottom: 20px;
+}
+
 /* -------------------- Medium screens and down */
 
 @media (max-width: 990px) {
@@ -352,27 +360,67 @@ p {
   }
 
   .login-form p {
-    font-size: x-small;
+    font-size: small;
   }
 
   .logout-button {
-    font-size: x-small;
+    font-size: small;
   }
 
   .resposive-text-size {
-    font-size: x-small;
+    font-size: small;
   }
 
   .resposive-text-size input {
-    font-size: x-small;
+    font-size: small;
   }
 
   .create-button {
-    font-size: x-small;
+    font-size: small;
   }
 
   .signup-button {
-    font-size: x-small;
+    font-size: small;
     margin-top: none;
   }
+}
+
+@media (max-width: 425px) {
+    .login-form {
+        width: 90%;
+        border: none;
+    }
+    
+    .login-form p {
+        font-size: x-small;
+    }
+    
+    .logout-button {
+        font-size: x-small;
+    }
+    
+    .resposive-text-size {
+        font-size: x-small;
+    }
+    
+    .resposive-text-size input {
+        font-size: x-small;
+    }
+    
+    .create-button {
+        font-size: x-small;
+    }
+    
+    .signup-button {
+        font-size: x-small;
+        margin-top: none;
+    }
+
+    .input-margin {
+        margin-bottom: 10px;
+    }
+
+    .hero-signup {
+        margin: 0;
+    }
 }

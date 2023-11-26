@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from cloudinary.models import CloudinaryField
 from django.utils import translation, formats
 from django.utils.timezone import make_aware
@@ -18,7 +18,7 @@ class Post(models.Model):
         default='placeholder',
     )
     author = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="event_posts",
         name="Signerat"

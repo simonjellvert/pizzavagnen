@@ -9,7 +9,7 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect('account')
-        else:
-            form = SignUpForm()
+    else:
+        form = SignUpForm()
 
-        return render(request, 'account/signup.html', {'form': form})
+    return render(request, 'account/signup.html', {'form': form})

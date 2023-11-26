@@ -10,9 +10,9 @@ class CustomUser(AbstractUser):
     date_joined = models.DateTimeField(auto_now_add=True)
 
     groups = models.ManyToManyField(
-        Group, related_name='customuser_set', blank=True)
+        'auth.Group', related_name='customuser_set', blank=True)
     user_permissions = models.ManyToManyField(
-        Permission, related_name='customuser_set', blank=True)
+        'auth.Permission', related_name='customuser_set', blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
