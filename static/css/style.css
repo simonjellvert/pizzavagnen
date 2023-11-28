@@ -71,6 +71,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 150px;
 }
 
 .logout {
@@ -80,6 +81,7 @@ p {
 .before-hover-content,
 .hover-content {
   position: absolute;
+  width: 150px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
