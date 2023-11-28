@@ -57,10 +57,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'user',
     'events',
-    'staff',
     'pizzavagnen',
     'home',
-    'booking',
     'review',
 ]
 
