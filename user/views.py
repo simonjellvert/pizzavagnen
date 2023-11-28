@@ -13,3 +13,7 @@ def register(request):
         form = SignUpForm()
 
     return render(request, 'account/signup.html', {'form': form})
+
+
+def user_view(request):
+    return render(request, 'user/user.html')
