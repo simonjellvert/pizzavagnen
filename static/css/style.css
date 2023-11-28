@@ -320,6 +320,11 @@ input {
     margin-bottom: 20px;
 }
 
+/* -------------------- Account page */
+.account_bg {
+    filter: brightness(0.25);
+}
+
 /* -------------------- Medium screens and down */
 
 @media (max-width: 990px) {
