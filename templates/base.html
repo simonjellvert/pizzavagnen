@@ -1,186 +1,128 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Vi serverar pizza direkt ifrån vagnen!" />
-    <meta
-      name="keywords"
-      content="pizza, foodtruck, streetfood, event, örebro, mat, restaurang"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
+    <meta name="keywords" content="pizza, foodtruck, streetfood, event, örebro, mat, restaurang" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
-      type="text/css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
+        type="text/css" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     <title>PizzaVagnen</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- If user is logged in, display log out button at top of the screen -->
     {% if user.is_authenticated %}
     <div class="d-flex justify-content-end align-items-end" id="logout">
-      <a
-        class="logout-button hvr-sweep-to-top"
-        href="{% url 'account_logout' %}"
-        >Logga Ut</a
-      >
+        <a class="logout-button hvr-sweep-to-top" href="{% url 'account_logout' %}">Logga Ut</a>
     </div>
     {% endif %}
 
     <!-- Logotype -->
     <div class="container text-center py-4">
-      <a href="{% url 'home' %}">
-        <img
-          src="/static/img/Vagnen-logo-002-1-1024x537.png"
-          alt="Logo"
-          id="logotype"
-          class="img-fluid"
-        />
-      </a>
+        <a href="{% url 'home' %}">
+            <img src="/static/img/Vagnen-logo-002-1-1024x537.png" alt="Logo" id="logotype" class="img-fluid" />
+        </a>
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light mx-auto">
-      <div class="container">
-        <!-- Toggler button for small screens -->
-        <div class="mx-auto navbar-toggler-wrapper">
-          <button
-            class="navbar-toggler collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        <div class="container">
+            <!-- Toggler button for small screens -->
+            <div class="mx-auto navbar-toggler-wrapper">
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
-        <!-- Navigation Links -->
-        <div
-          class="collapse justify-content-center navbar-collapse"
-          id="navbarNav"
-        >
-          <ul
-            class="navbar-nav d-flex align-items-center justify-content-center text-center text-center"
-          >
-            <li
-              class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center"
-            >
-              <a class="nav-link events" href="{% url 'events' %}">
-                <span class="before-hover-content">Om Vagnen</span>
-                <span class="hover-content">Så här fungerar vi</span>
-              </a>
-            </li>
-            <li
-              class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center"
-            >
-              <a class="nav-link review" href="#">
-                <span class="before-hover-content">Recensioner</span>
-                <span class="hover-content">Vad tycker våra kunder?</span>
-              </a>
-            </li>
-            <li
-              class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center"
-            >
-              <a class="nav-link booking" href="#">
-                <span class="before-hover-content">Boka Vagnen</span>
-                <span class="hover-content">Så kommer vi till dig!</span>
-              </a>
-            </li>
-            <!-- If logged in, display my account button -->
-            {% if user.is_authenticated %}
-            <li
-              class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center"
-            >
-              <a class="nav-link account" href="{% url 'account_logout' %}">
-                <span class="before-hover-content">Mitt Konto</span>
-                <span class="hover-content">Hantera uppgifter</span>
-              </a>
-            </li>
-            <!-- If logged out, display log in button -->
-            {% else %}
-            <li
-              class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center"
-            >
-              <a class="nav-link login" href="{% url 'account_login' %}">
-                <span class="before-hover-content">Logga In</span>
-                <span class="hover-content">Och hantera min bokning</span>
-              </a>
-            </li>
-            {% endif %}
-          </ul>
+            <!-- Navigation Links -->
+            <div class="collapse justify-content-center navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav d-flex align-items-center justify-content-center text-center text-center">
+                    <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
+                        <a class="nav-link events" href="{% url 'events' %}">
+                            <span class="before-hover-content">Om Vagnen</span>
+                            <span class="hover-content">Så här fungerar vi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
+                        <a class="nav-link review" href="#">
+                            <span class="before-hover-content">Recensioner</span>
+                            <span class="hover-content">Vad tycker våra kunder?</span>
+                        </a>
+                    </li>
+                    <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
+                        <a class="nav-link booking" href="#">
+                            <span class="before-hover-content">Boka Vagnen</span>
+                            <span class="hover-content">Så kommer vi till dig!</span>
+                        </a>
+                    </li>
+                    <!-- If logged in, display my account button -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
+                        <a class="nav-link account" href="{% url 'account_logout' %}">
+                            <span class="before-hover-content">Mitt Konto</span>
+                            <span class="hover-content">Hantera uppgifter</span>
+                        </a>
+                    </li>
+                    <!-- If logged out, display log in button -->
+                    {% else %}
+                    <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
+                        <a class="nav-link login" href="{% url 'account_login' %}">
+                            <span class="before-hover-content">Logga In</span>
+                            <span class="hover-content">Och hantera min bokning</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <main>
-      {% block content %}
-      <!-- Content goes here -->
-      {% endblock %}
+        {% block content %}
+        <!-- Content goes here -->
+        {% endblock %}
     </main>
 
     <footer class="text-center text-white footer">
-      <div class="container upper-footer pt-4">
-        <!-- Social media -->
-        <section class="mb-4">
-          <!-- Facebook -->
-          <a
-            class="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="https://www.facebook.com/pizzavagnen?locale=sv_SE"
-            target="_blank"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
+        <div class="container upper-footer pt-4">
+            <!-- Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="https://www.facebook.com/pizzavagnen?locale=sv_SE" target="_blank" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
 
-          <!-- Instagram -->
-          <a
-            class="btn btn-link btn-floating btn-lg text-dark m-1"
-            href="https://www.instagram.com/pizzavagnen/"
-            target="_blank"
-            role="button"
-            data-mdb-ripple-color="dark"
-            ><i class="fab fa-instagram"></i
-          ></a>
-        </section>
-      </div>
-      <!-- Copyright -->
-      <div
-        class="text-center text-light p-3 lower-footer"
-        style="background-color: black"
-      >
-        © 2023 Copyright:
-        <a class="text-light" href="#">PizzaVagnen</a>
-      </div>
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.instagram.com/pizzavagnen/"
+                    target="_blank" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+            </section>
+        </div>
+        <!-- Copyright -->
+        <div class="text-center text-light p-3 lower-footer" style="background-color: black">
+            © 2023 Copyright:
+            <a class="text-light" href="#">PizzaVagnen</a>
+        </div>
     </footer>
 
     <!-- Bootstrap JS and dependencies (popper.js) -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-  </body>
+</body>
+
 </html>
