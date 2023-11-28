@@ -13,19 +13,17 @@
 <section>
     <div class="container text-center mx-auto">
         <hr class="mx-auto" style="width: 75%;">
-        <h3 class="mt-5">Det här är PizzaVagnen!</h2>
+        <h3 class="mt-5">This is the PizzaTruck!</h2>
         <p>
-            Vagnen drivs av Sebastian och Petter, två vänner som delar glädjen av att
-            att hamra i sig en god slice pizza när tillfälle ges!
-            <br />
-            Vi är alltid på rull och tar oss dit ni befinner er. Vill ni boka oss till
-            ert event klickar ni på länken nedan.
-            <br />
-            Är vi inte hos ert företag eller i din grannes trädgård så har vi ställt upp
-            vagnen på öppna evenemang, så som konserter, idrottsevenemang eller liknande för att servera
-            dig något gott att äta.
-            <br />
-            Vi ser fram emot att få träffa just dig!
+            The wagon is operated by Sebastian and Petter, two friends who share the joy of indulging in a delicious slice of pizza
+            whenever the opportunity arises!
+            <br /><br>
+            We are always on the move and our restaurant is wherever you want it to be. 
+            <br /><br>
+            If we're not at the company next door serving lunch or in your neighbor's garden serving dinner, we've set up the truck at open events such as concerts,
+            sports events, or similar occasions to serve you something tasty to eat.
+            <br /><br>
+            If you want to book the truck, please do that by clicking the link above. We look forward to meeting you!
         </p>
     </div>
 </section>
@@ -34,7 +32,7 @@
 <section>
     <div class="container text-center mt-5">
         <hr class="mx-auto" style="width: 50%;">
-        <h4 class="mt-5">Kommande Evenemang</h1>
+        <h4 class="mt-5">Upcoming open events</h1>
     </div>
     <!-- Cards generated from admin page -->
     <div class="container">
@@ -49,7 +47,11 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ post.title }}</h5>
-                        <h6 class="card-date text-center">{{ post.formatted_event_date }}</h6>
+                        <p class="card-text text-center text-muted">{{ post.event_date }}</h6>
+                        <p class="card-text text-center">{{ post.event_description }}</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p class="card-adress">{{ post.event_location }}</p>
                     </div>
                 </div>
             </div>
@@ -66,10 +68,10 @@
     <nav aria-label="Page navigation">
         <ul class="pagination mt-4 justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; FÖRRA </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NÄSTA &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
     
             {% endif %}
         </ul>

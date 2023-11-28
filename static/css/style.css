@@ -236,6 +236,14 @@ p {
   height: auto;
 }
 
+.card-text {
+    font-size: small;
+}
+
+.card-footer {
+    font-size: small;
+}
+
 .page-link {
   color: black;
   background-color: white;
