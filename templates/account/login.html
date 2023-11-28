@@ -11,17 +11,16 @@
     <div class="hero position-relative">
         <div class="container">
             <img class="img-fluid login-image" src="/static/img/333064805_760223689005819_9082627831218226945_n.jpg"
-                alt="Sebbe och Petter i vagnen" />
+                alt="Sebbe and Petter in the truck" />
 
             <div
                 class="mx-auto login-form top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
                 <div class="col">
-                    <h2 class="mb-3">{% trans "Logga In" %}</h2>
-                    <p>Fyll i dina uppgifter i fälten</p>
+                    <h2 class="mb-3">{% trans "Log In" %}</h2>
+                    <p>Fill out the form</p>
                     <hr style="color: white" />
                     <p>
-                        {% blocktrans %}Om du inte har skapat ett konto än, så kan du göra
-                        det <a href="{{ signup_url }}">här!</a>{% endblocktrans %}
+                        {% blocktrans %}If you haven't created an account yet, you can do that <a href="{{ signup_url }}">here!</a>{% endblocktrans %}
                     </p>
                 </div>
 
@@ -32,7 +31,7 @@
                             value="{{ redirect_field_value }}" />
                         {% endif %}
                         <button class="btn btn-signup" type="submit">
-                            {% trans "Logga In" %}
+                            {% trans "Log In" %}
                         </button>
                     </form>
                     {% include "socialaccount/snippets/login.html" with
