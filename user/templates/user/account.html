@@ -1,0 +1,44 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %} 
+
+<hr class="mx-auto" style="width: 75%" />
+<section class="d-flex align-items-center justify-content-center">
+    <div class="hero position-relative">
+        <div class="container">
+            <img class="img-fluid account_bg" src="/static/img/pexels-narda-yescas-1566837 (1).jpg"
+            alt="Sebbe och Petter i vagnen" />
+
+            <div class="mx-auto login-form top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
+                
+                <div class="col">
+                    <form method="post" action="{% url 'user_view' %}">
+                        {% csrf_token %}
+                        <label for="{{ user_form.first_name.id_for_label }}">First Name:</label>
+                        <input type="text" name="first_name" id="id_first_name" value="{{ user_form.instance.first_name }}">
+                        <br>
+                        
+                        <label for="{{ user_form.last_name.id_for_label }}">Last Name:</label>
+                        <input type="text" name="last_name" id="id_last_name" value="{{ user_form.last_name }}">
+                        <br>
+
+                        <label for="{{ user_form.username.id_for_label }}">Username:</label>
+                        <input type="text" name="username" id="id_email" value="{{ user_form.username }}">
+                        <br>
+
+                        <label for="{{ user_form.email.id_for_label }}">Email</label>
+                        <input type="text" name="email" id="id_email" value="{{ user_form.email }}">
+                        <br>
+
+                        
+                        <input type="submit" value="Update Profile">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
