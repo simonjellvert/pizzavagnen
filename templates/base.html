@@ -85,7 +85,7 @@
                     <!-- If logged in, display my account button -->
                     {% if user.is_authenticated %}
                     <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center">
-                        <a class="nav-link account" href="{% url 'user_view' %}">
+                        <a class="nav-link account" href="{% url 'edit_profile' %}">
                             <span class="before-hover-content">Account</span>
                             <span class="hover-content">Manage it</span>
                         </a>

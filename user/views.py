@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import PasswordChangeView
 from .forms import SignUpForm, EditUserForm
+from .models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 
 def register(request):
@@ -10,6 +13,7 @@ def register(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Account created successfully!')
             return redirect('account')
     else:
         form = SignUpForm()
@@ -24,22 +28,20 @@ def user_view(request):
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
-        user_form = EditUserForm(request.POST, instance=request.user)
-        password_form = PasswordChangeForm(request.user, request.POST)
-
-        if user_form.is_valid() and password_form.is_valid():
-            user_form.save()
-            password_form.save()
-            messages.success(request, 'Your profile was successfully updated!')
-            return redirect('user_view')
-        else:
-            messages.error(request, 'Please correct the error below')
+        form = EditUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully!')
+            return redirect('edit_profile')
 
     else:
-        user_form = EditUserForm(instance=request.user)
-        password_form = PasswordChangeForm(request.user)
+        form = EditUserForm(instance=request.user)
 
     return render(request, 'user/account.html', {
-        'user_form': user_form,
-        'password_form': password_form
+        'form': form,
     })
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'account/password_change.html'
+    success_url = reverse_lazy('edit_profile')
