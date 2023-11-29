@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import PasswordChangeView
-from .forms import SignUpForm, EditUserForm
-from .models import User
+from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse_lazy
+from .forms import SignUpForm, EditUserForm
+from .models import User
 
 
 def register(request):
@@ -44,4 +45,19 @@ def edit_profile(request):
 
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'account/password_change.html'
-    success_url = reverse_lazy('edit_profile')
+
+
+@login_required
+class DeleteProfileView(View):
+    """
+    Deletes user
+    """
+    def post(self, request, *args, **kwargs):
+        user = request.user
+
+        if request.method == 'POST':
+            user.delete()
+            messages.success(request, 'Account deleted!')
+        
+        return redirect('home')
+

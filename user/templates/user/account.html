@@ -15,32 +15,11 @@
                     <form method="post" action="{% url 'edit_profile' %}">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <input type="submit" value="Update Profile">
+                        <p>If you want to edit you password, please click <a href="{% url 'password_change' %}">this</a> link.</p>
+                        <button type="submit">Update Account</button>
+                        <button type="submit">Delete Account</button>
                     </form>
 
-
-                    
-                    <!-- <form method="post" action="{% url 'edit_profile' %}">
-                        {% csrf_token %}
-                        <label for="{{ user_form.first_name.id_for_label }}">First Name:</label>
-                        <input type="text" name="first_name" id="id_first_name" value="{{ user_form.instance.first_name }}">
-                        <br>
-                        
-                        <label for="{{ user_form.last_name.id_for_label }}">Last Name:</label>
-                        <input type="text" name="last_name" id="id_last_name" value="{{ user_form.last_name }}">
-                        <br>
-
-                        <label for="{{ user_form.username.id_for_label }}">Username:</label>
-                        <input type="text" name="username" id="id_email" value="{{ user_form.username }}">
-                        <br>
-
-                        <label for="{{ user_form.email.id_for_label }}">Email</label>
-                        <input type="text" name="email" id="id_email" value="{{ user_form.email }}">
-                        <br>
-
-                        
-                        <input type="submit" value="Update Profile">
-                    </form> -->
                 </div>
             </div>
         </div>
