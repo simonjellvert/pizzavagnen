@@ -10,12 +10,13 @@
             alt="Sebbe och Petter i vagnen" />
 
             <div class="mx-auto login-form top-50 start-50 translate-middle row d-flex justify-conent-center align-items-center text-center">
-                
+                <h3 class="text-center">Your account information</h3>
+                <p class="text-center">If you want to edit your information, you can do so by changing the fields and click "Update Account"</p>
                 <div class="col">
                     <form method="post" action="{% url 'edit_profile' %}">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <p>If you want to edit you password, please click <a href="{% url 'password_change' %}">this</a> link.</p>
+                        <p>If you want to edit you password, please click <a href="{% url 'password_change' %}" class="form-link">this</a> link.</p>
                         <button type="submit">Update Account</button>
                         <button type="submit">Delete Account</button>
                     </form>

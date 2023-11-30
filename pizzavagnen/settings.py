@@ -64,6 +64,8 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'user.User'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]

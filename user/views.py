@@ -45,6 +45,7 @@ def edit_profile(request):
 
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'account/password_change.html'
+    messages.success = "Your password was changed successfully."
 
 
 @login_required
