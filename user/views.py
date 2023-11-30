@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import PasswordChangeView
 from django.views import View
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib import messages
 from django.urls import reverse_lazy
 from .forms import CustomUserCreationForm, EditUserForm
@@ -57,12 +57,12 @@ def delete_user_view(request):
     Deletes user
     """
 
-    def post(self, request, *args, **kwargs):
+    if request.method == 'POST':
         user = request.user
-
-        if request.method == 'POST':
-            user.delete()
-            messages.success(request, 'Account deleted!')
-            return redirect('home')
-
-        return HttpResponse(['POST'])
+        logout(request)
+        user.delete()
+        messages.success(request, 'Account deleted!')
+        return redirect('home')
+    else:
+        
+        return redirect('home') 

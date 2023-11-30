@@ -411,6 +411,12 @@ form button.cancel a {
     /* or a higher value */
 }
 
+.modal-backdrop {
+    position: fixed;
+    z-index: 1040;
+    /* or any lower value than the modal z-index */
+}
+
 /* -------------------- Medium screens and down */
 
 @media (max-width: 990px) {
