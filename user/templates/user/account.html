@@ -15,7 +15,7 @@
                     click "Update Account"</p>
                 <div class="row justify-content-center align-items-center text-center">
                     <div class="col">
-                        <form method="post" action="{% url 'edit_profile' %}">
+                        <form method="POST" action="{% url 'edit_profile' %}">
                             {% csrf_token %}
                             {{ form.as_p }}
                             <p>If you want to edit your password, please click <a href="{% url 'password_change' %}"
@@ -49,8 +49,11 @@
                 <p>Are you sure you want to delete your account?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <a href="{% url 'delete_account' %}" class="btn btn-danger">Delete</a>
+                <form method="POST" action="{% url 'delete_user_view' %}">
+                    {% csrf_token %}
+                    <!-- Add any additional fields or confirmations here -->
+                    <button type="submit" class="btn btn-danger">Delete Account</button>
+                </form>
             </div>
         </div>
     </div>

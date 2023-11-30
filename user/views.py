@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import PasswordChangeView
@@ -8,7 +9,6 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from .forms import CustomUserCreationForm, EditUserForm
 from .models import User
-from django.http import HttpResponse
 
 
 def register(request):
@@ -59,10 +59,15 @@ def delete_user_view(request):
 
     if request.method == 'POST':
         user = request.user
+
+        # Logout the user
         logout(request)
+
+        # Delete the user
         user.delete()
+
         messages.success(request, 'Account deleted!')
         return redirect('home')
-    else:
-        
-        return redirect('home') 
+
+    # For GET requests, you can customize the template and context as needed
+    return render(request, 'home/index.html')  # Update the template name

@@ -7,5 +7,5 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('edit_profile/', edit_profile, name='edit_profile'),
     path('change-password/', CustomPasswordChangeView.as_view(), name='password_change'),
-    path('delete_account/', delete_user_view, name='delete_account'),
+    path('user/delete_account/', delete_user_view, name='delete_user_view'),
 ]
