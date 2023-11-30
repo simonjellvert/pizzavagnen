@@ -1,20 +1,12 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from allauth.account.forms import SignupForm
 from .models import User
 
 
-class SignUpForm(UserCreationForm):
+class CustomUserCreationForm(SignupForm):
+    """Form for the owner signup page"""
 
-    class Meta(UserCreationForm.Meta):
-        model = User
-        fields = (
-            'first_name',
-            'last_name',
-            'username',
-            'email',
-            'password1',
-            'password2',
-        )
+    pass
 
 
 class EditUserForm(forms.ModelForm):
@@ -22,8 +14,6 @@ class EditUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = [
-            'first_name',
-            'last_name',
             'username',
             'email',
         ]

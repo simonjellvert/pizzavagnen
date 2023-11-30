@@ -3,21 +3,21 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import PasswordChangeView
 from django.views import View
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 from django.contrib import messages
 from django.urls import reverse_lazy
-from .forms import SignUpForm, EditUserForm
+from .forms import CustomUserCreationForm, EditUserForm
 from .models import User
 
 
 def register(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Account created successfully!')
-            return redirect('account')
+            return redirect('user/account')
     else:
-        form = SignUpForm()
+        form = CustomUserCreationForm()
 
     return render(request, 'account/signup.html', {'form': form})
 
