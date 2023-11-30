@@ -8,13 +8,14 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from .forms import CustomUserCreationForm, EditUserForm
 from .models import User
+from django.http import HttpResponse
 
 
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save(request)
             return redirect('user/account')
     else:
         form = CustomUserCreationForm()
@@ -45,20 +46,23 @@ def edit_profile(request):
 
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'account/password_change.html'
-    messages.success = "Your password was changed successfully."
+    
+    def get_success_message(self, cleaned_data):
+        return "Your password was changed successfully."
 
 
 @login_required
-class DeleteProfileView(View):
+def delete_user_view(request):
     """
     Deletes user
     """
+
     def post(self, request, *args, **kwargs):
         user = request.user
 
         if request.method == 'POST':
             user.delete()
             messages.success(request, 'Account deleted!')
-        
-        return redirect('home')
+            return redirect('home')
 
+        return HttpResponse(['POST'])

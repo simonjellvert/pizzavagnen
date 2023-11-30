@@ -6,7 +6,9 @@ from .models import User
 class CustomUserCreationForm(SignupForm):
     """Form for the owner signup page"""
 
-    pass
+    def save(self, request):
+        user = super(CustomUserCreationForm, self).save(request)
+        return user
 
 
 class EditUserForm(forms.ModelForm):

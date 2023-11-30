@@ -15,7 +15,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'password1', 'password2', 'first_name', 'last_name', 'email', 'is_staff', 'is_superuser'),
+            'fields': ('username', 'password1', 'password2', 'email', 'is_staff', 'is_superuser'),
         }),
     )
     readonly_fields = ('date_joined',)

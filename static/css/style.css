@@ -265,10 +265,11 @@ p {
 }
 
 .login-form {
-  width: 75%;
-  padding: 30px 10px 30px 10px;
-  position: absolute;
-  color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .login-form a {
@@ -321,9 +322,7 @@ input {
 }
 
 /* -------------------- Account page */
-.account_bg {
-    filter: brightness(0.25);
-}
+
 
 /* -------------------- Password change page */
 .account_pw {
@@ -401,6 +400,11 @@ form button.cancel a {
 
 .messages .success {
     list-style-type: none;
+}
+
+.modal {
+    z-index: 1050;
+    /* or a higher value */
 }
 
 /* -------------------- Medium screens and down */
