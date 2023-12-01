@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from events.views import PostList
+from django.config import settings
+from django.config.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
