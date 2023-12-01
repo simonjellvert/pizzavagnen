@@ -1,7 +1,6 @@
 {% extends "base.html" %} 
 {% load static %} 
 {% load i18n %} 
-{% load allauth account socialaccount %} 
 {% block head_title %} 
 {% trans "Sign In" %} 
 {% endblock head_title %} 
@@ -33,9 +32,9 @@
                         <button class="btn btn-signup" type="submit">
                             {% trans "Log In" %}
                         </button>
+                        {% include "socialaccount/snippets/login.html" with
+                        page_layout="entrance" class="resposive-text-size" %}
                     </form>
-                    {% include "socialaccount/snippets/login.html" with
-                    page_layout="entrance" class="resposive-text-size" %}
                 </div>
             </div>
         </div>

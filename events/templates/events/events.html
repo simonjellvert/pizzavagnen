@@ -40,18 +40,20 @@
             {% for post in post_list %}
             <div class="card-group mt-4"  style="width: 400px; height: auto;">
                 <div class="card">
-                    {% if "placeholder" in post.featured_image.url %}
-                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"/>
-                    {% else %}
-                    <img src=" {{ post.featured_image.url }} " class="card-img-top"/>
-                    {% endif %}
+                    <div class="event_image_container">
+                        {% if "placeholder" in post.featured_image.url %}
+                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" />
+                        {% else %}
+                        <img src=" {{ post.featured_image.url }} " class="card-img-top" />
+                        {% endif %}
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ post.title }}</h5>
                         <p class="card-text text-center text-muted">{{ post.event_date }}</h6>
                         <p class="card-text text-center">{{ post.event_description }}</p>
                     </div>
                     <div class="card-footer text-center">
-                        <p class="card-adress">{{ post.event_location }}</p>
+                        <p class="card-adress">Adress: {{ post.event_location }}</p>
                     </div>
                 </div>
             </div>
