@@ -26,3 +26,5 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('review/', include('review.urls')),
 ]
+
++ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
