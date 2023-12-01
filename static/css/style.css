@@ -233,7 +233,6 @@ p {
 }
 
 .hero img {
-    width: 100%;
     height: auto;
     border-radius: 10px;
 }
@@ -284,6 +283,7 @@ p {
 }
 
 /* -------------------- Log in page */
+
 .login-image {
     filter: brightness(0.25);
 }
@@ -298,14 +298,18 @@ p {
 }
 
 .login-form a {
-    color: white;
+    color: #6dbf9c;
 }
 
-.btn-signup {
-    text-transform: uppercase;
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
+.login-form .errorlist li {
+    list-style-type: none;
+    color: red;
+}
+
+.login-form .helptext {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 /* -------------------- Sign up page */
@@ -326,15 +330,13 @@ p {
 
 .signup-image {
     filter: brightness(0.25);
-    width: 100%;
+    width: auto;
     max-height: 768px;
     object-fit: contain;
-    border-radius: 10px;
 }
 
 .hero-signup {
     margin: 15px 15px 0 15px;
-    border-radius: 10px;
     padding: 15px;
 }
 
@@ -361,13 +363,26 @@ input {
     border-radius: 20px;
 }
 
-.pwc-header {
-    margin-bottom: 30px;
+.pwc-form {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.pwc-form a {
+    color: white;
 }
 
 .forgot_pw {
     display: block;
     margin: 8px;
+}
+
+.contact-us a {
+    color: #6dbf9c;
 }
 
 /* -------------------- Forms */
@@ -524,6 +539,14 @@ form button.cancel a {
 
     .login-form p {
         font-size: x-small;
+    }
+
+    .login-form h3 {
+        font-size: x-small;
+    }
+
+    .login-form button {
+        margin: 0;
     }
 
     .logout-button {
