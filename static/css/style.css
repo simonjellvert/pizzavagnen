@@ -97,6 +97,56 @@ p {
     line-height: 1.2;
 }
 
+#about {
+    cursor: pointer;
+}
+
+#about a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#booking {
+    cursor: pointer;
+}
+
+#booking a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#review {
+    cursor: pointer;
+}
+
+#review a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#account {
+    cursor: pointer;
+}
+
+#account a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#login {
+    cursor: pointer;
+}
+
+#login a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 /* -------------------- Footer */
 
 .upper-footer {
@@ -383,6 +433,23 @@ input {
 
 .contact-us a {
     color: #6dbf9c;
+}
+
+/* -------------------- Review Page */
+.modal-content {
+    width: 25rem;
+}
+
+#id_content {
+    height: 10rem;
+}
+
+#content {
+    width: 90%;
+}
+
+.selected {
+    background-color: green;
 }
 
 /* -------------------- Forms */
