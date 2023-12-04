@@ -62,7 +62,7 @@
                         <p class="card-text text-muted">{{ review.created_on }}</p>
                         <div class="flex">
                             {% for _ in "x"|ljust:review.rating %}
-                            <i class="fas fa-pizza-slice"></i>
+                            🍕
                             {% endfor %}
                         </div>
                         <p class="card-text mt-2">{{ review.content }}</p>

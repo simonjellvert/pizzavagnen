@@ -4,7 +4,8 @@ from django.utils import timezone
 from .models import Post
 from .forms import EventForm, EditEventForm
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
 
 
 class PostList(generic.ListView):
@@ -18,24 +19,26 @@ class PostList(generic.ListView):
 
 
 @login_required
-def add_post(request):
+def add_event(request):
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
+        print(form.errors)  # Check for any form errors
+        print(form.cleaned_data)  # Check the cleaned form data
         if form.is_valid():
             event = form.save(commit=False)
             event.user = request.user
-            event.title = "Some default title"
+            event.status = 1
             event.save()
             return redirect('events')
     else:
-        form = EventForm()
+        print(form.errors)
 
     return render(request, 'events/events.html', {'form': form})
 
 
 @login_required
-def edit_post(request, post_id):
-    post = get_object_or_404(Post, id=post_id, user=request.user)
+def edit_event(request, post_id):
+    event = get_object_or_404(Post, id=event_id, user=request.user)
 
     if request.method == 'POST':
         form = EditEventForm(request.POST, instance=event)
@@ -45,4 +48,4 @@ def edit_post(request, post_id):
     else:
         form = EditEventForm(instance=event)
 
-    return render(request, 'edit_post.html', {'form': form, 'event': event})
+    return render(request, 'edit_event.html', {'form': form, 'event': event})

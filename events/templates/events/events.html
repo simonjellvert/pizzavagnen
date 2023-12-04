@@ -1,5 +1,6 @@
 {% extends "base.html" %} 
 {% load static %} 
+{% load cloudinary %}
 {% block content %}
 
 <!-- Image section -->
@@ -34,19 +35,19 @@
         <hr class="mx-auto" style="width: 50%;">
         <h4 class="mt-5">Upcoming open events</h1>
         {% if user.is_authenticated and user.is_staff %}
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPostModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEventModal">
             Add Event
         </button>
         {% endif %}
     </div>
 
     <!-- Add Event Modal -->
-    <div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalLabel"
+    <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addPostModalLabel">Add Event</h5>
+                    <h5 class="modal-title" id="addEventModalLabel">Add Event</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -55,22 +56,24 @@
                     {% if form.errors %}
                     <div class="alert alert-danger">
                         <strong>Error:</strong>
-                        {% for error in form.errors %}
-                        {{ error }}
+                        {% for field, error in form.errors.items %}
+                        <p>{{ field }}: {{ error }}</p>
                         {% endfor %}
                     </div>
                     {% endif %}
                     <!-- Add your create form here -->
-                    <form method="post" action="{% url 'add_post' %}">
+                    {% load cloudinary %}
+                    <form method="post" action="{% url 'add_event' %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="{{ form.featured_image.id_for_label }}">Featured Image:</label>
-                            <input type="file" name="featured_image" id="id_featured_image">
+                            <input type="file" name="{{ form.featured_image.name }}" id="{{ form.featured_image.id_for_label }}">
+                            {{ form.featured_image }}
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="{{ form.title.id_for_label }}">Title:</label>
                             <input type="text" name="title" id="id_title">
-                        </div> -->
+                        </div>
                         <div class="form-group">
                             <label for="{{ form.event_date.id_for_label }}">Event Date:</label>
                             <input type="date" name="event_date" id="id_event_date">
@@ -85,6 +88,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
+                    {{ form.media }}
                 </div>
             </div>
         </div>
@@ -109,6 +113,10 @@
                     </div>
                     <div class="card-footer text-center">
                         <p class="card-adress">Adress: {{ post.event_location }}</p>
+                        {% if user.is_authenticated and user.is_staff %}
+                            <a href="#"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="#"><i class="fa-regular fa-trash-can"></i></a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
