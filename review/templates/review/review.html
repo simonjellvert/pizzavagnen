@@ -59,7 +59,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ review.user.username }}</h5>
-                        <p class="card-text text-muted">{{ review.created_on }}</p>
+                        <p class="card-text text-muted mb-1">{{ review.created_on }}</p>
                         <div class="flex">
                             {% for _ in "x"|ljust:review.rating %}
                             🍕

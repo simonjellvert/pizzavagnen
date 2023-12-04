@@ -299,6 +299,28 @@ p {
     height: auto;
 }
 
+.create_event input {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    width: 95%;
+}
+
+.create_event textarea {
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    width: 95%;
+}
+
+.create_event .form-group {
+    margin-bottom: 0.5rem;
+}
+
+#id_event_description {
+    height: 5rem;
+}
+
 .event_image_container {
     height: 10rem;
     width: 100%;
@@ -458,7 +480,12 @@ input {
 }
 
 .card-body {
-    width: 300px;
+    width: 100%;
+}
+
+.card .btn {
+    font-size: small;
+    padding: 3px 6px;
 }
 
 /* -------------------- Forms */
@@ -579,6 +606,10 @@ form button.cancel a {
     .login-form {
         width: 90%;
         border: none;
+    }
+
+    .pwc-form {
+        width: 80%;
     }
 
     .login-form p {

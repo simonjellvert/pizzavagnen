@@ -63,7 +63,7 @@
                     {% endif %}
                     <!-- Add your create form here -->
                     {% load cloudinary %}
-                    <form method="post" action="{% url 'add_event' %}" enctype="multipart/form-data">
+                    <form class="create_event" method="post" action="{% url 'add_event' %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="{{ form.featured_image.id_for_label }}">Featured Image:</label>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="form-group">
                             <label for="{{ form.event_description.id_for_label }}">Event Description:</label>
-                            <input type="text" name="event_description" id="id_event_description">
+                            <textarea name="event_description" id="id_event_description" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="{{ form.event_location.id_for_label }}">Event Location:</label>
