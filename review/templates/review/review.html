@@ -24,50 +24,27 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <strong>Error:</strong>
+                            {% for error in form.errors %}
+                            {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                         <!-- Add your create form here -->
                         <form method="post" action="{% url 'review_create' %}">
                             {% csrf_token %}
                             <p>
-                                <label for="id_rating">Rating: </label>
+                                <label for="{{ form.rating.id_for_label }}">Rating: </label>
                             </p>
-                            <br>
-                            
-                            <label class="btn btn-outline-primary" onclick="selectSlice(5)">
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                            </label>
-                            
-                            <label class="btn btn-outline-primary" onclick="selectSlice(4)">
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                            </label>
-                            
-                            <label class="btn btn-outline-primary" onclick="selectSlice(3)">
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                            </label>
-                            
-                            <label class="btn btn-outline-primary" onclick="selectSlice(2)">
-                                <i class="fas fa-pizza-slice"></i>
-                                <i class="fas fa-pizza-slice"></i>
-                            </label>
-                            
-                            <label class="btn btn-outline-primary" onclick="selectSlice(1)">
-                                <i class="fas fa-pizza-slice"></i>
-                            </label>
+                            {{ form.rating }}
                             <div class="form-group">
                                 <label for="id_content">Review:</label>
                                 <textarea name="content" id="content" rows="3"></textarea>
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Create Review</button>
-
                         </form>
                     </div>
                 </div>
@@ -76,9 +53,9 @@
     </div>
     <!-- Display reviews here -->
     <div class="container mt-3">
-        <div class="row">
+        <div class="row d-flex justify-content-center align-items-center">
             {% for review in reviews %}
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex justify-content-center align-items-center">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ review.user.username }}</h5>

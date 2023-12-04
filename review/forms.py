@@ -3,12 +3,17 @@ from .models import Review
 
 
 class ReviewForm(forms.ModelForm):
-    """
-    Form for creating a review
-    """
+    rating = forms.ChoiceField(choices=[
+        ('5', '🍕🍕🍕🍕🍕'),
+        ('4', '🍕🍕🍕🍕'),
+        ('3', '🍕🍕🍕'),
+        ('2', '🍕🍕'),
+        ('1', '🍕'),
+    ], widget=forms.RadioSelect(attrs={'class': 'btn-check'}))
+
     class Meta:
         model = Review
-        fields = ['content', 'rating']
+        fields = ['rating', 'content']
 
 
 class EditReviewForm(forms.ModelForm):
@@ -17,4 +22,4 @@ class EditReviewForm(forms.ModelForm):
     """
     class Meta:
         model = Review
-        fields = ['content', 'rating']
+        fields = ['rating', 'content']

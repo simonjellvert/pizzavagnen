@@ -20,8 +20,12 @@ def review_create(request):
             review.user = request.user
             review.save()
             return redirect('review_list')
+
         else:
-            return HttpResponse('Something went wrong!')
+            return render(request, 'review/review.html', {'form': form})
+
+    return HttpResponse('Invalid request method or something went wrong.')
+    
 
 
 @login_required

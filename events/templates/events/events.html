@@ -15,7 +15,7 @@
         <hr class="mx-auto" style="width: 75%;">
         <h3 class="mt-5">This is the PizzaTruck!</h2>
         <p>
-            The wagon is operated by Sebastian and Petter, two friends who share the joy of indulging in a delicious slice of pizza
+            The truck is operated by Sebastian and Petter, two friends who share the joy of indulging in a delicious slice of pizza
             whenever the opportunity arises!
             <br /><br>
             We are always on the move and our restaurant is wherever you want it to be. 
@@ -33,12 +33,67 @@
     <div class="container text-center mt-5">
         <hr class="mx-auto" style="width: 50%;">
         <h4 class="mt-5">Upcoming open events</h1>
+        {% if user.is_authenticated and user.is_staff %}
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPostModal">
+            Add Event
+        </button>
+        {% endif %}
+    </div>
+
+    <!-- Add Event Modal -->
+    <div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPostModalLabel">Add Event</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong>
+                        {% for error in form.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <!-- Add your create form here -->
+                    <form method="post" action="{% url 'add_post' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.featured_image.id_for_label }}">Featured Image:</label>
+                            <input type="file" name="featured_image" id="id_featured_image">
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="{{ form.title.id_for_label }}">Title:</label>
+                            <input type="text" name="title" id="id_title">
+                        </div> -->
+                        <div class="form-group">
+                            <label for="{{ form.event_date.id_for_label }}">Event Date:</label>
+                            <input type="date" name="event_date" id="id_event_date">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.event_description.id_for_label }}">Event Description:</label>
+                            <input type="text" name="event_description" id="id_event_description">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.event_location.id_for_label }}">Event Location:</label>
+                            <input type="text" name="event_location" id="id_event_location">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Cards generated from admin page -->
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
             {% for post in post_list %}
-            <div class="card-group mt-4"  style="width: 400px; height: auto;">
+            <div class="card-group mt-4">
                 <div class="card">
                     <div class="event_image_container">
                         {% if "placeholder" in post.featured_image.url %}

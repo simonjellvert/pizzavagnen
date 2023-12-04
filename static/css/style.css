@@ -288,6 +288,11 @@ p {
 }
 
 /* -------------------- Events page */
+.card-group {
+    width: 300px;
+    height: auto;
+    margin: 20px;
+}
 
 .card {
     width: 400px;
@@ -437,7 +442,7 @@ input {
 
 /* -------------------- Review Page */
 .modal-content {
-    width: 25rem;
+    width: 20rem;
 }
 
 #id_content {
@@ -450,6 +455,10 @@ input {
 
 .selected {
     background-color: green;
+}
+
+.card-body {
+    width: 300px;
 }
 
 /* -------------------- Forms */
