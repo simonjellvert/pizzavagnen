@@ -9,7 +9,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class Post(models.Model):
     title = models.CharField(
-        max_length=30, unique=True, verbose_name="Title")
+        max_length=30, verbose_name="Title")
     event_date = models.DateField(verbose_name="Date")
     event_description = models.TextField(max_length=130, default='Descripe the event here...')
     event_location = models.CharField(max_length=50, default='Exampleway 123, 456 78, City')
