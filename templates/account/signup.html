@@ -26,6 +26,7 @@
                     <form action="{% url 'account_signup' %}" method="POST" class="resposive-text-size">
                         {% csrf_token %}
                         {{ form.as_p }}
+
                         
                         {% if redirect_field_value %}
                         <input class="input-fields" type="hidden" name="{{ redirect_field_name }}"

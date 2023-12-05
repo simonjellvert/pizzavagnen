@@ -1,31 +1,19 @@
-from django.contrib.auth import logout
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.views import PasswordChangeView
-from django.views import View
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout
-from django.contrib import messages
 from django.urls import reverse_lazy
+from django.shortcuts import render, redirect
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm, EditUserForm
 from .models import CustomUser
 
 
-def register(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save(request)
-            login(request, form.instance)
-            return redirect('user_view')
-    else:
-        form = CustomUserCreationForm()
-
-    return render(request, 'account/signup.html', {'form': form})
-
-
-def user_view(request):
-    return render(request, 'user/account.html')
+class CustomSignupView(CreateView):
+    template_name = 'registration/signup.html'
+    form_class = CustomUserCreationForm
+    model = CustomUser
+    success_url = reverse_lazy('login')
 
 
 @login_required
@@ -40,16 +28,9 @@ def edit_profile(request):
     else:
         form = EditUserForm(instance=request.user)
 
-    return render(request, 'user/account.html', {
+    return render(request, 'user/profile.html', {
         'form': form,
     })
-
-
-class CustomPasswordChangeView(PasswordChangeView):
-    template_name = 'account/password_change.html'
-    
-    def get_success_message(self, cleaned_data):
-        return "Your password was changed successfully."
 
 
 @login_required
@@ -69,3 +50,10 @@ def delete_user_view(request):
         return redirect('home')
 
     return render(request, 'home/index.html')
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'account/password_change.html'
+
+    def get_success_message(self, cleaned_data):
+        return "Your password was changed successfully."
