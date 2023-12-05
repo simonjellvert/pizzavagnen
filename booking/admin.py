@@ -17,4 +17,5 @@ class BookingAdmin(admin.ModelAdmin):
     def get_user_last_name(self, obj):
         return obj.user.last_name
 
+
 admin.site.register(Booking, BookingAdmin)
