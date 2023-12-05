@@ -7,20 +7,10 @@ class Booking(models.Model):
     Booking model
     """
     booking_id = models.AutoField(primary_key=True)
-    first_name = models.ForeignKey(
+    user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='booking_fname',
-    )
-    last_name = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='booking_lname',
-    )
-    email = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='booking_email',
+        related_name='bookings',
     )
     booking_date = models.DateField()
     booking_time = models.TimeField()
@@ -38,4 +28,4 @@ class Booking(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.booking_id} | {self.last_name}'
+        return f'{self.booking_id} | {self.user.last_name}'

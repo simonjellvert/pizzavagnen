@@ -16,43 +16,42 @@
                 <!-- Display Existing Bookings -->
                 <div class="col">
                     <h3 class="mb-3">My Bookings</h3>
-            
                     {% if bookings %}
                         <ul>
                             {% for booking in bookings %}
-                                <li>
-                                    <strong>Booking ID:</strong> {{ booking.booking_id }}<br>
-                                    <strong>Date:</strong> {{ booking.booking_date }}<br>
-                                    <strong>Time:</strong> {{ booking.booking_time }}<br>
-                                    {% if user.is_authenticated and user == booking.user %}
-                                        <!-- Button to open edit modal -->
-                                        <div class="btn-column">
-                                            <!-- Button to open edit modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editBookingModal{{ booking.id }}">
-                                                <i class="fas fa-pen-to-square"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBookingModal{{ booking.id }}">
-                                                <i class="fas fa-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    {% endif %}
-                                </li>
+                            <li>
+                                <strong>Booking ID:</strong> {{ booking.booking_id }}<br>
+                                <strong>Date:</strong> {{ booking.booking_date }}<br>
+                                <strong>Time:</strong> {{ booking.booking_time }}<br>
+                        
+                                {% if user.is_authenticated and user == booking.user %}
+                                <!-- Buttons to open edit and delete modals -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#editBookingModal{{ booking.booking_id }}">
+                                    Edit
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                    data-target="#deleteBookingModal{{ booking.booking_id }}">
+                                    Delete
+                                </button>
+                                {% endif %}
+                            </li>
                             {% endfor %}
                         </ul>
                     {% else %}
-                        <p>No bookings found.</p>
+                    <p>No bookings found.</p>
                     {% endif %}
                     <br>
-            
+                
                     <!-- Create New Booking Form -->
                     <h5 class="mb-3">Create New Booking</h5>
                     <a class="btn btn-primary" href="{% url 'booking:booking_create' %}">Create New Booking</a>
-                </div>    
+                </div>
             </div>
             {% for booking in bookings %}
                 <!-- Edit Booking Modal -->
-                <div class="modal fade" id="editbookingModal{{ booking.booking_id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="editbookingModalLabel{{ booking.booking_id }}" aria-hidden="true">
+                <div class="modal fade" id="editBookingModal{{ booking.booking_id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editBookingModalLabel{{ booking.booking_id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
