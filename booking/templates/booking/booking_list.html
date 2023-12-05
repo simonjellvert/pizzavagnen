@@ -21,8 +21,8 @@
                             {% for booking in bookings %}
                             <li>
                                 <strong>Booking ID:</strong> {{ booking.booking_id }}<br>
-                                <strong>Date:</strong> {{ booking.booking_date }}<br>
-                                <strong>Time:</strong> {{ booking.booking_time }}<br>
+                                <strong>Date:</strong> {{ booking.booking_date|date:"F j, Y }}<br>
+                                <strong>Time:</strong> {{ booking.booking_time|time:"g:i A }}<br>
                         
                                 {% if user.is_authenticated and user == booking.user %}
                                 <!-- Buttons to open edit and delete modals -->

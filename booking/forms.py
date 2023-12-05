@@ -6,23 +6,25 @@ from .models import Booking
 
 class BookingForm(forms.ModelForm):
     """
-    Booking form to the user
+    Booking form for the user
     """
     class Meta:
         model = Booking
-        min = date.today()
-        fields = ['booking_date', 'booking_time', 'booking_location']
+        min_date = date.today()
+        fields = ['date', 'time', 'location']
         widgets = {
-            'booking_date': DateInput(attrs={
+            'date': DateInput(attrs={
                 'class': 'datepicker',
                 'type': 'date',
-                'min': min}),
-            'booking_time': TimeInput(attrs={
-                'class': 'timepicker', 'min': '12:00', 'max': '23:00',
+                'min': str(min_date)}),
+            'ime': TimeInput(attrs={
+                'class': 'timepicker',
+                'min': '12:00',
+                'max': '23:00',
                 'type': 'time',
             }),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['booking_date'].widget.attrs['min'] = str(date.today())
+        self.fields['date'].widget.attrs['min'] = str(date.today())

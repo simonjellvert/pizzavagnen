@@ -4,14 +4,17 @@ from .models import Booking
 
 class BookingAdmin(admin.ModelAdmin):
     list_display = (
-        'user',
-        'booking_date',
-        'booking_time',
-        'booking_location',
-        'booking_created'
+        'number',
+        'get_user_last_name',
+        'date',
+        'time',
+        'location',
+        'date_created'
     )
 
-    list_filter = ('user', 'booking_date')
+    list_filter = ('user', 'date')
 
+    def get_user_last_name(self, obj):
+        return obj.user.last_name
 
 admin.site.register(Booking, BookingAdmin)
