@@ -7,7 +7,7 @@ class Review(models.Model):
     """
     Reviews model
     """
-    STAR_RATE = (
+    star_rate = (
         ('1', '1'),
         ('2', '2'),
         ('3', '3'),
@@ -21,7 +21,7 @@ class Review(models.Model):
     )
     rating = models.CharField(
         max_length=20,
-        choices=STAR_RATE,
+        choices=star_rate,
         default=1
     )
     content = models.TextField(
@@ -32,4 +32,4 @@ class Review(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.user.username)
+        return f"{self.user.first_name} {self.user.last_name}"
