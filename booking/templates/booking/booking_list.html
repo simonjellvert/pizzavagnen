@@ -65,19 +65,17 @@
                                 <form method="post" action="{% url 'booking:booking_edit' pk=booking.booking_id %}">
                                     {% csrf_token %}
                                     <div class="form-group text-white">
-                                        <label for="{{ form.booking_date.id_for_label }}">Date:</label>
-                                        <input type="date" name="{{ form.booking_date.name }}" id="{{ form.booking_date.id_for_label }}"
-                                            class="form-control">
+                                        <label for="id_booking_date">Date:</label>
+                                        <input type="date" name="booking_date" id="id_booking_date" class="form-control" value="{{ booking.booking_date }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="{{ form.booking_time.id_for_label }}">Time:</label>
-                                        <input type="time" name="{{ form.booking_time.name }}" id="{{ form.booking_time.id_for_label }}"
-                                            class="form-control">
+                                        <label for="id_booking_time">Time:</label>
+                                        <input type="time" name="booking_time" id="id_booking_time" class="form-control" value="{{ booking.booking_time }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="{{ form.booking_location.id_for_label }}">Location:</label>
-                                        <input type="text" name="{{ form.booking_location.name }}" id="{{ form.booking_location.id_for_label }}"
-                                            class="form-control">
+                                        <label for="id_booking_location">Location:</label>
+                                        <input type="text" name="booking_location" id="id_booking_location" class="form-control"
+                                            value="{{ booking.booking_location }}">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save Changes</button>
                                 </form>
