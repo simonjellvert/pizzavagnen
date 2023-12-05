@@ -8,7 +8,7 @@ from django.contrib.auth import login, logout
 from django.contrib import messages
 from django.urls import reverse_lazy
 from .forms import CustomUserCreationForm, EditUserForm
-from .models import User
+from .models import CustomUser
 
 
 def register(request):
@@ -16,7 +16,8 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save(request)
-            return redirect('user/account')
+            login(request, form.instance)
+            return redirect('user_view')
     else:
         form = CustomUserCreationForm()
 
@@ -60,14 +61,11 @@ def delete_user_view(request):
     if request.method == 'POST':
         user = request.user
 
-        # Logout the user
         logout(request)
 
-        # Delete the user
         user.delete()
 
         messages.success(request, 'Account deleted!')
         return redirect('home')
 
-    # For GET requests, you can customize the template and context as needed
-    return render(request, 'home/index.html')  # Update the template name
+    return render(request, 'home/index.html')

@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'booking',
 ]
 
-AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = 'user.CustomUser'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 

@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from user.models import User
+from user.models import CustomUser
 
 
 class Review(models.Model):
@@ -15,7 +15,7 @@ class Review(models.Model):
         ('5', '5'),
     )
     user = models.ForeignKey(
-        User,
+        CustomUser,
         on_delete=models.CASCADE,
         related_name='reviews',
     )
