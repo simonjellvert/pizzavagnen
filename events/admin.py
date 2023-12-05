@@ -1,10 +1,9 @@
 from django.contrib import admin
 from .models import Post
-from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Post)
-class PostAdmin(SummernoteModelAdmin):
+class PostAdmin(admin.ModelAdmin):
 
     list_filter = ('status', 'created_on')
     list_display = ('title', 'status', 'created_on')

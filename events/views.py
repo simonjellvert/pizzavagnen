@@ -22,8 +22,8 @@ class PostList(generic.ListView):
 def add_event(request):
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
-        print(form.errors)  # Check for any form errors
-        print(form.cleaned_data)  # Check the cleaned form data
+        print(form.errors)
+        print(form.cleaned_data)
         if form.is_valid():
             event = form.save(commit=False)
             event.user = request.user
