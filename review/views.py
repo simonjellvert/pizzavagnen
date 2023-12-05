@@ -8,7 +8,10 @@ from .forms import ReviewForm
 def review_list(request):
     form = ReviewForm()
     reviews = Review.objects.all()
-    return render(request, 'review/review.html', {'reviews': reviews, 'form': form})
+    return render(
+        request,
+        'review/review.html',
+        {'reviews': reviews, 'form': form})
 
 
 @login_required

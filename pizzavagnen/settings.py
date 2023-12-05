@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'pizzavagnen',
     'home',
     'review',
+    'booking',
 ]
 
 AUTH_USER_MODEL = 'user.User'

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
         type="text/css" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
@@ -68,7 +69,7 @@
                     <!-- If user is logged in, redirect to bookings page -->
                     {% if user.is_authenticated %}
                     <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center" id="booking">
-                        <a class="nav-link booking" href="#">
+                        <a class="nav-link booking" href="{% url 'booking:booking_list' %}">
                             <span class="before-hover-content">Bookings</span>
                             <span class="hover-content">For your event</span>
                         </a>
@@ -78,7 +79,7 @@
                     <li class="nav-item hvr-sweep-to-bottom d-flex align-items-center justify-content-center" id="booking">
                         <a class="nav-link booking" href="{% url 'account_login' %}">
                             <span class="before-hover-content">Booking</span>
-                            <span class="hover-content">Bookings</span>
+                            <span class="hover-content">For your event</span>
                         </a>
                     </li>
                     {% endif %}

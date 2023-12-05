@@ -27,4 +27,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('user/', include('user.urls')),
     path('review/', include('review.urls')),
+    path('booking/', include('booking.urls', namespace='booking'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
