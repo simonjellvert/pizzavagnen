@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from user.models import User
 
 
 class Booking(models.Model):
@@ -8,9 +9,9 @@ class Booking(models.Model):
     """
     booking_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        User,
         on_delete=models.CASCADE,
-        related_name='bookings',
+        related_name='booking',
     )
     booking_date = models.DateField()
     booking_time = models.TimeField()
