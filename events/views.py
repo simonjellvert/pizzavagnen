@@ -8,7 +8,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from booking.models import Booking
-from cloudinary.uploader import upload
 
 
 class PostList(generic.ListView):
@@ -26,26 +25,22 @@ def add_event(request):
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
-            image = request.FILES.get('featured_image')
-            response = cloudinary.uploader.upload(image)
-
             new_event_date = form.cleaned_data['event_date']
             # Check for conflicts with existing bookings
             existing_events = Post.objects.filter(event_date=new_event_date)
             if existing_events.exists():
                 message = "An event already exists for this date. Please choose a different date."
-                messages.warning(request, message)
+                messages.error(request, message)
                 return redirect('events')
-            
+
             # Check for conflicts with existing events in 'events' app
             existing_booking = Booking.objects.filter(date=new_event_date)
             if existing_booking.exists():
-                messages.warning(request, 'This date is already booked.')
+                messages.error(request, 'This date is already booked.')
                 return redirect('events')
 
             event = form.save(commit=False)
             event.user = request.user
-            event.featured_image = response['url']
             event.status = 1
             event.save()
             return redirect('events')
@@ -80,7 +75,7 @@ def edit_event(request, pk):
             existing_bookings = Booking.objects.filter(date=new_event_date)
             if existing_bookings.exists():
                 messages.warning(request, 'This date is already booked.')
-                return redirect('booking:booking_list')
+                return redirect('events')
 
             event = form.save(commit=False)
             event.save()
@@ -89,3 +84,10 @@ def edit_event(request, pk):
         form = EditEventForm(instance=event)
 
     return render(request, 'events/edit_event.html', {'form': form, 'event': event})
+
+
+@login_required
+def event_delete(request, post_id):
+    event = get_object_or_404(Post, id=post_id)
+    event.delete()
+    return redirect('events')
