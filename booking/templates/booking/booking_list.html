@@ -29,14 +29,19 @@
 
                     <h3 class="mb-3">My Bookings</h3>
                     {% if bookings %}
-                        <div class="resposive-text-size">
-                            {% for booking in bookings %}
+                    {% if bookings|length > 1 %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% for booking in bookings|slice:":((bookings|length)//2)" %}
+                            {% if booking.date >= today %}
+                            <!-- Display booking information for future bookings -->
+                            <div class="resposive-text-size">
                                 <strong>Booking ID:</strong> {{ booking.number }}<br>
                                 <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
                                 <strong>Time:</strong> {{ booking.time|time:"g:i A" }}<br>
                                 <strong>Location:</strong> {{ booking.location }}<br>
                                 <strong>Reference:</strong> {{ booking.last_name }}<br>
-                        
+                    
                                 {% if user.is_authenticated and user == booking.user %}
                                 <!-- Buttons to open edit and delete modals -->
                                 <button type="button" class="btn btn-primary mb-2 booking-btn" data-toggle="modal"
@@ -48,8 +53,38 @@
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button><br>
                                 {% endif %}
+                            </div>
+                            {% endif %}
                             {% endfor %}
                         </div>
+                        <!-- Add similar code for the second column -->
+                    </div>
+                    {% else %}
+                    <div class="resposive-text-size">
+                        {% for booking in bookings %}
+                        {% if booking.date >= today %}
+                        <!-- Display booking information for future bookings -->
+                        <strong>Booking ID:</strong> {{ booking.number }}<br>
+                        <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
+                        <strong>Time:</strong> {{ booking.time|time:"g:i A" }}<br>
+                        <strong>Location:</strong> {{ booking.location }}<br>
+                        <strong>Reference:</strong> {{ booking.last_name }}<br>
+                    
+                        {% if user.is_authenticated and user == booking.user %}
+                        <!-- Buttons to open edit and delete modals -->
+                        <button type="button" class="btn btn-primary mb-2 booking-btn" data-toggle="modal"
+                            data-target="#editBookingModal{{ booking.number }}">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger mb-2 booking-btn" data-toggle="modal"
+                            data-target="#deleteBookingModal{{ booking.number }}">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button><br>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     {% else %}
                     <p>No bookings found.</p>
                     {% endif %}

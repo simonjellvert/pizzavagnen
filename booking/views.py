@@ -8,7 +8,15 @@ from events.models import Post
 
 @login_required
 def booking_list(request):
-    bookings = bookings.order_by('-date')
+    user = request.user
+    max_bookings_allowed = 2
+
+    user_bookings_count = Booking.objects.filter(user=user).count()
+
+    if user_bookings_count > max_bookings_allowed:
+        messages.error (request, "Too many bookings (max 2/user). Contact staff")
+        return redirect('booking:booking_list')
+    
     form = BookingForm()
     user_bookings = Booking.objects.filter(user=request.user)
     return render(request, 'booking/booking_list.html', {'form': form, 'bookings': user_bookings})
