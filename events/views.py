@@ -29,8 +29,7 @@ def add_event(request):
             # Check for conflicts with existing bookings
             existing_events = Post.objects.filter(event_date=new_event_date)
             if existing_events.exists():
-                message = "An event already exists for this date. Please choose a different date."
-                messages.error(request, message)
+                messages.error(request,"An event already exists for this date. Please choose a different date.")
                 return redirect('events')
 
             # Check for conflicts with existing events in 'events' app
@@ -67,14 +66,13 @@ def edit_event(request, pk):
             existing_events = Post.objects.filter(
                 event_date=new_event_date).exclude(pk=pk)
             if existing_events.exists():
-                message = "An event already exists for this date. Please choose a different date."
-                messages.warning(request, message)
+                messages.error(request, "An event already exists for this date. Please choose a different date.")
                 return redirect('events')
 
             # Check for conflicts with existing bookings
             existing_bookings = Booking.objects.filter(date=new_event_date)
             if existing_bookings.exists():
-                messages.warning(request, 'This date is already booked.')
+                messages.error(request, 'This date is already booked.')
                 return redirect('events')
 
             event = form.save(commit=False)

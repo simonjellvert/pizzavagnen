@@ -507,6 +507,16 @@ input {
     padding: 3px 6px;
 }
 
+.alert-error {
+    color: red;
+}
+
+.staff-button {
+    background: #6dbf9c;
+    margin: 20px;
+    border: none;
+}
+
 /* -------------------- New booking page */
 
 .booking-form {

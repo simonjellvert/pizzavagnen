@@ -18,7 +18,7 @@
                     {% if messages %}
                     <div class="messages">
                         {% for message in messages %}
-                        {% if message.tags and message.tags == 'error' %}
+                        {% if message.tags and message.tags == 'error' or message.tags == 'success' %}
                         <div class="alert alert-{{ message.tags }}" role="alert">
                             {{ message }}
                         </div>
@@ -28,49 +28,54 @@
                     {% endif %}
 
                     <h3 class="mb-3">My Bookings</h3>
-                    {% if bookings %}
-                        <div class="resposive-text-size">
-                            {% for booking in bookings %}
-                                <strong>Booking ID:</strong> {{ booking.number }}<br>
-                                <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
-                                <strong>Time:</strong> {{ booking.time|time:"g:i A" }}<br>
-                                <strong>Location:</strong> {{ booking.location }}<br>
-                                <strong>Reference:</strong> {{ booking.last_name }}<br>
-                        
-                                {% if user.is_authenticated and user == booking.user %}
-                                <!-- Buttons to open edit and delete modals -->
-                                <button type="button" class="btn btn-primary mb-2 booking-btn" data-toggle="modal"
-                                    data-target="#editBookingModal{{ booking.number }}">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger mb-2 booking-btn" data-toggle="modal"
-                                    data-target="#deleteBookingModal{{ booking.number }}">
-                                    <i class="fa-regular fa-trash-can"></i>
-                                </button><br>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        <!-- Pagination Links -->
-                        {% if is_paginated %}
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination mt-4 justify-content-center">
-                                    {% if user_bookings.has_previous %}
-                                    <li><a href="?page={{ user_bookings.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-                                    {% endif %}
-                                    {% if user_bookings.has_next %}
-                                    <li><a href="?page={{ user_bookings.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                    {% if user.is_authenticated %}
+                        {% if bookings %}
+                            <div class="resposive-text-size">
+                                {% for booking in bookings %}
+                                    <strong>Booking ID:</strong> {{ booking.number }}<br>
+                                    <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
+                                    <strong>Time:</strong> {{ booking.time|time:"g:i A" }}<br>
+                                    <strong>Location:</strong> {{ booking.location }}<br>
+                                    <strong>Reference:</strong> {{ booking.last_name }}<br>
                             
+                                    {% if user.is_authenticated and user == booking.user %}
+                                    <!-- Buttons to open edit and delete modals -->
+                                    <button type="button" class="btn btn-primary mb-2 booking-btn" data-toggle="modal"
+                                        data-target="#editBookingModal{{ booking.number }}">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger mb-2 booking-btn" data-toggle="modal"
+                                        data-target="#deleteBookingModal{{ booking.number }}">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                    </button><br>
                                     {% endif %}
-                                </ul>
-                            </nav>
-                        {% endif %}
+                                {% endfor %}
+                            </div>
+                            <!-- If more than two bookings, the page i paginated -->
+                            {% if is_paginated %}
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination mt-4 justify-content-center">
+                                        {% if page_obj.has_previous %}
+                                        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link" style="margin: 10px;"><i class="fa-solid fa-angle-left" style="font-size: x-small"></i></a></li>
+                                        {% endif %}
+                                        {% if page_obj.has_next %}
+                                        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link" style="margin: 10px;"><i class="fa-solid fa-angle-right" style="font-size: x-small"></i></a></li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            {% endif %}
                         {% else %}
-                        <p>No bookings found.</p>
-                    {% endif %}
-                    <br>
-                
+                            <p>No bookings found.</p>
+                        {% endif %}
+                        <br>
+                    {% endif %}            
                     <!-- Create New Booking Form -->
-                    <a class="btn btn-primary resposive-text-size" href="{% url 'booking:booking_create' %}">New Booking</a>
+                    <a class="btn btn-primary resposive-text-size" href="{% url 'booking:booking_create' %}">New Booking</a><br>
+                    {% if user.is_authenticated %}
+                        {% if user.is_staff %}
+                            <a class="btn btn-primary resposive-text-size staff-button" href="{% url 'booking:staff_booking_list' %}">Staff: View Bookings</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
             {% for booking in bookings %}

@@ -10,6 +10,15 @@
                 alt="Sebbe och Petter i vagnen" />
 
             <div class="mx-auto login-form">
+                <div class="messages">
+                    {% for message in messages %}
+                    {% if message.tags and message.tags == 'error' or message.tags == 'success' %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
                 <h3 class="text-center">Your account information</h3>
                 <p class="text-center">If you want to edit your information, you can do so by changing the fields and
                     click "Update Account"</p>

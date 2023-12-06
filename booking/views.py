@@ -1,32 +1,40 @@
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views import generic
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.utils.decorators import method_decorator
+from django.utils import timezone
 from django.contrib import messages
+from datetime import datetime
 from .models import Booking
 from .forms import BookingForm
 from events.models import Post
 
 
-@login_required
-def booking_list(request):
-    form = BookingForm()
-    user_bookings = Booking.objects.filter(user=request.user).order_by('-date')
-    
-    print("Total Bookings (Before Pagination):", user_bookings.count())
+@method_decorator(login_required, name='dispatch')
+class BookingList(generic.ListView):
+    model = Booking
+    template_name = 'booking/booking_list.html'
+    paginate_by = 2
 
-    # Pagination logic
-    page = request.GET.get('page', 1)
-    paginator = Paginator(user_bookings, 2)
-    try:
-        user_bookings = paginator.page(page)
-    except PageNotAnInteger:
-        user_bookings = paginator.page(1)
-    except EmptyPage:
-        user_bookings = paginator.page(paginator.num_pages)
-    
-    print("Total Bookings (After Pagination):", user_bookings.count())
+    def get_queryset(self):
+        now = datetime.now()
+        return Booking.objects.filter(user=self.request.user).order_by('date')
 
-    return render(request, 'booking/booking_list.html', {'form': form, 'bookings': user_bookings})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = BookingForm()
+        context['bookings'] = self.get_queryset()
+
+        paginator = Paginator(self.get_queryset(), self.paginate_by)
+        page = self.request.GET.get('page')
+
+        try:
+            context['bookings'] = paginator.page(page)
+        except Exception as e:
+            context['bookings'] = paginator.page(1)
+
+        return context
 
 
 def booking_detail(request, booking_id):
@@ -41,18 +49,24 @@ def booking_create(request):
         if form.is_valid():
             new_booking_date = form.cleaned_data['date']
 
+            # Check if the selected date is in the past
+            if new_booking_date < timezone.now().date():
+                messages.error(
+                    request, "You cannot create a booking in the past. Please choose a future date.")
+                return redirect('booking:booking_list')
+
             # Check for conflicts with existing bookings
             existing_bookings = Booking.objects.filter(date=new_booking_date)
             if existing_bookings.exists():
-                message = "An event already exists for this date. Please choose a different date."
-                messages.warning(request, message)
+                messages.error(
+                    request, "An event already exists for this date. Please choose a different date.")
                 return redirect('booking:booking_list')
 
             # Check for conflicts with existing events in 'events' app
             existing_events = Post.objects.filter(event_date=new_booking_date)
             if existing_events.exists():
-                message = "An event already exists for this date. Please choose a different date."
-                messages.warning(request, message)
+                messages.error(
+                    request, "An event already exists for this date. Please choose a different date.")
                 return redirect('booking:booking_list')
 
             booking = form.save(commit=False)
@@ -65,8 +79,6 @@ def booking_create(request):
         else:
             messages.error(
                 request, 'Form submission failed. Please check the form.')
-            print(form.errors)
-            print(form.cleaned_data)
 
     else:
         form = BookingForm()
@@ -85,16 +97,22 @@ def booking_edit(request, pk):
             existing_bookings = Booking.objects.filter(
                 date=new_booking_date).exclude(pk=pk)
 
+            # Check if the selected date is in the past
+            if new_booking_date < timezone.now().date():
+                messages.error(
+                    request, "You cannot create a booking in the past. Please choose a future date.")
+                return redirect('booking:booking_list')
+
             # Check for conflicts with existing bookings
             if existing_bookings.exists():
                 messages.warning(request, 'This date is already booked.')
                 return redirect('booking:booking_list')
-            
+
             # Check for conflicts with existing events in 'events' app
             existing_events = Post.objects.filter(event_date=new_booking_date)
             if existing_events.exists():
-                message = "An event already exists for this date. Please choose a different date."
-                messages.warning(request, message)
+                messages.warning(
+                    request, "An event already exists for this date. Please choose a different date.")
                 return redirect('booking:booking_list')
 
             booking = form.save(commit=False)
@@ -111,3 +129,20 @@ def booking_delete(request, number):
     booking = get_object_or_404(Booking, number=number)
     booking.delete()
     return redirect('booking:booking_list')
+
+
+def is_staff(user):
+    return user.is_staff
+
+
+@user_passes_test(is_staff)
+def staff_booking_list(request):
+    now = datetime.now()
+    upcoming_bookings = Booking.objects.filter(
+        date__gte=datetime.now()).order_by('date', 'time')
+
+    context = {
+        'bookings': upcoming_bookings,
+    }
+
+    return render(request, 'booking/staff_list.html', context)
