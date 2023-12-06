@@ -9,7 +9,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
         username = forms.CharField(
-            max_length=150,
+            max_length=20,
             label='Username',
             help_text='',
         )
@@ -21,7 +21,7 @@ class EditUserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         username = forms.CharField(
-            max_length=150,
+            max_length=20,
             label='Username',
             help_text=''
         )

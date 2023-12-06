@@ -8,6 +8,7 @@ from events.models import Post
 
 @login_required
 def booking_list(request):
+    bookings = bookings.order_by('-date')
     form = BookingForm()
     user_bookings = Booking.objects.filter(user=request.user)
     return render(request, 'booking/booking_list.html', {'form': form, 'bookings': user_bookings})

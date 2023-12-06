@@ -9,12 +9,12 @@
 <section class="d-flex align-items-center justify-content-center">
     <div class="hero position-relative">
         <div class="container text-center">
-            <img class="img-fluid mx-auto signup-image" src="{% static 'img/pexels-nataliya-vaitkevich-5792329.jpg' %}"
-                alt="Sebbe and Petter in the truck" />
+            <img class="img-fluid mx-auto signup-image" src="{% static 'img/pizza-roller.2.jpg' %}" alt="Pizza" />
 
-            <div class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-conent-center align-items-center text-center">
+            <div
+                class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
                 <!-- Display Existing Bookings -->
-                <div class="col">
+                <div class="col-12">
                     {% if messages %}
                     <div class="messages">
                         {% for message in messages %}
@@ -29,7 +29,7 @@
 
                     <h3 class="mb-3">My Bookings</h3>
                     {% if bookings %}
-                        <div>
+                        <div class="resposive-text-size">
                             {% for booking in bookings %}
                                 <strong>Booking ID:</strong> {{ booking.number }}<br>
                                 <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
@@ -39,11 +39,11 @@
                         
                                 {% if user.is_authenticated and user == booking.user %}
                                 <!-- Buttons to open edit and delete modals -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                <button type="button" class="btn btn-primary mb-2 booking-btn" data-toggle="modal"
                                     data-target="#editBookingModal{{ booking.number }}">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                <button type="button" class="btn btn-danger mb-2 booking-btn" data-toggle="modal"
                                     data-target="#deleteBookingModal{{ booking.number }}">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button><br>
@@ -56,8 +56,8 @@
                     <br>
                 
                     <!-- Create New Booking Form -->
-                    <h5 class="mb-3">Create New Booking</h5>
-                    <a class="btn btn-primary" href="{% url 'booking:booking_create' %}">Create New Booking</a>
+                    <h5 class="mb-3">New Booking</h5>
+                    <a class="btn btn-primary" href="{% url 'booking:booking_create' %}">New Booking</a>
                 </div>
             </div>
             {% for booking in bookings %}

@@ -12,13 +12,9 @@
             <img class="img-fluid mx-auto signup-image"
                 src="{% static 'img/pizza-roller.2.jpg' %}" alt="Pizza" />
 
-            <div class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-conent-center align-items-center text-center">
-                <div class="col">
-                    <h3 class="mb-3 mt-3">{% trans "Create an Account" %}</h3>
-                    <p class="resposive-text-size">
-                        Welcome to the PizzaTruck! <br />When your account is created you will be able to create bookings, handle them and leave reviews about your visit on the truck.
-                    </p>
-                    <hr class="w-50 mx-auto" style="color: white"/>
+            <div class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
+                <div class="col-12">
+                    <h5 class="mb-3 mt-3">{% trans "Create an Account" %}</h5>
                     <p class="resposive-text-size">Please, fill out the form:</p>
                 </div>
 
@@ -32,7 +28,7 @@
                         <input class="input-fields" type="hidden" name="{{ redirect_field_name }}"
                             value="{{ redirect_field_value }}" />
                         {% endif %}
-                        <button class="btn btn-success mt-1" type="submit">
+                        <button class="btn btn-success mt-1 .signup-button" type="submit">
                             {% trans "Create Account" %}
                         </button>
                     </form>

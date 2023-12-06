@@ -289,13 +289,13 @@ p {
 
 /* -------------------- Events page */
 .card-group {
-    width: 300px;
+    width: 320px;
     height: auto;
     margin: 20px;
 }
 
 .card {
-    width: 400px;
+    width: 320px;
     height: auto;
 }
 
@@ -479,12 +479,31 @@ input {
     background-color: green;
 }
 
+.card {
+    margin: 10px;
+}
+
+.card-div {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .card-body {
     width: 100%;
 }
 
+.review-body {
+    padding: 0.5rem;
+}
+
+.booking-btn {
+    font-size: x-small;
+    padding: 3px 6px;
+}
+
+/* -------------------- Booking page */
 .card .btn {
-    font-size: small;
+    font-size: x-small;
     padding: 3px 6px;
 }
 
@@ -605,7 +624,7 @@ form button.cancel a {
 
     .login-form {
         width: 90%;
-        border: none;
+        /* border: none; */
     }
 
     .pwc-form {
@@ -668,6 +687,14 @@ form button.cancel a {
         font-size: x-small;
     }
 
+    .resposive-text-size p {
+        margin-bottom: 0.5rem;
+    }
+    
+    .form label {
+        margin-bottom: 3px;
+    }
+
     .create-button {
         font-size: x-small;
     }
@@ -685,3 +712,15 @@ form button.cancel a {
         margin: 0;
     }
 }
+
+@media (max-width: 320px) {
+    .resposive-text-size ul {
+        display: none;
+    }
+
+    .signup-button {
+        font-size: x-small;
+        margin-top: none;
+    }
+}
+
