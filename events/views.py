@@ -49,10 +49,12 @@ def add_event(request):
             event.status = 1
             event.save()
             return redirect('events')
+        else:
+            messages.error(
+                request, 'Form submission failed. Please check the form.')
+            print(form.errors)
     else:
-        messages.error(
-            request, 'Form submission failed. Please check the form.')
-        print(form.errors)
+        form = EventForm()
 
     return render(request, 'events/events.html', {'form': form})
 
