@@ -27,7 +27,7 @@ def add_event(request):
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
             image = request.FILES.get('featured_image')
-            response = upload(image)
+            response = cloudinary.uploader.upload(image)
 
             new_event_date = form.cleaned_data['event_date']
             # Check for conflicts with existing bookings
@@ -45,6 +45,7 @@ def add_event(request):
 
             event = form.save(commit=False)
             event.user = request.user
+            event.featured_image = response['url']
             event.status = 1
             event.save()
             return redirect('events')
