@@ -375,7 +375,7 @@ p {
 }
 
 .login-form a {
-    color: #6dbf9c;
+    text-transform: uppercase;
 }
 
 .login-form .errorlist li {
@@ -507,6 +507,26 @@ input {
     padding: 3px 6px;
 }
 
+/* -------------------- New booking page */
+
+.booking-form {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.booking-form input {
+    background: transparent;
+    color: white;
+}
+
+.booking-header {
+    margin-bottom: 3rem;
+}
+
 /* -------------------- Forms */
 form label {
     display: block;
@@ -567,16 +587,6 @@ form button.cancel a {
     list-style-type: none;
 }
 
-.modal {
-    z-index: 1050;
-    /* or a higher value */
-}
-
-.modal-backdrop {
-    position: fixed;
-    z-index: 1040;
-    /* or any lower value than the modal z-index */
-}
 
 /* -------------------- Medium screens and down */
 
@@ -663,6 +673,14 @@ form button.cancel a {
         border: none;
     }
 
+    .booking-form {
+        width: 80%;
+    }
+
+    .form-group {
+        margin-bottom: 3px;
+    }
+
     .login-form p {
         font-size: x-small;
     }
@@ -710,6 +728,10 @@ form button.cancel a {
 
     .hero-signup {
         margin: 0;
+    }
+
+    .booking-header {
+        margin-bottom: 0;
     }
 }
 

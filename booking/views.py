@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,17 +9,23 @@ from events.models import Post
 
 @login_required
 def booking_list(request):
-    user = request.user
-    max_bookings_allowed = 2
-
-    user_bookings_count = Booking.objects.filter(user=user).count()
-
-    if user_bookings_count > max_bookings_allowed:
-        messages.error (request, "Too many bookings (max 2/user). Contact staff")
-        return render(request, 'booking/booking_list.html')
-    
     form = BookingForm()
-    user_bookings = Booking.objects.filter(user=request.user)
+    user_bookings = Booking.objects.filter(user=request.user).order_by('-date')
+    
+    print("Total Bookings (Before Pagination):", user_bookings.count())
+
+    # Pagination logic
+    page = request.GET.get('page', 1)
+    paginator = Paginator(user_bookings, 2)
+    try:
+        user_bookings = paginator.page(page)
+    except PageNotAnInteger:
+        user_bookings = paginator.page(1)
+    except EmptyPage:
+        user_bookings = paginator.page(paginator.num_pages)
+    
+    print("Total Bookings (After Pagination):", user_bookings.count())
+
     return render(request, 'booking/booking_list.html', {'form': form, 'bookings': user_bookings})
 
 
