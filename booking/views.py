@@ -15,7 +15,7 @@ def booking_list(request):
 
     if user_bookings_count > max_bookings_allowed:
         messages.error (request, "Too many bookings (max 2/user). Contact staff")
-        return redirect('booking:booking_list')
+        return render(request, 'booking/booking_list.html')
     
     form = BookingForm()
     user_bookings = Booking.objects.filter(user=request.user)
