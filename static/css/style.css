@@ -397,6 +397,14 @@ p {
     color: white;
 }
 
+.ur-form ul {
+    display: none;
+}
+
+.responsive-margin {
+    margin-bottom: 3rem;
+}
+
 .resposive-text-size input {
     font-size: medium;
     background: transparent;
@@ -655,6 +663,10 @@ form button.cancel a {
         font-size: small;
     }
 
+    .ur-form p {
+        margin-bottom: 1px;
+    }
+
     .logout-button {
         font-size: small;
     }
@@ -741,6 +753,10 @@ form button.cancel a {
     }
 
     .booking-header {
+        margin-bottom: 0;
+    }
+
+    .responsive-margin {
         margin-bottom: 0;
     }
 }
