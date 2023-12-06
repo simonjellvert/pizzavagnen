@@ -18,7 +18,7 @@
                         <form method="POST" action="{% url 'edit_profile' %}">
                             {% csrf_token %}
                             {{ form.as_p }}
-                            <p>If you want to edit your password, please click <a href="{% url 'password_change' %}"
+                            <p>If you want to edit your password, please click <a href="{% url 'change_password' %}"
                                     class="form-link">this</a> link.</p>
                             <button type="submit" class="btn btn-success" data-mdb-ripple-init>Update Account</button>
                             <!-- Button to open delete account modal -->

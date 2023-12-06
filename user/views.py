@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.contrib.auth.views import PasswordChangeView
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
@@ -52,8 +53,19 @@ def delete_user_view(request):
     return render(request, 'home/index.html')
 
 
-class CustomPasswordChangeView(PasswordChangeView):
-    template_name = 'account/password_change.html'
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(
+                request, 'Your password was successfully updated!')
+            return redirect('edit_profile')
+        else:
+            print(form.errors)
+            messages.error(request, 'Please correct the error(s) below.')
+    else:
+        form = PasswordChangeForm(request.user)
 
-    def get_success_message(self, cleaned_data):
-        return "Your password was changed successfully."
+    return render(request, 'account/password_change.html', {'form': form})

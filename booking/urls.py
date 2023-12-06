@@ -12,8 +12,8 @@ app_name = 'booking'
 
 urlpatterns = [
     path('list/', booking_list, name='booking_list'),
-    path('<int:booking_id>/', booking_detail, name='booking_detail'),
+    path('<int:number>/', booking_detail, name='booking_detail'),
     path('create/', booking_create, name='booking_create'),
     path('edit/<int:pk>/', booking_edit, name='booking_edit'),
-    path('<int:booking_id>/delete/', booking_delete, name='booking_delete'),
+    path('<int:number>/delete/', booking_delete, name='booking_delete'),
 ]

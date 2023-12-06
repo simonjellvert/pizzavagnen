@@ -15,29 +15,38 @@
             <div class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-conent-center align-items-center text-center">
                 <!-- Display Existing Bookings -->
                 <div class="col">
+                    {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                        <div class="{% if message.tags %}alert alert-{{ message.tags }}{% endif %}" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     <h3 class="mb-3">My Bookings</h3>
                     {% if bookings %}
-                        <ul>
+                        <div>
                             {% for booking in bookings %}
-                            <li>
-                                <strong>Booking ID:</strong> {{ booking.booking_id }}<br>
-                                <strong>Date:</strong> {{ booking.booking_date|date:"F j, Y }}<br>
-                                <strong>Time:</strong> {{ booking.booking_time|time:"g:i A }}<br>
+                                <strong>Booking ID:</strong> {{ booking.number }}<br>
+                                <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
+                                <strong>Time:</strong> {{ booking.time|time:"g:i A" }}<br>
+                                <strong>Location:</strong> {{ booking.location }}<br>
+                                <strong>Reference:</strong> {{ booking.last_name }}<br>
                         
                                 {% if user.is_authenticated and user == booking.user %}
                                 <!-- Buttons to open edit and delete modals -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#editBookingModal{{ booking.booking_id }}">
-                                    Edit
+                                    data-target="#editBookingModal{{ booking.number }}">
+                                    <i class="fa-regular fa-pen-to-square"></i>
                                 </button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#deleteBookingModal{{ booking.booking_id }}">
-                                    Delete
-                                </button>
+                                    data-target="#deleteBookingModal{{ booking.number }}">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button><br>
                                 {% endif %}
-                            </li>
                             {% endfor %}
-                        </ul>
+                        </div>
                     {% else %}
                     <p>No bookings found.</p>
                     {% endif %}
@@ -50,33 +59,37 @@
             </div>
             {% for booking in bookings %}
                 <!-- Edit Booking Modal -->
-                <div class="modal fade" id="editBookingModal{{ booking.booking_id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="editBookingModalLabel{{ booking.booking_id }}" aria-hidden="true">
+                <div class="modal fade" id="editBookingModal{{ booking.number }}" tabindex="-1" role="dialog"
+                    aria-labelledby="editBookingModalLabel{{ booking.number }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editBookingModalLabel{{ booking.id }}">Edit Booking</h5>
+                                <h5 class="modal-title" id="editBookingModalLabel{{ booking.number }}">Edit Booking</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 <!-- Add your edit form here, prepopulating with existing content -->
-                                <form method="post" action="{% url 'booking:booking_edit' pk=booking.booking_id %}">
+                                <form method="post" action="{% url 'booking:booking_edit' pk=booking.pk %}">
                                     {% csrf_token %}
                                     <div class="form-group text-white">
-                                        <label for="id_booking_date">Date:</label>
-                                        <input type="date" name="booking_date" id="id_booking_date" class="form-control" value="{{ booking.booking_date }}">
+                                        <label for="id_date">Date:</label>
+                                        <input type="date" name="date" id="id_date" class="form-control" value="{{ booking.date }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="id_booking_time">Time:</label>
-                                        <input type="time" name="booking_time" id="id_booking_time" class="form-control" value="{{ booking.booking_time }}">
+                                        <label for="id_time">Time:</label>
+                                        <input type="time" name="time" id="id_time" class="form-control" value="{{ booking.time }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="id_booking_location">Location:</label>
-                                        <input type="text" name="booking_location" id="id_booking_location" class="form-control"
-                                            value="{{ booking.booking_location }}">
+                                        <label for="id_location">Location:</label>
+                                        <input type="text" name="location" id="id_location" class="form-control" value="{{ booking.location }}">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="id_last_name">Last Name:</label>
+                                        <input type="text" name="last_name" id="id_last_name" class="form-control" value="{{ booking.last_name }}">
+                                    </div>
+
                                     <button type="submit" class="btn btn-primary">Save Changes</button>
                                 </form>
                             </div>
@@ -86,12 +99,12 @@
                 
                 <!-- Delete Booking Modal -->
                 
-                <div class="modal fade" id="deleteBookingModal{{ booking.booking_id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="deleteBookingModalLabel{{ booking.booking_id }}" aria-hidden="true">
+                <div class="modal fade" id="deleteBookingModal{{ booking.number }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteBookingModalLabel{{ booking.number }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="deleteBookingModalLabel{{ booking.booking_id }}">Delete Booking</h5>
+                                <h5 class="modal-title" id="deleteBookingModalLabel{{ booking.number }}">Delete Booking</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -101,7 +114,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <a href="{% url 'booking:booking_delete' booking.booking_id %}" class="btn btn-danger">Delete</a>
+                                <a href="{% url 'booking:booking_delete' booking.number %}" class="btn btn-danger">Delete</a>
                             </div>
                         </div>
                     </div>

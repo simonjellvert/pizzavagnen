@@ -32,19 +32,20 @@
                     <form action="{% url 'booking:booking_create' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group text-white">
-                            <label for="{{ form.booking_date.id_for_label }}">Date:</label>
-                            <input type="date" name="{{ form.booking_date.name }}" id="{{ form.booking_date.id_for_label }}"
-                                class="form-control">
+                            <label for="{{ form.date.id_for_label }}">Date:</label>
+                            <input type="date" name="{{ form.date.name }}" id="{{ form.date.id_for_label }}" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.booking_time.id_for_label }}">Time:</label>
-                            <input type="time" name="{{ form.booking_time.name }}" id="{{ form.booking_time.id_for_label }}"
-                                class="form-control">
+                            <label for="{{ form.time.id_for_label }}">Time:</label>
+                            <input type="time" name="{{ form.time.name }}" id="{{ form.time.id_for_label }}" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.booking_location.id_for_label }}">Location:</label>
-                            <input type="text" name="{{ form.booking_location.name }}" id="{{ form.booking_location.id_for_label }}"
-                                class="form-control">
+                            <label for="{{ form.location.id_for_label }}">Location:</label>
+                            <input type="text" name="{{ form.location.name }}" id="{{ form.location.id_for_label }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                            <input type="text" name="{{ form.last_name.name }}" id="{{ form.last_name.id_for_label }}" class="form-control">
                         </div>
                         <button class="btn btn-primary" type="submit">Create Booking</button>
                     </form>
