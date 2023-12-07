@@ -42,8 +42,8 @@ def add_event(request):
             existing_events = Post.objects.filter(event_date=new_event_date)
             if existing_events.exists():
                 messages.error(
-                    request, 
-                    "An event already exists for this date." 
+                    request,
+                    "An event already exists for this date."
                     "Please choose a different date.")
                 return redirect('events')
 
@@ -89,7 +89,7 @@ def edit_event(request, pk):
                 event_date=new_event_date).exclude(pk=pk)
             if existing_events.exists():
                 messages.error(
-                    request, 
+                    request,
                     "An event already exists for this date."
                     "Please choose a different date.")
                 return redirect('events')

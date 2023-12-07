@@ -691,7 +691,7 @@ form button.cancel a {
 
     .signup-button {
         font-size: small;
-        margin-top: none;
+        margin-top: 0;
     }
 }
 
@@ -747,7 +747,7 @@ form button.cancel a {
 
     .signup-button {
         font-size: x-small;
-        margin-top: none;
+        margin-top: 0;
     }
 
     .input-margin {
@@ -774,7 +774,7 @@ form button.cancel a {
 
     .signup-button {
         font-size: x-small;
-        margin-top: none;
+        margin-top: 0;
     }
 }
 

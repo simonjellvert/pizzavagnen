@@ -9,7 +9,7 @@ class Booking(models.Model):
     """
     Booking model
     """
-    
+
     number = models.AutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,

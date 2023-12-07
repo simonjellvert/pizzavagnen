@@ -16,7 +16,7 @@ class EventForm(forms.ModelForm):
             'event_description',
             'event_location',
         ]
-        
+
 
 class EditEventForm(forms.ModelForm):
     """

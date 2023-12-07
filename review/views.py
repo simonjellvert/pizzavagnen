@@ -33,7 +33,7 @@ def review_create(request):
         else:
             return render(request, 'review/review.html', {'form': form})
 
-    return HttpResponse('Invalid request method or something went wrong.') 
+    return HttpResponse('Invalid request method or something went wrong.')
 
 
 @login_required

@@ -100,6 +100,7 @@ def booking_create(request):
 
     return render(request, 'booking/new_booking.html', {'form': form})
 
+
 @login_required
 def booking_edit(request, pk):
     """

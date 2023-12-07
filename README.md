@@ -6,7 +6,7 @@
 
 ## About
 
-The Pizza Truck is a swedish food truck serving delicious pizza slices on your private 50th birthday party, on your corporate event or on your festival.
+The Pizza Truck (translated from the swedish "PizzaVagnen") is a swedish food truck serving delicious pizza slices on your private 50th birthday party, on your corporate event or on your festival.
 The pizza truck is on wheels so we go wherever you want us to be. On this website you are able to book the truck for your event and leave a review if you have had a visit!
 
 ---
@@ -76,9 +76,8 @@ As a user I can register an account so that I can book PizzaVagnen to my event |
   - Chrome DevTools: was used to debug the website.
   - Font Awesome: was used to create the icons used in the website.
   - Miro: was used to make a flowchart for the README file.
-  - [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
-  - [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
-  - [JShint](https://jshint.com/): was used to validate JS code for the website.
+  - W3C Validator: was used to validate HTML5 code for the website.
+  - W3C CSS validator: was used to validate CSS code for the website.
   - [PEP8](https://pep8.org/): was used to validate Python code for the website.
 
 ### Entity-Relationship Diagram

@@ -35,6 +35,96 @@ Manual tests were made by myself, friends and family and CI community members.
 | BUTTONS: Hover effects | hover over buttons | button changes color | YES | Partly, would like to edit some |
 | MESSAGES | if success or error | should be displayed on screen | YES | YES |
 
+---
 
 ## Code Validation
 
+### HTML Validation
+
+![Screenshot of validation result](docs/img/validating_html.png)
+
+---
+
+### CSS Validation
+
+![Screenshot of validation result](docs/img/validation_css.png)
+
+---
+
+### Python Validation
+
+#### Pizzavagnen (project)
+
+##### Settings
+
+![Screenshot of validation result](docs/img/pizzavagnen_settings.png)
+
+Don't know how to fix this.
+
+#### User (app)
+
+##### Models
+
+![Screenshot of validation result](docs/img/user_models.png)
+
+##### Views
+
+![Screenshot of validation result](docs/img/user_views.png)
+
+##### Forms
+
+![Screenshot of validation result](docs/img/user_forms.png)
+
+##### Admin
+
+![Screenshot of validation result](docs/img/user_admin.png)
+
+#### Review (app)
+
+##### Models
+
+![Screenshot of validation result](docs/img/review_models.png)
+
+##### Views
+
+![Screenshot of validation result](docs/img/review_views.png)
+
+##### Forms
+
+![Screenshot of validation result](docs/img/review_forms.png)
+
+#### Events (app)
+
+##### Models
+
+![Screenshot of validation result](docs/img/events_model.png)
+
+##### Views
+
+![Screenshot of validation result](docs/img/events_views.png)
+
+##### Forms
+
+![Screenshot of validation result](docs/img/events_forms.png)
+
+##### Admin
+
+![Screenshot of validation result](docs/img/events_admin.png)
+
+#### Booking (app)
+
+##### Models
+
+![Screenshot of validation result](docs/img/booking_models.png)
+
+##### Views
+
+![Screenshot of validation result](docs/img/booking_views.png)
+
+##### Forms
+
+![Screenshot of validation result](docs/img/booking_forms.png)
+
+##### Admin
+
+![Screenshot of validation result](docs/img/booking_admin.png)
