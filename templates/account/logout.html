@@ -1,27 +1,35 @@
-{% extends "account/base_manage.html" %}
-{% load allauth i18n %}
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
 {% block head_title %}
-    {% trans "Sign Out" %}
+{% trans "Logout" %}
 {% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Out" %}
-    {% endelement %}
-    <p>{% trans 'Are you sure you want to sign out?' %}</p>
-    {% url 'account_logout' as action_url %}
-    {% element form method="post" action=action_url no_visible_fields=True %}
-        {% slot body %}
-            {% csrf_token %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
-{% endblock content %}
+<hr class="mx-auto" style="width: 75%" />
+<section class="d-flex align-items-center justify-content-center">
+    <div class="hero position-relative">
+        <div class="container text-center">
+            <img class="img-fluid mx-auto signup-image" src="{% static 'img/pizza-roller.2.jpg' %}" alt="Pizza" />
+
+            <div
+                class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
+                <div class="col-12">
+                    <h3 class="mb-3">{% trans "Log Out" %}</h3>
+                    <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+                    <form method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+
+                        <button type="submit">{% trans 'Log Out' %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

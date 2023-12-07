@@ -53,26 +53,26 @@
     </div>
     <!-- Display reviews here -->
     <div class="container mt-3">
-        <div class="row d-flex justify-content-center align-items-center">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             {% for review in reviews %}
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-2 d-flex justify-content-center align-items-center card-div">
-                <div class="card">
+            <div class="col mb-2">
+                <div class="card mx-auto">
                     <div class="card-body review-card d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <p class="card-title">@{{ review.user.username }}</p>
+                        <div class="d-flex justify-content-end align-items-end">
                             {% if user.is_authenticated and user == review.user %}
-                            <div class="d-flex">
-                                <!-- Button to open edit modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#editReviewModal{{ review.id }}"><i class="fa-regular fa-pen-to-square"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger ml-2" data-toggle="modal"
-                                    data-target="#deleteReviewModal{{ review.id }}"><i class="fa-regular fa-trash-can"></i>
-                                </button>
-                            </div>
+                            <!-- Button to open edit modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#editReviewModal{{ review.id }}">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger ml-2" data-toggle="modal"
+                                data-target="#deleteReviewModal{{ review.id }}">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
                             {% endif %}
                         </div>
                         <div>
+                            <p class="card-title">@{{ review.user.username }}</p>
                             <p class="card-text text-muted mb-1">{{ review.created_on }}</p>
                             <div class="flex">
                                 {% for _ in "x"|ljust:review.rating %}
@@ -85,9 +85,10 @@
                     </div>
                 </div>
             </div>
-            {% if forloop.counter|divisibleby:3 %}
-        </div>
-        <div class="row d-flex align-items-center justify-content-center">
+            <!-- If every third card, close the current row and start a new one -->
+            {% if forloop.counter|divisibleby:2 and forloop.counter|divisibleby:4 %}
+                </div>
+                <div class="row d-flex align-items-center justify-content-center">
             {% endif %}
     
             <!-- Edit Review Modal -->
