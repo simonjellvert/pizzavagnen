@@ -5,21 +5,22 @@
 <hr class="mx-auto" style="width: 75%" />
 <section class="d-flex align-items-center justify-content-center">
     <div class="hero position-relative">
-        <div class="container">
-            <img class="img-fluid account_bg" src="{% static 'img/pexels-narda-yescas-1566837 (1).jpg' %}"
-                alt="Sebbe och Petter i vagnen" />
+        <div class="container text-center">
+            <img class="img-fluid mx-auto signup-image" src="{% static 'img/pizza-roller.2.jpg' %}" alt="Pizza" />
 
-            <div class="mx-auto login-form">
-                <div class="messages">
-                    {% for message in messages %}
-                    {% if message.tags and message.tags == 'error' or message.tags == 'success' %}
-                    <div class="alert alert-{{ message.tags }}" role="alert">
-                        {{ message }}
+            <div
+                class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
+                <div class="col-12">
+                    <div class="messages">
+                        {% for message in messages %}
+                        {% if message.tags and message.tags == 'error' or message.tags == 'success' %}
+                        <div class="alert alert-{{ message.tags }}" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <h3 class="text-center">Your account information</h3>
+                <h5 class="text-center">Your account information</h5>
                 <p class="text-center">If you want to edit your information, you can do so by changing the fields and
                     click "Update Account"</p>
                 <div class="row justify-content-center align-items-center text-center">
@@ -29,9 +30,9 @@
                             {{ form.as_p }}
                             <p>If you want to edit your password, please click <a href="{% url 'change_password' %}"
                                     class="form-link">this</a> link.</p>
-                            <button type="submit" class="btn btn-success" data-mdb-ripple-init>Update Account</button>
+                            <button type="submit" class="btn btn-success resposive-text-size" data-mdb-ripple-init>Update Account</button>
                             <!-- Button to open delete account modal -->
-                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                            <button type="button" class="btn btn-danger resposive-text-size" data-toggle="modal"
                                 data-target="#deleteAccountModal">
                                 Delete Account
                             </button>

@@ -14,7 +14,7 @@
             <div
                 class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
                 <div class="col-12">
-                    <h3 class="mb-3">{% trans "Log In" %}</h3>
+                    <h5 class="mb-3">{% trans "Log In" %}</h5>
                     <p>
                         {% blocktrans %}If you haven't created an account yet, you can do that {% endblocktrans %}
                         <a href="{% url 'user_signup' %}">
@@ -22,7 +22,7 @@
                         </a>
                     </p>
 
-                    <form action="{% url 'account_login' %}" method="post">
+                    <form action="{% url 'account_login' %}" method="post" class="remove">
                         {% csrf_token %}
                         {{ form.as_p }}                    
                         {% if redirect_field_value %}
