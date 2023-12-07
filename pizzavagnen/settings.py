@@ -34,6 +34,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ALLOWED_HOSTS = [
     'pizzavagnen.herokuapp.com',
     '8000-simonjellvert-pizzavagne-i9sz0az98m.us2.codeanyapp.com',
