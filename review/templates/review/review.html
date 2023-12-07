@@ -32,7 +32,7 @@
                             {% endfor %}
                         </div>
                         {% endif %}
-                        <!-- Add your create form here -->
+                        <!-- Create form -->
                         <form method="post" action="{% url 'review_create' %}">
                             {% csrf_token %}
                             <p>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <!-- If every third card, close the current row and start a new one -->
+
             {% if forloop.counter|divisibleby:2 and forloop.counter|divisibleby:4 %}
                 </div>
                 <div class="row d-flex align-items-center justify-content-center">
@@ -103,7 +103,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <!-- Add your edit form here, prepopulating with existing content -->
+                            <!-- Edit form, prepopulating with existing content -->
                             <form method="post" action="{% url 'review_edit' pk=review.id %}">
                                 {% csrf_token %}
                                 <div class="form-group">
@@ -127,7 +127,7 @@
                 </div>
             </div>
 
-            <!-- review_delete.html -->
+            <!-- Review delete modal -->
 
             <div class="modal fade" id="deleteReviewModal{{ review.id }}" tabindex="-1" role="dialog"
                 aria-labelledby="deleteReviewModalLabel{{ review.id }}" aria-hidden="true">

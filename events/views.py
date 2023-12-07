@@ -11,6 +11,9 @@ from booking.models import Booking
 
 
 class PostList(generic.ListView):
+    """
+    Function for displaying a list of future events
+    """
     model = Post
     template_name = 'events/events.html'
     paginate_by = 6
@@ -22,6 +25,9 @@ class PostList(generic.ListView):
 
 @login_required
 def add_event(request):
+    """
+    Create new event as staff
+    """
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
@@ -29,7 +35,10 @@ def add_event(request):
             # Check for conflicts with existing bookings
             existing_events = Post.objects.filter(event_date=new_event_date)
             if existing_events.exists():
-                messages.error(request,"An event already exists for this date. Please choose a different date.")
+                messages.error(
+                    request, 
+                    "An event already exists for this date." 
+                    "Please choose a different date.")
                 return redirect('events')
 
             # Check for conflicts with existing events in 'events' app
@@ -55,6 +64,9 @@ def add_event(request):
 
 @login_required
 def edit_event(request, pk):
+    """
+    Edit event as staff
+    """
     event = get_object_or_404(Post, pk=pk)
 
     if request.method == 'POST':
@@ -66,7 +78,10 @@ def edit_event(request, pk):
             existing_events = Post.objects.filter(
                 event_date=new_event_date).exclude(pk=pk)
             if existing_events.exists():
-                messages.error(request, "An event already exists for this date. Please choose a different date.")
+                messages.error(
+                    request, 
+                    "An event already exists for this date."
+                    "Please choose a different date.")
                 return redirect('events')
 
             # Check for conflicts with existing bookings
@@ -81,11 +96,18 @@ def edit_event(request, pk):
     else:
         form = EditEventForm(instance=event)
 
-    return render(request, 'events/edit_event.html', {'form': form, 'event': event})
+    return render(
+        request,
+        'events/edit_event.html',
+        {'form': form, 'event': event}
+    )
 
 
 @login_required
 def event_delete(request, post_id):
+    """
+    Delete event as staff
+    """
     event = get_object_or_404(Post, id=post_id)
     event.delete()
     return redirect('events')

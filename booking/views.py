@@ -13,6 +13,9 @@ from events.models import Post
 
 @method_decorator(login_required, name='dispatch')
 class BookingList(generic.ListView):
+    """
+    View for displaying bookings
+    """
     model = Booking
     template_name = 'booking/booking_list.html'
     paginate_by = 2
@@ -44,6 +47,9 @@ def booking_detail(request, booking_id):
 
 @login_required
 def booking_create(request):
+    """
+    View for create a new booking
+    """
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -52,21 +58,30 @@ def booking_create(request):
             # Check if the selected date is in the past
             if new_booking_date < timezone.now().date():
                 messages.error(
-                    request, "You cannot create a booking in the past. Please choose a future date.")
+                    request,
+                    "You cannot create a booking in the past."
+                    "Please choose a future date."
+                    )
                 return redirect('booking:booking_list')
 
             # Check for conflicts with existing bookings
             existing_bookings = Booking.objects.filter(date=new_booking_date)
             if existing_bookings.exists():
                 messages.error(
-                    request, "An event already exists for this date. Please choose a different date.")
+                    request,
+                    "An event already exists for this date."
+                    "Please choose a different date."
+                )
                 return redirect('booking:booking_list')
 
             # Check for conflicts with existing events in 'events' app
             existing_events = Post.objects.filter(event_date=new_booking_date)
             if existing_events.exists():
                 messages.error(
-                    request, "An event already exists for this date. Please choose a different date.")
+                    request,
+                    "An event already exists for this date."
+                    "Please choose a different date."
+                )
                 return redirect('booking:booking_list')
 
             booking = form.save(commit=False)
@@ -85,8 +100,11 @@ def booking_create(request):
 
     return render(request, 'booking/new_booking.html', {'form': form})
 
-
+@login_required
 def booking_edit(request, pk):
+    """
+    View for editing booking
+    """
     booking = get_object_or_404(Booking, pk=pk)
 
     if request.method == 'POST':
@@ -100,7 +118,10 @@ def booking_edit(request, pk):
             # Check if the selected date is in the past
             if new_booking_date < timezone.now().date():
                 messages.error(
-                    request, "You cannot create a booking in the past. Please choose a future date.")
+                    request,
+                    "You cannot create a booking in the past."
+                    "Please choose a future date."
+                )
                 return redirect('booking:booking_list')
 
             # Check for conflicts with existing bookings
@@ -112,7 +133,10 @@ def booking_edit(request, pk):
             existing_events = Post.objects.filter(event_date=new_booking_date)
             if existing_events.exists():
                 messages.warning(
-                    request, "An event already exists for this date. Please choose a different date.")
+                    request,
+                    "An event already exists for this date."
+                    "Please choose a different date."
+                )
                 return redirect('booking:booking_list')
 
             booking = form.save(commit=False)
@@ -121,11 +145,18 @@ def booking_edit(request, pk):
     else:
         form = BookingForm(instance=booking)
 
-    return render(request, 'booking/booking_list.html', {'form': form, 'booking': booking})
+    return render(
+        request,
+        'booking/booking_list.html',
+        {'form': form, 'booking': booking}
+    )
 
 
 @login_required
 def booking_delete(request, number):
+    """
+    View for deleting booking
+    """
     booking = get_object_or_404(Booking, number=number)
     booking.delete()
     return redirect('booking:booking_list')
@@ -137,6 +168,9 @@ def is_staff(user):
 
 @user_passes_test(is_staff)
 def staff_booking_list(request):
+    """
+    View for staff
+    """
     now = datetime.now()
     upcoming_bookings = Booking.objects.filter(
         date__gte=datetime.now()).order_by('date', 'time')

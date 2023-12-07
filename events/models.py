@@ -8,6 +8,9 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Post(models.Model):
+    """
+    Model for event posts
+    """
     title = models.CharField(
         max_length=30, verbose_name="Title")
     event_date = models.DateField(verbose_name="Date")

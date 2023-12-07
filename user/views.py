@@ -11,6 +11,9 @@ from .models import CustomUser
 
 
 class CustomSignupView(CreateView):
+    """
+    Sign up view
+    """
     template_name = 'user/user_registration.html'
     form_class = CustomUserCreationForm
     model = CustomUser
@@ -19,6 +22,9 @@ class CustomSignupView(CreateView):
 
 @login_required
 def edit_profile(request):
+    """
+    Edit user view
+    """
     if request.method == 'POST':
         form = EditUserForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -37,7 +43,7 @@ def edit_profile(request):
 @login_required
 def delete_user_view(request):
     """
-    Deletes user
+    Deletes user view
     """
 
     if request.method == 'POST':
@@ -54,6 +60,9 @@ def delete_user_view(request):
 
 
 def change_password(request):
+    """
+    Change password view
+    """
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
@@ -63,7 +72,6 @@ def change_password(request):
                 request, 'Your password was successfully updated!')
             return redirect('edit_profile')
         else:
-            print(form.errors)
             messages.error(request, 'Please correct the error(s) below.')
     else:
         form = PasswordChangeForm(request.user)

@@ -6,7 +6,9 @@
 <section class="d-flex align-items-center justify-content-center">
     <div class="hero position-relative">
         <div class="container text-center">
-            <img class="img-fluid mx-auto signup-image" src="{% static 'img/pizza-roller.2.jpg' %}" alt="Pizza" />
+            <img class="img-fluid mx-auto signup-image" src="{% static 'img/pizza-roller.jpg' %}" alt="Pizza slicer" />
+
+            <!-- Header div -->
 
             <div
                 class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
@@ -23,6 +25,9 @@
                 <h5 class="text-center">Your account information</h5>
                 <p class="text-center">If you want to edit your information, you can do so by changing the fields and
                     click "Update Account"</p>
+
+                <!-- Update profile div -->
+
                 <div class="row justify-content-center align-items-center text-center">
                     <div class="col">
                         <form method="POST" action="{% url 'edit_profile' %}">

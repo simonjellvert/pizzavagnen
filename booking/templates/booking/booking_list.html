@@ -9,7 +9,7 @@
 <section class="d-flex align-items-center justify-content-center">
     <div class="hero position-relative">
         <div class="container text-center">
-            <img class="img-fluid mx-auto signup-image sm-screen" src="{% static 'img/pizza-roller.2.jpg' %}" alt="Pizza" />
+            <img class="img-fluid mx-auto signup-image sm-screen" src="{% static 'img/pizza-roller.jpg' %}" alt="Pizza" />
 
             <div
                 class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
@@ -91,7 +91,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <!-- Add your edit form here, prepopulating with existing content -->
+                                <!-- Edit form -->
                                 <form method="post" action="{% url 'booking:booking_edit' pk=booking.pk %}">
                                     {% csrf_token %}
                                     <div class="form-group text-white">

@@ -9,14 +9,18 @@
 <section class="d-flex align-items-center justify-content-center">
     <div class="hero position-relative">
         <div class="container text-center">
-            <img class="img-fluid mx-auto signup-image" src="{% static 'img/pizza-roller.2.jpg' %}" alt="Pizza" />
-
+            <img class="img-fluid mx-auto signup-image" src="{% static 'img/pizza-roller.jpg' %}" alt="Pizza" />
+            
+            <!-- Header div -->
+            
             <div
                 class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
                 <div class="col-12">
                     <h5 class="responsive-margin mt-3">{% trans "Create an Account" %}</h5>
                     <p class="resposive-text-size responsive-margin">Please, fill out the form:</p>
                 </div>
+
+                <!-- Register new user form -->
 
                 <div class="row mb-3">
                     <form action="{% url 'user_signup' %}" method="POST" class="resposive-text-size ur-form">

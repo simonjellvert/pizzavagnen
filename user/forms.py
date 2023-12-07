@@ -5,7 +5,9 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
-    """Form for the signup page"""
+    """
+    Form for the signup page
+    """
 
     email = forms.EmailField(required=True)
     username = forms.CharField(
@@ -17,7 +19,8 @@ class CustomUserCreationForm(UserCreationForm):
         label='Password',
         widget=forms.PasswordInput,
         help_text=_(
-            "Must contain at least 8 characters.<br> Can't be to similar to your username"
+            "Must contain at least 8 characters.<br>" 
+            "Can't be to similar to your username"
         )
     )
 
@@ -37,7 +40,9 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class EditUserForm(forms.ModelForm):
-
+    """
+    Function for editing user profile
+    """
     class Meta:
         model = CustomUser
         username = forms.CharField(

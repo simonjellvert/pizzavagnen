@@ -3,5 +3,7 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    
+    """
+    Model for creating a user
+    """
     email = models.EmailField(unique=True)

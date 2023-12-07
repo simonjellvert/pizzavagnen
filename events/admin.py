@@ -3,6 +3,9 @@ from .models import Post
 
 
 @admin.register(Post)
+"""
+Filering and displaying events in admin panel
+"""
 class PostAdmin(admin.ModelAdmin):
 
     list_filter = ('status', 'created_on')

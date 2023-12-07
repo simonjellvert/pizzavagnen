@@ -58,7 +58,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <!-- Add your create form here -->
+                    <!-- Create event form -->
                     <form class="create_event" method="post" action="{% url 'add_event' %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
@@ -130,7 +130,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- Add your edit form here, prepopulating with existing content -->
+                        <!-- Edit form -->
                         <form method="post" action="{% url 'edit_event' pk=post.id %}">
                             {% csrf_token %}
                             <div class="form-group">
@@ -184,10 +184,10 @@
     <nav aria-label="Page navigation">
         <ul class="pagination mt-4 justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link" style="font-size: x-small"><i class="fa-solid fa-angle-left"></i></a></li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link" style="font-size: x-small"><i class="fa-solid fa-angle-right"></i></a></li>
     
             {% endif %}
         </ul>

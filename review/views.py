@@ -6,6 +6,9 @@ from .forms import ReviewForm
 
 
 def review_list(request):
+    """
+    Function for all reviews
+    """
     form = ReviewForm()
     reviews = Review.objects.all()
     return render(
@@ -16,6 +19,9 @@ def review_list(request):
 
 @login_required
 def review_create(request):
+    """
+    Function for creating a new review
+    """
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -27,12 +33,14 @@ def review_create(request):
         else:
             return render(request, 'review/review.html', {'form': form})
 
-    return HttpResponse('Invalid request method or something went wrong.')
-    
+    return HttpResponse('Invalid request method or something went wrong.') 
 
 
 @login_required
 def review_edit(request, pk):
+    """
+    Function for editing a review
+    """
     review = get_object_or_404(Review, pk=pk)
 
     if request.method == 'POST':
@@ -43,11 +51,18 @@ def review_edit(request, pk):
     else:
         form = ReviewForm(instance=review)
 
-    return render(request, 'review/review_edit.html', {'form': form, 'review': review})
+    return render(
+        request,
+        'review/review_edit.html',
+        {'form': form, 'review': review}
+    )
 
 
 @login_required
 def review_delete(request, review_id):
+    """
+    Function for deleting a review
+    """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     review.delete()
     return redirect('review_list')
