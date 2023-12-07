@@ -33,8 +33,7 @@ This website is intended for people who wants to serve food on their event, both
 | Issue ID    | User Story |
 |-------------|-------------|
 | [#1](https://github.com/simonjellvert/pizzavagnen/issues/1) | As a user I can read about the restaurant so that I know what kind of food and services they provide their customers |
-| [#2](https://github.com/simonjellvert/pizzavagnen/issues/2) |
-As a user I can register an account so that I can book PizzaVagnen to my event |
+| [#2](https://github.com/simonjellvert/pizzavagnen/issues/2) | As a user I can register an account so that I can book PizzaVagnen to my event |
 | [#3](https://github.com/simonjellvert/pizzavagnen/issues/3) | As a user I can log in and log out so that I can manage my bookings |
 | [#4](https://github.com/simonjellvert/pizzavagnen/issues/4) | As a user I want to be able to change my e-mail address and password |
 | [#5](https://github.com/simonjellvert/pizzavagnen/issues/5) | As a user I want to be able to delete my account |
