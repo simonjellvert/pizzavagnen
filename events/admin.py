@@ -3,12 +3,10 @@ from .models import Post
 
 
 @admin.register(Post)
-"""
-Filering and displaying events in admin panel
-"""
 class PostAdmin(admin.ModelAdmin):
+    """
+    Filtering and displaying events in admin panel
+    """
 
-    list_filter = ('status', 'created_on')
-    list_display = ('title', 'status', 'created_on')
+    list_display = ('title', 'status')
     search_fields = ['title', 'content']
-    summernote_fields = ('content')

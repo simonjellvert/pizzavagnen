@@ -32,6 +32,12 @@ def add_event(request):
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
             new_event_date = form.cleaned_data['event_date']
+
+            # Check if the selected date is in the past
+            if new_event_date < timezone.now().date():
+                messages.error(request, 'Cannot book a date in the past.')
+                return redirect('events')
+
             # Check for conflicts with existing bookings
             existing_events = Post.objects.filter(event_date=new_event_date)
             if existing_events.exists():
@@ -55,7 +61,6 @@ def add_event(request):
         else:
             messages.error(
                 request, 'Form submission failed. Please check the form.')
-            print(form.errors)
     else:
         form = EventForm()
 
@@ -73,6 +78,11 @@ def edit_event(request, pk):
         form = EditEventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             new_event_date = form.cleaned_data['event_date']
+
+            # Check if the selected date is in the past
+            if new_event_date < timezone.now().date():
+                messages.error(request, 'Cannot book a date in the past.')
+                return redirect('events')
 
             # Check for conflicts with existing events in 'events' app
             existing_events = Post.objects.filter(
