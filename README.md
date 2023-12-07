@@ -40,7 +40,7 @@ As a user I can register an account so that I can book PizzaVagnen to my event |
 | [#5](https://github.com/simonjellvert/pizzavagnen/issues/5) | As a user I want to be able to delete my account |
 | [#6](https://github.com/simonjellvert/pizzavagnen/issues/6) | As a user I can add a booking to my event |
 | [#7](https://github.com/simonjellvert/pizzavagnen/issues/7) | As a user I can update my booking if needed |
-| [#8](https://github.com/simonjellvert/pizzavagnen/issues/8) | As a user I can delete my booking if I want hamburgers (or something else or anything at all) instead. |
+| [#8](https://github.com/simonjellvert/pizzavagnen/issues/8) | As a user I can delete my booking if I want hamburgers or something else or anything at all instead. |
 | [#9](https://github.com/simonjellvert/pizzavagnen/issues/9) | As a site admin I can manage bookings and events so that I can apporove bookings and add/delete events |
 | [#10](https://github.com/simonjellvert/pizzavagnen/issues/10) | As a user I can leave a review so that I can tell what I think about the restaurant |
 
@@ -89,9 +89,16 @@ As a user I can register an account so that I can book PizzaVagnen to my event |
 
 ## Features
 
-- ### Excisting Features
+- ### Existing Features
   
-  - Please head over to my [FEATURES.md](FEATURES.md) file for checking out excisting features.
+  - Register to whe website using email, username and password
+  - Log in th the website using username and password
+  - User can create, edit and delete booking
+  - User can create, edit and delete reviews
+  - User can edit and delete profile
+  - Admin can do all of the above and:
+  - Admin can create, edit and delete events
+  - Admin can view all users bookings
 
 - ### Future Feature Considerations
   
