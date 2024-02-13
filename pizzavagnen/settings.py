@@ -32,14 +32,15 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
     'pizzavagnen.herokuapp.com',
     '8000-simonjellvert-pizzavagne-i9sz0az98m.us2.codeanyapp.com',
-    'pizzavagnen-eb78667e7b70.herokuapp.com'
+    'pizzavagnen-eb78667e7b70.herokuapp.com',
+    '8000-simonjellve-pizzavagnen-j72lkn6up1d.ws-eu108.gitpod.io',
 ]
 
 CSRF_TRUSTED_ORIGINS = [

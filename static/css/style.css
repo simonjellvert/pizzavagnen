@@ -31,6 +31,17 @@ p {
     text-transform: uppercase;
 }
 
+.message-container {
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999999999;
+}
+
 /* -------------------- Log out button, top of screen */
 
 .logout-button {
@@ -647,6 +658,7 @@ form button.cancel a {
     .resposive-text-size {
         font-size: medium;
     }
+
 }
 
 /* -------------------- Small screens */
