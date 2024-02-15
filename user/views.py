@@ -17,7 +17,19 @@ class CustomSignupView(CreateView):
     template_name = 'user/user_registration.html'
     form_class = CustomUserCreationForm
     model = CustomUser
-    success_url = reverse_lazy('login')
+
+    def get_success_url(self):
+        return reverse_lazy('account_login')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'User successfully created!')
+        return response
+
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        messages.error(self.request, 'The form is invalid, please check your details.')
+        return response
 
 
 @login_required
