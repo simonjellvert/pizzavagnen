@@ -533,6 +533,10 @@ input {
     padding: 3px 6px;
 }
 
+.modal.dialog {
+    margin: auto;
+}
+
 /* -------------------- Booking page */
 .card .btn {
     font-size: x-small;
