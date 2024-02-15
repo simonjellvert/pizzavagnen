@@ -59,10 +59,10 @@ def booking_create(request):
             if new_booking_date < timezone.now().date():
                 messages.error(
                     request,
-                    "You cannot create a booking in the past."
-                    "Please choose a future date."
+                    "You cannot create a booking in the past. "
+                    "Please choose another date."
                     )
-                return redirect('booking:booking_list')
+                return redirect('booking:booking_create')
 
             # Check for conflicts with existing bookings
             existing_bookings = Booking.objects.filter(date=new_booking_date)
@@ -72,7 +72,7 @@ def booking_create(request):
                     "An event already exists for this date."
                     "Please choose a different date."
                 )
-                return redirect('booking:booking_list')
+                return redirect('booking:booking_create')
 
             # Check for conflicts with existing events in 'events' app
             existing_events = Post.objects.filter(event_date=new_booking_date)
@@ -82,7 +82,7 @@ def booking_create(request):
                     "An event already exists for this date."
                     "Please choose a different date."
                 )
-                return redirect('booking:booking_list')
+                return redirect('booking:booking_create')
 
             booking = form.save(commit=False)
             booking.user = request.user

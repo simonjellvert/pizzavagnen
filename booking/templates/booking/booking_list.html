@@ -14,63 +14,58 @@
             <div
                 class="mx-auto login-form top-50p start-50p translate-middle row d-flex justify-content-center align-items-center text-center">
                 <!-- Display Existing Bookings -->
-                <div class="col-12">
-                    {% if messages %}
-                    <div class="messages">
-                        {% for message in messages %}
-                        {% if message.tags and message.tags == 'error' or message.tags == 'success' %}
-                        <div class="alert alert-{{ message.tags }}" role="alert">
-                            {{ message }}
-                        </div>
-                        {% endif %}
-                        {% endfor %}
+                <div class="col-12 d-flex flex-column align-items-center">
+                    <div class="row mb-3">
+                        <h3>My Bookings</h3>
                     </div>
-                    {% endif %}
-
-                    <h3 class="mb-3">My Bookings</h3>
+                
                     {% if user.is_authenticated %}
                         {% if bookings %}
                             <div class="resposive-text-size">
-                                {% for booking in bookings %}
-                                    <strong>Booking ID:</strong> {{ booking.number }}<br>
-                                    <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
-                                    <strong>Time:</strong> {{ booking.time|time:"g:i A" }}<br>
-                                    <strong>Location:</strong> {{ booking.location }}<br>
-                                    <strong>Reference:</strong> {{ booking.last_name }}<br>
-                            
-                                    {% if user.is_authenticated and user == booking.user %}
-                                    <!-- Buttons to open edit and delete modals -->
-                                    <button type="button" class="btn btn-primary mb-2 booking-btn" data-toggle="modal"
-                                        data-target="#editBookingModal{{ booking.number }}">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger mb-2 booking-btn" data-toggle="modal"
-                                        data-target="#deleteBookingModal{{ booking.number }}">
-                                        <i class="fa-regular fa-trash-can"></i>
-                                    </button><br>
-                                    {% endif %}
-                                {% endfor %}
+                                <div class="row">
+                                    {% for booking in bookings %}
+                                        <div class="col-6 mb-3">
+                                            <strong>Booking ID:</strong> {{ booking.number }}<br>
+                                            <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
+                                            <strong>Time:</strong> {{ booking.time|time:"g:i A" }}<br>
+                                            <strong>Location:</strong> {{ booking.location }}<br>
+                                            <strong>Reference:</strong> {{ booking.last_name }}<br>
+                                    
+                                            {% if user.is_authenticated and user == booking.user %}
+                                                <!-- Buttons to open edit and delete modals -->
+                                                <button type="button" class="btn btn-primary mb-2 booking-btn" data-toggle="modal"
+                                                    data-target="#editBookingModal{{ booking.number }}">
+                                                    <i class="fa-regular fa-pen-to-square"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger mb-2 booking-btn" data-toggle="modal"
+                                                    data-target="#deleteBookingModal{{ booking.number }}">
+                                                    <i class="fa-regular fa-trash-can"></i>
+                                                </button><br>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <!-- If more than two bookings, the page is paginated -->
+                                {% if is_paginated %}
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination mt-4 justify-content-center">
+                                            {% if page_obj.has_previous %}
+                                                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link" style="margin: 10px;"><i class="fa-solid fa-angle-left" style="font-size: x-small"></i></a></li>
+                                            {% endif %}
+                                            {% if page_obj.has_next %}
+                                                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link" style="margin: 10px;"><i class="fa-solid fa-angle-right" style="font-size: x-small"></i></a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                {% endif %}
                             </div>
-                            <!-- If more than two bookings, the page i paginated -->
-                            {% if is_paginated %}
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination mt-4 justify-content-center">
-                                        {% if page_obj.has_previous %}
-                                        <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link" style="margin: 10px;"><i class="fa-solid fa-angle-left" style="font-size: x-small"></i></a></li>
-                                        {% endif %}
-                                        {% if page_obj.has_next %}
-                                        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link" style="margin: 10px;"><i class="fa-solid fa-angle-right" style="font-size: x-small"></i></a></li>
-                                        {% endif %}
-                                    </ul>
-                                </nav>
-                            {% endif %}
                         {% else %}
                             <p>No bookings found.</p>
                         {% endif %}
                         <br>
                     {% endif %}            
                     <!-- Create New Booking Form -->
-                    <a class="btn btn-primary resposive-text-size" href="{% url 'booking:booking_create' %}">New Booking</a><br>
+                    <a class="btn btn-primary resposive-text-size mb-3" href="{% url 'booking:booking_create' %}">New Booking</a><br>
                     {% if user.is_authenticated %}
                         {% if user.is_staff %}
                             <a class="btn btn-primary resposive-text-size staff-button" href="{% url 'booking:staff_booking_list' %}">Staff: View Bookings</a>
@@ -97,6 +92,10 @@
                                     <div class="form-group text-white">
                                         <label for="id_date">Date:</label>
                                         <input type="date" name="date" id="id_date" class="form-control" value="{{ booking.date }}">
+                                    </div>
+                                    <div class="form-group text-white">
+                                        <label for="id_time">Time:</label>
+                                        <input type="time" name="time" id="id_time" class="form-control" value="{{ booking.time }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="id_location">Location:</label>
