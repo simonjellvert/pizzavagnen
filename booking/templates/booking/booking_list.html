@@ -24,7 +24,7 @@
                             <div class="resposive-text-size">
                                 <div class="row">
                                     {% for booking in bookings %}
-                                        <div class="col-6 mb-3">
+                                        <div class="{% if bookings|length == 1 %}col-12{% else %}col-6{% endif %} mb-3">
                                             <strong>Booking ID:</strong> {{ booking.number }}<br>
                                             <strong>Date:</strong> {{ booking.date|date:"F j, Y" }}<br>
                                             <strong>Time:</strong> {{ booking.time|time:"g:i A" }}<br>
