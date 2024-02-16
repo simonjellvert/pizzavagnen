@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import HttpResponse
 from .models import Review
 from .forms import ReviewForm
@@ -28,9 +29,11 @@ def review_create(request):
             review = form.save(commit=False)
             review.user = request.user
             review.save()
+            messages.success(request, 'Your review was successfully submitted!')
             return redirect('review_list')
 
         else:
+            messages.error(request, 'Something went wrong, try agian.')
             return render(request, 'review/review.html', {'form': form})
 
     return HttpResponse('Invalid request method or something went wrong.')
@@ -47,8 +50,10 @@ def review_edit(request, pk):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your review is updated!')
             return redirect('review_list')
     else:
+        messages.error(request, 'Something went wrong, try again!')
         form = ReviewForm(instance=review)
 
     return render(
@@ -65,4 +70,5 @@ def review_delete(request, review_id):
     """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     review.delete()
+    messages.success(request, 'Your review was deleted!')
     return redirect('review_list')
