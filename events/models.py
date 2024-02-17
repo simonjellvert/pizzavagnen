@@ -1,6 +1,5 @@
 from django.db import models
 from django.conf import settings
-from cloudinary.models import CloudinaryField
 from datetime import datetime
 
 
@@ -22,9 +21,9 @@ class Post(models.Model):
         max_length=50,
         default='Exampleway 123, 456 78, City'
     )
-    featured_image = CloudinaryField(
-        'Image',
-        default='placeholder',
+    featured_image = models.ImageField(
+        blank=True,
+        default='static/img/card-background.jpg'
     )
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
