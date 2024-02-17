@@ -31,6 +31,7 @@ def add_event(request):
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
+            messages.success(request, 'Your event was successfully posted!')
             new_event_date = form.cleaned_data['event_date']
 
             # Check if the selected date is in the past
@@ -77,6 +78,7 @@ def edit_event(request, pk):
     if request.method == 'POST':
         form = EditEventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
+            messages.success(request, 'Your event is updated!')
             new_event_date = form.cleaned_data['event_date']
 
             # Check if the selected date is in the past
@@ -120,4 +122,5 @@ def event_delete(request, post_id):
     """
     event = get_object_or_404(Post, id=post_id)
     event.delete()
+    messages.success(request, 'Your event is deleted!')
     return redirect('events')

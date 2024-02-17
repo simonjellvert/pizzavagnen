@@ -77,7 +77,7 @@
                 <!-- Edit Booking Modal -->
                 <div class="modal fade" id="editBookingModal{{ booking.number }}" tabindex="-1" role="dialog"
                     aria-labelledby="editBookingModalLabel{{ booking.number }}" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog d-flex justify-content-center" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="editBookingModalLabel{{ booking.number }}">Edit Booking</h5>
@@ -89,11 +89,11 @@
                                 <!-- Edit form -->
                                 <form method="post" action="{% url 'booking:booking_edit' pk=booking.pk %}">
                                     {% csrf_token %}
-                                    <div class="form-group text-white">
+                                    <div class="form-group">
                                         <label for="id_date">Date:</label>
                                         <input type="date" name="date" id="id_date" class="form-control" value="{{ booking.date }}">
                                     </div>
-                                    <div class="form-group text-white">
+                                    <div class="form-group">
                                         <label for="id_time">Time:</label>
                                         <input type="time" name="time" id="id_time" class="form-control" value="{{ booking.time }}">
                                     </div>
@@ -117,7 +117,7 @@
                 
                 <div class="modal fade" id="deleteBookingModal{{ booking.number }}" tabindex="-1" role="dialog"
                     aria-labelledby="deleteBookingModalLabel{{ booking.number }}" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog d-flex justify-content-center" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="deleteBookingModalLabel{{ booking.number }}">Delete Booking</h5>

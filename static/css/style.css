@@ -41,6 +41,22 @@ p {
     z-index: 999999999999;
 }
 
+.form-control {
+    background-color: transparent;
+    text-align: center;
+    color: #fff;
+}
+
+.form-control:focus {
+    background-color: transparent;
+    color: #fff;
+}
+
+.form-group .checkboxinput {
+    position: relative;
+    background-color: transparent;
+}
+
 /* -------------------- Log out button, top of screen */
 
 .logout-button {
@@ -582,7 +598,7 @@ form label {
 form input {
     background: transparent;
     color: white;
-    border: 1px solid white;
+    border: 1px solid white(168, 166, 166);
     border-radius: 5px;
 }
 
@@ -680,7 +696,7 @@ form button.cancel a {
 
     .login-form {
         width: 90%;
-        /* border: none; */
+        padding: 5px;
     }
 
     .pwc-form {

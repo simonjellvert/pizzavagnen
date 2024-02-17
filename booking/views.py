@@ -84,6 +84,7 @@ def booking_create(request):
                 )
                 return redirect('booking:booking_create')
 
+            print("Form is valid. Creating booking...")
             booking = form.save(commit=False)
             booking.user = request.user
             booking.last_name = form.cleaned_data['last_name']
@@ -92,6 +93,8 @@ def booking_create(request):
             return redirect('booking:booking_list')
 
         else:
+            print("Form is invalid. Check form validation errors:")
+            print(form.errors)
             messages.error(
                 request, 'Form submission failed. Please check the form.')
 

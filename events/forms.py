@@ -15,6 +15,7 @@ class EventForm(forms.ModelForm):
             'event_date',
             'event_description',
             'event_location',
+            'featured_image',
         ]
 
 
@@ -29,4 +30,5 @@ class EditEventForm(forms.ModelForm):
             'event_date',
             'event_description',
             'event_location',
+            'featured_image',
         ]

@@ -27,17 +27,6 @@
 <section>
     <div class="container text-center mt-5">
         <hr class="mx-auto" style="width: 50%;">
-        {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-            {% if message.tags and message.tags == 'error' or message.tags == 'success' %}
-            <div class="alert alert-{{ message.tags }}" role="alert">
-                {{ message }}
-            </div>
-            {% endif %}
-            {% endfor %}
-        </div>
-        {% endif %}
         <h4 class="mt-5">Upcoming open events</h4>
         {% if user.is_authenticated and user.is_staff %}
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEventModal">
@@ -76,6 +65,10 @@
                         <div class="form-group">
                             <label for="{{ form.event_location.id_for_label }}">Event Location:</label>
                             <input type="text" name="event_location" id="id_event_location">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.featured_image.id_for_label }}">Image:</label>
+                            <input type="file" name="featured_image" id="id_featured_image">
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
@@ -148,6 +141,10 @@
                             <div class="form-group">
                                 <label for="id_event_location">Event Location:</label>
                                 <input type="text" name="event_location" id="id_event_location">
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.featured_image.id_for_label }}">Image:</label>
+                                <input type="file" name="featured_image" id="id_featured_image">
                             </div>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>
