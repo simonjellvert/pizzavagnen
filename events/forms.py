@@ -18,11 +18,16 @@ class EventForm(forms.ModelForm):
             'featured_image',
         ]
 
+    def __init__(self, *args, **kwargs):
+        super(EventForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.required = True
 
 class EditEventForm(forms.ModelForm):
     """
     Form for editing event
     """
+
     class Meta:
         model = Post
         fields = [
@@ -32,3 +37,8 @@ class EditEventForm(forms.ModelForm):
             'event_location',
             'featured_image',
         ]
+
+    def __init__(self, *args, **kwargs):
+        super(EditEventForm, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.required = True

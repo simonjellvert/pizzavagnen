@@ -22,8 +22,8 @@ class Post(models.Model):
         default='Exampleway 123, 456 78, City'
     )
     featured_image = models.ImageField(
-        blank=True,
-        default='static/img/card-background.jpg'
+        blank=False,
+        null=False
     )
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)

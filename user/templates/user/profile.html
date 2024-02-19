@@ -52,7 +52,6 @@
             <div class="modal-footer">
                 <form method="POST" action="{% url 'delete_user_view' %}">
                     {% csrf_token %}
-                    <!-- Add any additional fields or confirmations here -->
                     <button type="submit" class="btn btn-danger">Delete Account</button>
                 </form>
             </div>

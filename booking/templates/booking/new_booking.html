@@ -16,15 +16,6 @@
                 <!-- Create New Booking Form -->
                 <div class="col-12">
                     <h5 class="booking-header">Create New Booking</h5>
-                    {% if form.errors %}
-                    <div class="alert alert-danger" role="alert">
-                        {% for field, error_list in form.errors.items %}
-                        {% for error in error_list %}
-                        {{ field|title }}: {{ error }}
-                        {% endfor %}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
                     <form action="{% url 'booking:booking_create' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group resposive-text-size text-white">
