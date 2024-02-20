@@ -113,10 +113,10 @@ The review page is creating a feeling of a social network comments section.
 ### Fonts
 
 I used fonts provided by Google Fonts:
-- [Roboto](https://fonts.google.com/specimen/Roboto)
+- I choosed **[Roboto](https://fonts.google.com/specimen/Roboto)** because I think it has a gives a nice touch to the website. It's easy to read and aligns with the minimalistic theme of the website.
 
 ![Screenshot from Google Fonts](./docs/img/font_roboto.png)
-- As back up font, traditional Sans Serif.
+- As back up font, traditional **Sans Serif**.
 
 ### Colors
 
@@ -132,6 +132,12 @@ Below is a palette of the colors used, and below that a description of how each 
 - #25A745 is used for updating profile on user page
 - #6DBF9C is the background color of the hover effect on the navbar.
 - #000000 is the backgrpund color of the footer and the default text color.
+
+### Background
+
+As the background of sign up, sign in, log out, account, booking and change password pages I've used a background just to make to pages more alive. To the image I added a filter of 0.25 brightness just to enhance the content in the foreground.
+
+![Screenshot of background image](./docs/img/background_image.png)
 
 ### Visual Effects
 
