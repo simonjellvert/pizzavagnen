@@ -13,8 +13,7 @@ The pizza truck is on wheels so we go wherever you want us to be. On this websit
 
 ## Business Model
 
-The Business Model is B2C, meaning that the company sells products to customers only.
-It focuses on individual transactions only.
+The Business Model is B2C or B2B, meaning that the company sells their services to both companies and private individuals.
 
 ---
 
@@ -49,7 +48,7 @@ This website is intended for people who wants to serve food on their event, both
 
 - ### Languages
 
-  - Python3.9.17: the primary language used to develop the server-side of the website.
+  - Python 3.12.1: the primary language used to develop the server-side of the website.
   - JS: used to serve bootstrap functions
   - HTML: the markup language used to create the website.
   - CSS: the styling language used to style the website.
@@ -107,22 +106,53 @@ This website is intended for people who wants to serve food on their event, both
 
 ## Design
 
-The website is minimalistic and easy to read navigate.
-I kept it clean with understandable colors of buttons, and obvious hovering effects.
+The website is minimalistic and easy to read and navigate.
+I kept it clean with understandable colors of buttons, and obvious hovering effects. To make the pages come alive I've added some backgrpund images with a little bit of opacity to highlight the relevant parts, which in other case would have been pretty boring to look at.
+The review page is creating a feeling of a social network comments section.
 
 ### Fonts
 
 I used fonts provided by Google Fonts:
 - [Roboto](https://fonts.google.com/specimen/Roboto)
+
+![Screenshot from Google Fonts](./docs/img/font_roboto.png)
 - As back up font, traditional Sans Serif.
+
+### Colors
+
+The colors I've used is very basic, but gives a good contrast to the backgrounds.
+Below is a palette of the colors used, and below that a description of how each color is used.
+
+![Screenshot of color palette](./docs/img/color_palette.png)
+
+- #FFFFFF is used as the default background. On some of the pages there's also a background image on top of the default background.
+- #007BFF is used for buttons
+- #FF0000 is used for buttons
+- #DC3545 is the background color of the log out button on the top of the screen
+- #25A745 is used for updating profile on user page
+- #6DBF9C is the background color of the hover effect on the navbar.
+- #000000 is the backgrpund color of the footer and the default text color.
 
 ### Visual Effects
 
 - Sweep to bottom on navbar links and log out button
-- Bootstrap modal for creating, editing and deleting reviews.
+
+![Gif that displays the hover effect](./docs/img/hover_gif.gif)
+- Bootstrap modal for creating, editing and deleting reviews, to create a feeling of a social media platform with the @ tag before the username, and for easy navigation. Pizza slices are used for ratings to make it a little bit more fun to create a review.
+
+![Screenshot of a review](./docs/img/review.png)
+
+![Screenshot of review modal](./docs/img/review_modal.png)
+
 - Bootstrap modal for deleting account and booking
+
+![Screenshot of delete modal](./docs/img/delete_modal.png)
+
 - Navbar collapse to dropdown menu on small - medium size screens
-- Font Awesome icons for buttons and navigation
+
+![Gif of collapsable menu](./docs/img/menu_gif.gif)
+
+---
 
 ## Agile Methodology
 
