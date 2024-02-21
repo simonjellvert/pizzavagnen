@@ -61,11 +61,19 @@ def add_event(request):
             return redirect('events')
         else:
             messages.error(
-                request, 'Form submission failed. Please check the form.')
+                request, 'Form submission failed. All fields must be valid')
+            posts = Post.objects.filter(
+                status=1, event_date__gte=timezone.now()).order_by('event_date'
+            )
     else:
         form = EventForm()
+        posts = Post.objects.filter(
+            status=1, event_date__gte=timezone.now()).order_by('event_date'
+        )
 
-    return render(request, 'events/events.html', {'form': form})
+    return render(
+        request, 'events/events.html', {'form': form, 'post_list': posts}
+    )
 
 
 @login_required
@@ -74,6 +82,9 @@ def edit_event(request, pk):
     Edit event as staff
     """
     event = get_object_or_404(Post, pk=pk)
+    posts = Post.objects.filter(
+        status=1, event_date__gte=timezone.now()).order_by('event_date'
+    )
 
     if request.method == 'POST':
         form = EditEventForm(request.POST, request.FILES, instance=event)
@@ -105,13 +116,20 @@ def edit_event(request, pk):
             event = form.save(commit=False)
             event.save()
             return redirect('events')
-    else:
-        form = EditEventForm(instance=event)
+        else:
+            form = EditEventForm(instance=event)
+            # If the form is invalid, get the queryset of posts as usual
+            posts = Post.objects.filter(
+                status=1, event_date__gte=timezone.now()).order_by('event_date'
+            )
+            messages.error(
+                request, 'Form submission failed. All fields must be valid'
+            )
 
     return render(
         request,
-        'events/edit_event.html',
-        {'form': form, 'event': event}
+        'events/events.html',
+        {'form': form, 'event': event, 'post_list': posts,}
     )
 
 

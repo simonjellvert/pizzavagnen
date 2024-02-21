@@ -35,13 +35,19 @@
                         <!-- Create form -->
                         <form method="post" action="{% url 'review_create' %}">
                             {% csrf_token %}
-                            <p>
-                                <label for="{{ form.rating.id_for_label }}">Rating: </label>
-                            </p>
-                            {{ form.rating }}
+                            <div class="form-group">
+                                <label for="id_rating">Rating:</label>
+                                <select name="rating" class="form-control custom-select" id="id_rating">
+                                    {% for value, display_value in form.fields.rating.choices %}
+                                    <option value="{{ value }}">
+                                        {{ display_value }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="id_content">Review:</label>
-                                <textarea name="content" id="content" rows="3"></textarea>
+                                <textarea class="form-control text-dark text-left" name="content" id="content" rows="3"></textarea>
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Create Review</button>
@@ -112,7 +118,7 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label for="id_rating">Rating:</label>
-                                <select name="rating" class="form-control" id="id_rating">
+                                <select name="rating" class="form-control custom-select" id="id_rating">
                                     {% for value, display_value in form.fields.rating.choices %}
                                     <option value="{{ value }}">
                                         {{ display_value }}
@@ -122,7 +128,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="id_content">Content:</label>
-                                <textarea name="content" class="form-control text-dark" rows="4">{{ review.content }}</textarea>
+                                <textarea name="content" class="form-control text-dark text-left" value="{{ review.content }}" rows="4">{{ review.content }}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>

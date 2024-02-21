@@ -325,20 +325,6 @@ p {
     height: auto;
 }
 
-.create_event input {
-    border: 1px solid black;
-    border-radius: 5px;
-    color: black;
-    width: 95%;
-}
-
-.create_event textarea {
-    border: 1px solid black;
-    border-radius: 5px;
-    color: black;
-    width: 95%;
-}
-
 .create_event .form-group {
     margin-bottom: 0.5rem;
 }
@@ -383,6 +369,10 @@ p {
 
 .page-link:hover {
     color: black;
+}
+
+.custom-file-input {
+    cursor: pointer;
 }
 
 /* -------------------- Log in page */
@@ -519,10 +509,6 @@ input {
     height: 10rem;
 }
 
-#content {
-    width: 90%;
-}
-
 .selected {
     background-color: green;
 }
@@ -551,6 +537,10 @@ input {
 
 .modal.dialog {
     margin: auto;
+}
+
+#content {
+    width: 100%;
 }
 
 /* -------------------- Booking page */
