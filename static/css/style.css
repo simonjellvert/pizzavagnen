@@ -75,7 +75,7 @@ p {
 /* -------------------- Navbar */
 
 #logotype {
-    height: 150px;
+    height: 90px;
     width: auto;
 }
 
@@ -304,8 +304,6 @@ p {
 .hero {
     width: 75%;
     margin: 15px 15px 0 15px;
-    /* border-radius: 10px; */
-    padding: 15px;
 }
 
 .hero img {

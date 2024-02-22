@@ -33,7 +33,7 @@
     {% endif %}
 
     <!-- Logotype -->
-    <div class="container text-center py-4">
+    <div class="container text-center {% if user.is_authenticated %}p-0{% else %}pt-4{% endif %}">
         <a href="{% url 'home' %}">
             <img src="{% static 'img/pizzavagnen_logo.png' %}" alt="Pizza Truck Logotype" id="logotype" class="img-fluid">
         </a>
@@ -112,7 +112,7 @@
     </main>
 
     <footer class="text-center text-white footer">
-        <div class="container upper-footer pt-4">
+        <div class="container upper-footer">
             <!-- Social media -->
             <section class="mb-4">
                 <!-- Facebook -->
