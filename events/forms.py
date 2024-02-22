@@ -4,9 +4,7 @@ from django.forms import ClearableFileInput
 
 
 class EventForm(forms.ModelForm):
-    """
-    Form for creating event
-    """
+    """ Form for creating event """
 
     class Meta:
         model = Post
@@ -24,9 +22,7 @@ class EventForm(forms.ModelForm):
             field.required = True
 
 class EditEventForm(forms.ModelForm):
-    """
-    Form for editing event
-    """
+    """ Form for editing event """
 
     class Meta:
         model = Post

@@ -84,7 +84,7 @@ def booking_create(request):
             booking.user = request.user
             booking.last_name = form.cleaned_data['last_name']
             booking.save()
-            messages.success(request, 'Booking created successfully.')
+            messages.success(request, 'Booking created successfully!')
             return redirect('booking:booking_list')
 
         else:
@@ -137,11 +137,13 @@ def booking_edit(request, pk):
 
             booking = form.save(commit=False)
             booking.save()
+            messages.error(request, 'Your booking is updated!')
             return redirect('booking:booking_list')
 
         else:
-            # Form is invalid, render the form with error message and user's bookings
-            messages.error(request, "Form is invalid. Please correct the errors.")
+            messages.error(
+                request, "Form is invalid. Please correct the errors."
+            )
 
     else:
         form = BookingForm(initial={
@@ -151,12 +153,11 @@ def booking_edit(request, pk):
             'last_name': booking.last_name,
         })
 
-    # Include existing bookings in the context
     context = {
         'form': form,
         'booking': booking,
         'user_bookings': user_bookings,
-        'bookings': user_bookings,  # Add this line to include existing bookings
+        'bookings': user_bookings,
     }
 
     return render(
@@ -171,11 +172,12 @@ def booking_delete(request, number):
     """ View for deleting booking """
     booking = get_object_or_404(Booking, number=number)
     booking.delete()
-    messages.success(request, 'Successfully deleted booking')
+    messages.success(request, 'Your booking was successfully deleted!')
     return redirect('booking:booking_list')
 
 
 def is_staff(user):
+    """ Checks if user is staff """
     return user.is_staff
 
 

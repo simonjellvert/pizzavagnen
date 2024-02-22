@@ -6,9 +6,7 @@ from django.core.exceptions import ValidationError
 
 
 class Booking(models.Model):
-    """
-    Booking model
-    """
+    """ Booking model """
 
     number = models.AutoField(primary_key=True)
     user = models.ForeignKey(

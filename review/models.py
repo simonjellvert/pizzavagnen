@@ -4,9 +4,7 @@ from user.models import CustomUser
 
 
 class Review(models.Model):
-    """
-    Reviews model
-    """
+    """ Reviews model """
     star_rate = (
         ('1', '1'),
         ('2', '2'),

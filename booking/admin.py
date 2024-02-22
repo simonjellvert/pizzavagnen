@@ -3,9 +3,7 @@ from .models import Booking
 
 
 class BookingAdmin(admin.ModelAdmin):
-    """
-    Display and filter bookings in admin panel
-    """
+    """ Display and filter bookings in admin panel """
     list_display = (
         'number',
         'get_user_last_name',

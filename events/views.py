@@ -11,9 +11,7 @@ from booking.models import Booking
 
 
 class PostList(generic.ListView):
-    """
-    Function for displaying a list of future events
-    """
+    """ Function for displaying a list of future events """
     model = Post
     template_name = 'events/events.html'
     paginate_by = 6
@@ -25,9 +23,7 @@ class PostList(generic.ListView):
 
 @login_required
 def add_event(request):
-    """
-    Create new event as staff
-    """
+    """ Create new event as staff """
     if request.method == 'POST':
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
@@ -51,7 +47,11 @@ def add_event(request):
             # Check for conflicts with existing events in 'events' app
             existing_booking = Booking.objects.filter(date=new_event_date)
             if existing_booking.exists():
-                messages.error(request, 'This date is already booked.')
+                messages.error(
+                    request,
+                    'This date is already booked.'
+                    'Please choose a different date.'
+                )
                 return redirect('events')
 
             event = form.save(commit=False)
@@ -61,7 +61,7 @@ def add_event(request):
             return redirect('events')
         else:
             messages.error(
-                request, 'Form submission failed. All fields must be valid')
+                request, 'Something went wrong. All fields must be valid')
             posts = Post.objects.filter(
                 status=1, event_date__gte=timezone.now()).order_by('event_date'
             )
@@ -78,9 +78,7 @@ def add_event(request):
 
 @login_required
 def edit_event(request, pk):
-    """
-    Edit event as staff
-    """
+    """ Edit event as staff """
     event = get_object_or_404(Post, pk=pk)
     posts = Post.objects.filter(
         status=1, event_date__gte=timezone.now()).order_by('event_date'
@@ -94,7 +92,11 @@ def edit_event(request, pk):
 
             # Check if the selected date is in the past
             if new_event_date < timezone.now().date():
-                messages.error(request, 'Cannot book a date in the past.')
+                messages.error(
+                    request,
+                    'Cannot book a date in the past.'
+                    'Please choose a different date.'
+                )
                 return redirect('events')
 
             # Check for conflicts with existing events in 'events' app
@@ -110,7 +112,11 @@ def edit_event(request, pk):
             # Check for conflicts with existing bookings
             existing_bookings = Booking.objects.filter(date=new_event_date)
             if existing_bookings.exists():
-                messages.error(request, 'This date is already booked.')
+                messages.error(
+                    request,
+                    'This date is already booked.'
+                    'Please choose a different date.'
+                )
                 return redirect('events')
 
             event = form.save(commit=False)
@@ -118,12 +124,11 @@ def edit_event(request, pk):
             return redirect('events')
         else:
             form = EditEventForm(instance=event)
-            # If the form is invalid, get the queryset of posts as usual
             posts = Post.objects.filter(
                 status=1, event_date__gte=timezone.now()).order_by('event_date'
             )
             messages.error(
-                request, 'Form submission failed. All fields must be valid'
+                request, 'Something went wrong. All fields must be valid'
             )
 
     return render(
@@ -135,10 +140,8 @@ def edit_event(request, pk):
 
 @login_required
 def event_delete(request, post_id):
-    """
-    Delete event as staff
-    """
+    """ Delete event as staff """
     event = get_object_or_404(Post, id=post_id)
     event.delete()
-    messages.success(request, 'Your event is deleted!')
+    messages.success(request, 'Your event was successfully deleted!')
     return redirect('events')

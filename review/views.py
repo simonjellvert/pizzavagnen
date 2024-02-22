@@ -7,9 +7,7 @@ from .forms import ReviewForm
 
 
 def review_list(request):
-    """
-    Function for all reviews
-    """
+    """ Function for all reviews """
     form = ReviewForm()
     reviews = Review.objects.all()
     return render(
@@ -20,9 +18,7 @@ def review_list(request):
 
 @login_required
 def review_create(request):
-    """
-    Function for creating a new review
-    """
+    """ Function for creating a new review """
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -41,9 +37,7 @@ def review_create(request):
 
 @login_required
 def review_edit(request, pk):
-    """
-    Function for editing a review
-    """
+    """ Function for editing a review """
     review = get_object_or_404(Review, pk=pk)
 
     if request.method == 'POST':
@@ -53,7 +47,7 @@ def review_edit(request, pk):
             messages.success(request, 'Your review is updated!')
             return redirect('review_list')
     else:
-        messages.error(request, 'Something went wrong, try again!')
+        messages.error(request, 'Something went wrong, please try again!')
         form = ReviewForm(instance=review)
 
     return render(
@@ -65,10 +59,8 @@ def review_edit(request, pk):
 
 @login_required
 def review_delete(request, review_id):
-    """
-    Function for deleting a review
-    """
+    """ Function for deleting a review """
     review = get_object_or_404(Review, id=review_id, user=request.user)
     review.delete()
-    messages.success(request, 'Your review was deleted!')
+    messages.success(request, 'Your review was successfully deleted!')
     return redirect('review_list')

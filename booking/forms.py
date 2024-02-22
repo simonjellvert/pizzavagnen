@@ -5,9 +5,7 @@ from .models import Booking
 
 
 class BookingForm(forms.ModelForm):
-    """
-    Booking form for the user
-    """
+    """ Booking form for the user """
 
     last_name = forms.CharField(max_length=20, label='Last Name')
 

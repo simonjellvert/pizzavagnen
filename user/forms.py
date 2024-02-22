@@ -5,9 +5,7 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
-    """
-    Form for the signup page
-    """
+    """ Form for the signup page """
 
     email = forms.EmailField(required=True)
     username = forms.CharField(
@@ -40,9 +38,7 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class EditUserForm(forms.ModelForm):
-    """
-    Function for editing user profile
-    """
+    """ Function for editing user profile """
     class Meta:
         model = CustomUser
         username = forms.CharField(
