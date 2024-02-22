@@ -67,13 +67,14 @@
                             <input class="form-control text-dark text-left" type="text" name="event_location" id="id_event_location" value="{{ post.event_location }}">
                         </div>
                         <div class="form-group">
-                            <label for="{{ form.featured_image.id_for_label }}">Image:</label>
+                            <label for="id_featured_image">Image:</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="id_featured_image" name="featured_image">
+                                    <input type="file" class="custom-file-input" id="id_featured_image" name="featured_image" onchange="previewImage()">
                                     <label class="custom-file-label" for="id_featured_image">Choose file</label>
                                 </div>
                             </div>
+                            <img id="imagePreview" class="mt-2" style="display:none; max-width:100%;" alt="Image Preview">
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
@@ -150,7 +151,7 @@
                             <div class="form-group">
                                 <label for="id_featured_image">Current Image:</label>
                                 {% if post.featured_image %}
-                                    <p>{{ post.featured_image.name|lower }}</p>
+                                    <img style="display: block; max-width: 100%;" src="{{ post.featured_image.url }}" alt="{{ post.featured_image.name }}">
                                 {% else %}
                                     <p>No image selected</p>
                                 {% endif %}
@@ -209,5 +210,26 @@
     </nav>
     {% endif %}
 </section>
+
+<script>
+    function previewImage() {
+        var input = document.getElementById('id_featured_image');
+        var preview = document.getElementById('imagePreview');
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    }
+</script>
 
 {% endblock %}

@@ -21,18 +21,30 @@
                         <div class="form-group resposive-text-size text-white">
                             <label for="{{ form.date.id_for_label }}">Date:</label>
                             <input type="date" name="{{ form.date.name }}" id="{{ form.date.id_for_label }}" class="form-control">
+                            {% if form.date.errors %}
+                                <span class="text-danger">{{ form.date.errors.0 }}</span>
+                            {% endif %}
                         </div>
                         <div class="form-group resposive-text-size text-white">
                             <label for="{{ form.time.id_for_label }}">Time:</label>
                             <input type="time" name="{{ form.time.name }}" id="{{ form.time.id_for_label }}" class="form-control">
+                            {% if form.time.errors %}
+                                <span class="text-danger">{{ form.time.errors.0 }}</span>
+                            {% endif %}
                         </div>
                         <div class="form-group resposive-text-size">
                             <label for="{{ form.location.id_for_label }}">City:</label>
                             <input type="text" name="{{ form.location.name }}" id="{{ form.location.id_for_label }}" class="form-control">
+                            {% if form.location.errors %}
+                                <span class="text-danger">{{ form.location.errors.0 }}</span>
+                            {% endif %}
                         </div>
                         <div class="form-group resposive-text-size">
                             <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
                             <input type="text" name="{{ form.last_name.name }}" id="{{ form.last_name.id_for_label }}" class="form-control">
+                            {% if form.last_name.errors %}
+                                <span class="text-danger">{{ form.last_name.errors.0 }}</span>
+                            {% endif %}
                         </div>
                         <button class="btn btn-primary resposive-text-size" type="submit">Create Booking</button>
                     </form>

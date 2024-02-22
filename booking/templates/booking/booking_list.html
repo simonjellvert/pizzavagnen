@@ -65,10 +65,10 @@
                         <br>
                     {% endif %}            
                     <!-- Create New Booking Form -->
-                    <a class="btn btn-primary resposive-text-size mb-3" href="{% url 'booking:booking_create' %}">New Booking</a><br>
+                    <a class="btn btn-primary resposive-text-size mb-1" href="{% url 'booking:booking_create' %}">New Booking</a><br>
                     {% if user.is_authenticated %}
                         {% if user.is_staff %}
-                            <a class="btn btn-primary resposive-text-size staff-button" href="{% url 'booking:staff_booking_list' %}">Staff: View Bookings</a>
+                            <a class="btn btn-primary resposive-text-size staff-button m-0" href="{% url 'booking:staff_booking_list' %}">Staff: View Bookings</a>
                         {% endif %}
                     {% endif %}
                 </div>
@@ -86,24 +86,31 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+                                {% if messages %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {% for message in messages %}
+                                            {{ message }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                                 <!-- Edit form -->
                                 <form method="post" action="{% url 'booking:booking_edit' pk=booking.pk %}">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <label for="id_date">Date:</label>
-                                        <input type="date" name="date" id="id_date" class="form-control" value="{{ booking.date }}">
+                                        <input class="form-control text-dark" type="date" name="date" id="id_date" value="{{ booking.date|date:'Y-m-d' }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="id_time">Time:</label>
-                                        <input type="time" name="time" id="id_time" class="form-control" value="{{ booking.time }}">
+                                        <input class="form-control text-dark" type="time" name="time" id="id_time" value="{{ booking.time|time:'H:i' }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="id_location">Location:</label>
-                                        <input type="text" name="location" id="id_location" class="form-control" value="{{ booking.location }}">
+                                        <input class="form-control text-dark text-left" type="text" name="location" id="id_location" value="{{ booking.location }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="id_last_name">Last Name:</label>
-                                        <input type="text" name="last_name" id="id_last_name" class="form-control" value="{{ booking.last_name }}">
+                                        <input class="form-control text-dark text-left" type="text" name="last_name" id="id_last_name" value="{{ booking.last_name }}">
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Save Changes</button>

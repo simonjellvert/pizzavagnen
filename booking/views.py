@@ -13,9 +13,7 @@ from events.models import Post
 
 @method_decorator(login_required, name='dispatch')
 class BookingList(generic.ListView):
-    """
-    View for displaying bookings
-    """
+    """ View for displaying bookings """
     model = Booking
     template_name = 'booking/booking_list.html'
     paginate_by = 2
@@ -47,9 +45,7 @@ def booking_detail(request, booking_id):
 
 @login_required
 def booking_create(request):
-    """
-    View for create a new booking
-    """
+    """ View for create a new booking """
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -84,7 +80,6 @@ def booking_create(request):
                 )
                 return redirect('booking:booking_create')
 
-            print("Form is valid. Creating booking...")
             booking = form.save(commit=False)
             booking.user = request.user
             booking.last_name = form.cleaned_data['last_name']
@@ -93,8 +88,6 @@ def booking_create(request):
             return redirect('booking:booking_list')
 
         else:
-            print("Form is invalid. Check form validation errors:")
-            print(form.errors)
             messages.error(
                 request, 'Form submission failed. Please check the form.')
 
@@ -106,10 +99,9 @@ def booking_create(request):
 
 @login_required
 def booking_edit(request, pk):
-    """
-    View for editing booking
-    """
+    """ View for editing booking """
     booking = get_object_or_404(Booking, pk=pk)
+    user_bookings = Booking.objects.filter(user=request.user)
 
     if request.method == 'POST':
         form = BookingForm(request.POST, instance=booking)
@@ -146,23 +138,40 @@ def booking_edit(request, pk):
             booking = form.save(commit=False)
             booking.save()
             return redirect('booking:booking_list')
+
+        else:
+            # Form is invalid, render the form with error message and user's bookings
+            messages.error(request, "Form is invalid. Please correct the errors.")
+
     else:
-        form = BookingForm(instance=booking)
+        form = BookingForm(initial={
+            'date': booking.date,
+            'time': booking.time,
+            'location': booking.location,
+            'last_name': booking.last_name,
+        })
+
+    # Include existing bookings in the context
+    context = {
+        'form': form,
+        'booking': booking,
+        'user_bookings': user_bookings,
+        'bookings': user_bookings,  # Add this line to include existing bookings
+    }
 
     return render(
         request,
         'booking/booking_list.html',
-        {'form': form, 'booking': booking}
+        context
     )
 
 
 @login_required
 def booking_delete(request, number):
-    """
-    View for deleting booking
-    """
+    """ View for deleting booking """
     booking = get_object_or_404(Booking, number=number)
     booking.delete()
+    messages.success(request, 'Successfully deleted booking')
     return redirect('booking:booking_list')
 
 
@@ -172,9 +181,7 @@ def is_staff(user):
 
 @user_passes_test(is_staff)
 def staff_booking_list(request):
-    """
-    View for staff
-    """
+    """ View for staff """
     now = datetime.now()
     upcoming_bookings = Booking.objects.filter(
         date__gte=datetime.now()).order_by('date', 'time')

@@ -375,6 +375,11 @@ p {
     cursor: pointer;
 }
 
+.form-image {
+    width: 100px;
+    height: auto;
+}
+
 /* -------------------- Log in page */
 
 .login-image {
@@ -559,6 +564,17 @@ input {
     border: none;
 }
 
+.scrollable-table-container {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.table.scrollable-table {
+    white-space: nowrap;
+    /* Optionally, you can add more styling for your table here */
+}
+
 /* -------------------- New booking page */
 
 .booking-form {
@@ -721,6 +737,16 @@ form button.cancel a {
         font-size: small;
         margin-top: 0;
     }
+
+    .scrollable-table-container {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .table.scrollable-table {
+        white-space: nowrap;
+        /* Optionally, you can add more styling for your table here */
+    }
 }
 
 @media (max-width: 425px) {
@@ -738,10 +764,6 @@ form button.cancel a {
     }
 
     .login-form p {
-        font-size: x-small;
-    }
-
-    .login-form h3 {
         font-size: x-small;
     }
 
@@ -792,6 +814,11 @@ form button.cancel a {
 
     .responsive-margin {
         margin-bottom: 0;
+    }
+
+    #div_id_username,
+    #div_id_email {
+        font-size: 12px;
     }
 }
 

@@ -14,30 +14,32 @@
                 <!-- Display Existing Bookings from all users -->
                 <div class="col-12">
                     <h3 class="mb-3">Upcoming Bookings</h3>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Booking ID</th>
-                                <th>Date</th>
-                                <th>Location</th>
-                                <th>Reference</th>
-                                <th>User Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for booking in bookings %}
-                            {% if not booking.is_past %}
-                            <tr>
-                                <td>{{ booking.number }}</td>
-                                <td>{{ booking.date|date:"F j, Y" }}</td>
-                                <td>{{ booking.location }}</td>
-                                <td>{{ booking.last_name }}</td>
-                                <td>{{ booking.user.email }}</td>
-                            </tr>
-                            {% endif %}
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    <div class="scrollable-table-container">
+                        <table class="table scrollable-table">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Reference</th>
+                                    <th>User Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for booking in bookings %}
+                                {% if not booking.is_past %}
+                                <tr>
+                                    <td>{{ booking.number }}</td>
+                                    <td>{{ booking.date|date:"F j, Y" }}</td>
+                                    <td>{{ booking.location }}</td>
+                                    <td>{{ booking.last_name }}</td>
+                                    <td>{{ booking.user.email }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
