@@ -25,7 +25,10 @@ def review_create(request):
             review = form.save(commit=False)
             review.user = request.user
             review.save()
-            messages.success(request, 'Your review was successfully submitted!')
+            messages.success(
+                request,
+                'Your review was successfully submitted!'
+            )
             return redirect('review_list')
 
         else:

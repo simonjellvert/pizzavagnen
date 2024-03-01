@@ -17,7 +17,7 @@ class CustomUserCreationForm(UserCreationForm):
         label='Password',
         widget=forms.PasswordInput,
         help_text=_(
-            "Must contain at least 8 characters.<br>" 
+            "Must contain at least 8 characters.<br>"
             "Can't be to similar to your username"
         )
     )

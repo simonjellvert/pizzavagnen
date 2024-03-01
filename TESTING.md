@@ -63,90 +63,24 @@ Manual tests were made by myself, friends, co-workers and the owners of the Pizz
 
 ### HTML Validation
 
-![Screenshot of validation result](docs/img/validating_html.png)
+- Testing done in [W3C Markup Validation](https://validator.w3.org/)
+
+<!-- - [Full HTML Validation report](/documentation/validation/html_validation.pdf) -->
 
 ---
 
 ### CSS Validation
 
-![Screenshot of validation result](docs/img/validation_css.png)
+- Testing done in [W3C Jigsaw](https://jigsaw.w3.org/css-validator/#validate_by_uri).
+
+- [Full CSS Validation Report](/docs/pdf/css_validation.pptx)
 
 ---
 
 ### Python Validation
 
-#### Pizzavagnen (project)
+- Testing done in [CI Python Linter](https://pep8ci.herokuapp.com/).
 
-##### Settings
+- PASS with no errors.
 
-![Screenshot of validation result](docs/img/pizzavagnen_settings.png)
-
-Don't know how to fix this.
-
-#### User (app)
-
-##### Models
-
-![Screenshot of validation result](docs/img/user_models.png)
-
-##### Views
-
-![Screenshot of validation result](docs/img/user_views.png)
-
-##### Forms
-
-![Screenshot of validation result](docs/img/user_forms.png)
-
-##### Admin
-
-![Screenshot of validation result](docs/img/user_admin.png)
-
-#### Review (app)
-
-##### Models
-
-![Screenshot of validation result](docs/img/review_models.png)
-
-##### Views
-
-![Screenshot of validation result](docs/img/review_views.png)
-
-##### Forms
-
-![Screenshot of validation result](docs/img/review_forms.png)
-
-#### Events (app)
-
-##### Models
-
-![Screenshot of validation result](docs/img/events_model.png)
-
-##### Views
-
-![Screenshot of validation result](docs/img/events_views.png)
-
-##### Forms
-
-![Screenshot of validation result](docs/img/events_forms.png)
-
-##### Admin
-
-![Screenshot of validation result](docs/img/events_admin.png)
-
-#### Booking (app)
-
-##### Models
-
-![Screenshot of validation result](docs/img/booking_models.png)
-
-##### Views
-
-![Screenshot of validation result](docs/img/booking_views.png)
-
-##### Forms
-
-![Screenshot of validation result](docs/img/booking_forms.png)
-
-##### Admin
-
-![Screenshot of validation result](docs/img/booking_admin.png)
+- [Full Python Validation report](/docs/pdf/python_validation.pptx)

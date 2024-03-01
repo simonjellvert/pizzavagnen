@@ -67,7 +67,6 @@ p {
     text-decoration: none;
     color: white;
     background: red;
-    border: 1px solid red;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
@@ -602,7 +601,7 @@ form label {
 form input {
     background: transparent;
     color: white;
-    border: 1px solid white(168, 166, 166);
+    border: 1px solid rgb(168, 166, 166);
     border-radius: 5px;
 }
 

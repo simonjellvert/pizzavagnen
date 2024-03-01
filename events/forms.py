@@ -21,6 +21,7 @@ class EventForm(forms.ModelForm):
         for field in self.fields.values():
             field.required = True
 
+
 class EditEventForm(forms.ModelForm):
     """ Form for editing event """
 

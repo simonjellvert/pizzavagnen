@@ -63,13 +63,12 @@ def add_event(request):
             messages.error(
                 request, 'Something went wrong. All fields must be valid')
             posts = Post.objects.filter(
-                status=1, event_date__gte=timezone.now()).order_by('event_date'
-            )
+                status=1, event_date__gte=timezone.now()
+            ).order_by('event_date')
     else:
         form = EventForm()
         posts = Post.objects.filter(
-            status=1, event_date__gte=timezone.now()).order_by('event_date'
-        )
+            status=1, event_date__gte=timezone.now()).order_by('event_date')
 
     return render(
         request, 'events/events.html', {'form': form, 'post_list': posts}
@@ -81,8 +80,7 @@ def edit_event(request, pk):
     """ Edit event as staff """
     event = get_object_or_404(Post, pk=pk)
     posts = Post.objects.filter(
-        status=1, event_date__gte=timezone.now()).order_by('event_date'
-    )
+        status=1, event_date__gte=timezone.now()).order_by('event_date')
 
     if request.method == 'POST':
         form = EditEventForm(request.POST, request.FILES, instance=event)
@@ -125,8 +123,8 @@ def edit_event(request, pk):
         else:
             form = EditEventForm(instance=event)
             posts = Post.objects.filter(
-                status=1, event_date__gte=timezone.now()).order_by('event_date'
-            )
+                status=1, event_date__gte=timezone.now()
+            ).order_by('event_date')
             messages.error(
                 request, 'Something went wrong. All fields must be valid'
             )
@@ -134,7 +132,7 @@ def edit_event(request, pk):
     return render(
         request,
         'events/events.html',
-        {'form': form, 'event': event, 'post_list': posts,}
+        {'form': form, 'event': event, 'post_list': posts}
     )
 
 
