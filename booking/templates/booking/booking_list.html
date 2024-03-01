@@ -97,20 +97,20 @@
                                 <form method="post" action="{% url 'booking:booking_edit' pk=booking.pk %}">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <label for="id_date">Date:</label>
-                                        <input class="form-control text-dark" type="date" name="date" id="id_date" value="{{ booking.date|date:'Y-m-d' }}">
+                                        <label for="id_date_{{ booking.number }}">Date:</label>
+                                        <input class="form-control text-dark" type="date" name="date" id="id_date_{{ booking.number }}" value="{{ booking.date|date:'Y-m-d' }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="id_time">Time:</label>
-                                        <input class="form-control text-dark" type="time" name="time" id="id_time" value="{{ booking.time|time:'H:i' }}">
+                                        <label for="id_time_{{ booking.number }}">Time:</label>
+                                        <input class="form-control text-dark" type="time" name="time" id="id_time_{{ booking.number }}" value="{{ booking.time|time:'H:i' }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="id_location">Location:</label>
-                                        <input class="form-control text-dark text-left" type="text" name="location" id="id_location" value="{{ booking.location }}">
+                                        <label for="id_location_{{ booking.number }}">Location:</label>
+                                        <input class="form-control text-dark text-left" type="text" name="location" id="id_location_{{ booking.number }}" value="{{ booking.location }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="id_last_name">Last Name:</label>
-                                        <input class="form-control text-dark text-left" type="text" name="last_name" id="id_last_name" value="{{ booking.last_name }}">
+                                        <label for="id_last_name_{{ booking.number }}">Last Name:</label>
+                                        <input class="form-control text-dark text-left" type="text" name="last_name" id="id_last_name_{{ booking.number }}" value="{{ booking.last_name }}">
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -119,9 +119,8 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Delete Booking Modal -->
-                
                 <div class="modal fade" id="deleteBookingModal{{ booking.number }}" tabindex="-1" role="dialog"
                     aria-labelledby="deleteBookingModalLabel{{ booking.number }}" aria-hidden="true">
                     <div class="modal-dialog d-flex justify-content-center" role="document">
