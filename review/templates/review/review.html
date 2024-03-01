@@ -36,8 +36,8 @@
                         <form method="post" action="{% url 'review_create' %}">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label for="id_rating">Rating:</label>
-                                <select name="rating" class="form-control custom-select" id="id_rating">
+                                <label for="id_rating_create">Rating:</label>
+                                <select name="rating" class="form-control custom-select" id="id_rating_create">
                                     {% for value, display_value in form.fields.rating.choices %}
                                     <option value="{{ value }}">
                                         {{ display_value }}
@@ -117,8 +117,8 @@
                         <form method="post" action="{% url 'review_edit' pk=review.id %}">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label for="id_rating">Rating:</label>
-                                <select name="rating" class="form-control custom-select" id="id_rating">
+                                <label for="id_rating_{{ review.id }}">Rating:</label>
+                                <select name="rating" class="form-control custom-select" id="id_rating_{{ review.id }}">
                                     {% for value, display_value in form.fields.rating.choices %}
                                     <option value="{{ value }}">
                                         {{ display_value }}
@@ -127,8 +127,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="id_content">Content:</label>
-                                <textarea name="content" class="form-control text-dark text-left" value="{{ review.content }}" rows="4">{{ review.content }}</textarea>
+                                <label for="id_content_{{ review.id }}">Content:</label>
+                                <textarea name="content" class="form-control text-dark text-left" rows="4">{{ review.content }}</textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>

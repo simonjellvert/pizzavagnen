@@ -12,12 +12,12 @@
         <p class="resposive-text-size">
             The truck is operated by Sebastian and Petter, two friends who share the joy of indulging in a delicious slice of pizza
             whenever the opportunity arises!
-            <br /><br>
+            <br><br>
             We are always on the move and our restaurant is wherever you want it to be. 
-            <br /><br>
+            <br><br>
             If we're not at the company next door serving lunch or in your neighbor's garden serving dinner, we've set up the truck at open events such as concerts,
             sports events, or similar occasions to serve you something tasty to eat.
-            <br /><br>
+            <br><br>
             If you want to book the truck, please do that by clicking the link above. We look forward to meeting you!
         </p>
     </div>
@@ -52,29 +52,29 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="id_title">Title:</label>
-                            <input class="form-control text-dark text-left" type="text" name="title" id="id_title" value="{{ post.title }}">
+                            <input class="form-control text-dark text-left" type="text" name="title" id="id_title_{{ post.id }}" value="{{ post.title }}">
                         </div>
                         <div class="form-group">
                             <label for="id_event_date">Event Date:</label>
-                            <input class="form-control text-dark" type="date" name="event_date" id="id_event_date" value="{{ post.event_date }}">
+                            <input class="form-control text-dark" type="date" name="event_date" id="id_event_date_{{ post.id }}" value="{{ post.event_date }}">
                         </div>
                         <div class="form-group">
                             <label for="id_event_description">Event Description:</label>
-                            <textarea class="form-control text-dark text-left" name="event_description" id="id_event_description" rows="3">{{ post.event_description }}</textarea>
+                            <textarea class="form-control text-dark text-left" name="event_description" id="id_event_description_{{ post.id }}" rows="3">{{ post.event_description }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="id_event_location">Event Location:</label>
-                            <input class="form-control text-dark text-left" type="text" name="event_location" id="id_event_location" value="{{ post.event_location }}">
+                            <input class="form-control text-dark text-left" type="text" name="event_location" id="id_event_location_{{ post.id }}" value="{{ post.event_location }}">
                         </div>
                         <div class="form-group">
                             <label for="id_featured_image">Image:</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="id_featured_image" name="featured_image" onchange="previewImage()">
+                                    <input type="file" class="custom-file-input" id="id_featured_image_{{ post.id }}" name="featured_image" onchange="previewImage()">
                                     <label class="custom-file-label" for="id_featured_image">Choose file</label>
                                 </div>
                             </div>
-                            <img id="imagePreview" class="mt-2" style="display:none; max-width:100%;" alt="Image Preview">
+                            <img id="imagePreview" class="mt-2" style="max-width:100%;" alt="Image Preview" src="{% if post.featured_image %}{{ post.featured_image.url }}{% else %}{% static 'img/sebastian-petter.jpg' %}{% endif %}">
                         </div>
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ post.title }}</h5>
-                        <p class="card-text text-center text-muted">{{ post.event_date }}</h6>
+                        <p class="card-text text-center text-muted">{{ post.event_date }}</p>
                         <p class="card-text text-center">{{ post.event_description }}</p>
                     </div>
                     <div class="card-footer text-center">

@@ -1,12 +1,8 @@
 # TESTING
 
-## AUTOMATIC TESTING
-
-- Automatic testing was omitted for this project.
-
 ## MANUAL TESTING
 
-Manual tests were made by myself, friends and family and CI community members.
+Manual tests were made by myself, friends, co-workers and the owners of the Pizza Truck.
 
 |             FEATURE              |               ACTION               |               EXPECTED RESULT               | TESTED | PASSED |
 | :------------------------------: | :--------------------------------: | :-----------------------------------------: | :----: | :----: |
@@ -43,8 +39,8 @@ Manual tests were made by myself, friends and family and CI community members.
 | About (admin): valid form | click add | should save event and display success message | YES | YES |
 | About (admin): delete event | click delete | should open delete modal | YES | YES |
 | About (admin): delete event | click delete | should delete the event and raise error message | YES | YES |
-| BUTTONS: Hover effects | hover over buttons | button changes color | YES | Partly, would like to edit some |
-| MESSAGES | if success or error | should be displayed on screen | YES | YES |
+| Buttons: Hover effects | hover over buttons | button changes color | YES | Partly, would like to edit some |
+| Messages | if success, info, warning or error | should be displayed on screen | YES | YES |
 
 ## Testing User Stories
 
