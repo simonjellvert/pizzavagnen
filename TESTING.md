@@ -65,7 +65,7 @@ Manual tests were made by myself, friends, co-workers and the owners of the Pizz
 
 - Testing done in [W3C Markup Validation](https://validator.w3.org/)
 
-<!-- - [Full HTML Validation report](/documentation/validation/html_validation.pdf) -->
+- [Full HTML Validation report](/docs/pdf/html_validation.pptx)
 
 ---
 
@@ -80,7 +80,5 @@ Manual tests were made by myself, friends, co-workers and the owners of the Pizz
 ### Python Validation
 
 - Testing done in [CI Python Linter](https://pep8ci.herokuapp.com/).
-
-- PASS with no errors.
 
 - [Full Python Validation report](/docs/pdf/python_validation.pptx)
