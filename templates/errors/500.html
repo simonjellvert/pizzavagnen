@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | 500 - Server Error{% endblock %}
+
+{% block content %}
+<div class="container-fluid container-products">
+    <div class="row">
+        <div class="col-12 mb-3 mt-5 d-flex flex-column align-items-center text-center">
+            <h1 class="mb-3">
+                OPS!
+            </h1>
+            <p class="products-header-p mb-3">
+                We are sorry, but there seems to be some issues with the internal server right now...
+            </p>
+            <span class="btn btn-primary rounded-0 mb-5">
+                <a href="{% url 'home' %}" class="text-white" aria-label="Go back to home page"><i class="fa-solid fa-chevron-left text-white mr-2"></i>Go Back</a>
+            </span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

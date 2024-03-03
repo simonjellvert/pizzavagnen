@@ -19,6 +19,8 @@ from events.views import PostList
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .views import handler404, handler500
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
@@ -29,3 +31,6 @@ urlpatterns = [
     path('review/', include('review.urls')),
     path('booking/', include('booking.urls', namespace='booking'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = 'pizzavagnen.views.handler404'
+handler500 = 'pizzavagnen.views.handler500'

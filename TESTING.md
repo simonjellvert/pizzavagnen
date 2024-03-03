@@ -82,3 +82,11 @@ Manual tests were made by myself, friends, co-workers and the owners of the Pizz
 - Testing done in [CI Python Linter](https://pep8ci.herokuapp.com/).
 
 - [Full Python Validation report](/docs/pdf/python_validation.pptx)
+
+---
+
+### Lighthouse Validation
+
+- Testing done in Chrome DevTools Lighthouse
+
+![Screenshot of Lighthouse report](/docs/img/lighthouse.png)

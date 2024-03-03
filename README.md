@@ -1,6 +1,6 @@
 # The Pizza Truck
 
-**Deployed website: [Link to website](https://pizzavagnen-eb78667e7b70.herokuapp.com/)**
+<!-- **Deployed website: [Link to website](https://pizzavagnen-eb78667e7b70.herokuapp.com/)** -->
 
 ![Main image](docs/img/main_site.png)
 
