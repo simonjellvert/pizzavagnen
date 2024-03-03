@@ -13,7 +13,11 @@ The pizza truck is on wheels so we go wherever you want us to be. On this websit
 
 ## Business Model
 
-The Business Model is B2C or B2B, meaning that the company sells their services to both companies and private individuals.
+Until this website is deployed and live the PizzaTruck have only been marketing itself on social media platforms. For booking the owners have referred to their phone numbers, leading to plenty of missed potential bookings when they where not able to answer their phones. With this website a potential booking will never be missed again since it is now possible to book the truck directly on your phone or computer.
+
+This is a big step forward for the company and will probably elevate their sellings quickly.
+
+The truck sells their services both B2B and B2C.
 
 ---
 
@@ -76,7 +80,7 @@ This website is intended for people who wants to serve food on their event, both
   - Miro: was used to make a flowchart for the README file.
   - W3C Validator: was used to validate HTML5 code for the website.
   - W3C CSS validator: was used to validate CSS code for the website.
-  - [PEP8](https://pep8.org/): was used to validate Python code for the website.
+  - PEP8: was used to validate Python code for the website.
 
 ### Entity-Relationship Diagram
 
@@ -88,32 +92,72 @@ This website is intended for people who wants to serve food on their event, both
 
 - ### Existing Features
   
-  - Register to whe website using email, username and password
-  - Log in th the website using username and password
-  - User can create, edit and delete booking
-  - User can create, edit and delete reviews
-  - User can edit and delete profile
-  - Admin can do all of the above and:
-  - Admin can create, edit and delete events
+  - Register to the website using email, username and password
+  - ![Screenshot of sign up page](/docs/img/signup.png)
+  - Log in to the website using username and password
+  - ![Screenshot of login page](/docs/img/login.png)
+  - User can alse edit and delete their profile
+  - ![Screenshot of profile page](/docs/img/profile.png)
+  - Booking page
+  - ![Screenshot of booking page](/docs/img/bookings.png)
+  - User can create booking
+  - ![Screenshot of create booking](/docs/img/add-booking.png)
+  - User can edit booking
+  - ![Screenshot of edit booking](/docs/img/edit-booking.png)
+  - User can delete booking
+  - ![Screenshot of delete boooking](/docs/img/delete-booking.png)
+  - Reviews page
+  - ![Screenshot of reviews page](/docs/img/review.png)
+  - User can create review
+  - ![Screenshot of create review](/docs/img/add-review.png)
+  - User can edit review
+  - ![Screenshot of edit review](/docs/img/edit-review.png)
+  - User can delete reviews
+  - ![Screenshot of delete review](/docs/img/delete-review.png)
+  - User can edit profile
+  - ![Screenshot of profile page](/docs/img/profile.png)
+  - User can delete profile
+  - ![Screenshot of delete profile](/docs/img/delete-profile.png)
+  
+  #### Admin can do all of the above and:
+  
+  - Admin can create events
+  - ![Screenshot of create event](/docs/img/add-event.png)
+  - Admin can edit events
+  - ![Screenshot of edit event](/docs/img/edit-event.png)
+  - Admin can delete events
+  - ![Screenshot of delete event](/docs/img/delete-event.png)
   - Admin can view all users bookings
+  - ![Screenshot of staff list](/docs/img/staff-list.png)
 
 - ### Future Feature Considerations
   
   - Add menu for the user to be able to see what kind of pizza's are being served
   - Pricing table depending on where the event is held, how many people etc.
+  - Email confirmation of booking
+
+- ## Security features
+- The project was secured using Django decorator login_required which is protecting the views to create, edit and delete all apps.
+- Additional security was added to the staff_list.html so a regular user cannot access that page. The review page also has additional security to make sure the user only can edit and delete their own reviews.
+- The SECRET_KEY is stored inside the env.py file and config vars on Heroku site.
+- DATABASE_URL and CLOUDINARY_URL is stored inside the env.py and config vars on Heroku.
+
 
 ---
 
 ## Design
 
-The website is minimalistic and easy to read and navigate.
-I kept it clean with understandable colors of buttons, and obvious hovering effects. To make the pages come alive I've added some backgrpund images with a little bit of opacity to highlight the relevant parts, which in other case would have been pretty boring to look at.
+When I designed the website, the only requirement from the owners was that it should be easy to navigate and easy to understand. As few clicks as possible to have a booking ready. 
+I had a clear picture in my head of how the page would look and started right away without producing any wireframes. The design was coordinated with the owners on an ongoing basis to minimize inaccuracies.
+
+This resulted in a website that is minimalistic and easy to read and navigate.
+I kept it clean with understandable colors of buttons, and obvious hovering effects. To make the pages come alive I've added some background images with a little bit of opacity to highlight the relevant parts, which in other case would have been pretty boring to look at.
 The review page is creating a feeling of a social network comments section.
 
 ### Fonts
 
 I used fonts provided by Google Fonts:
-- I choosed **[Roboto](https://fonts.google.com/specimen/Roboto)** because I think it has a gives a nice touch to the website. It's easy to read and aligns with the minimalistic theme of the website.
+- I choosed **[Roboto](https://fonts.google.com/specimen/Roboto)** because I think it gives a nice touch to the website. It's easy to read and aligns with the minimalistic theme of the website.
 
 ![Screenshot from Google Fonts](./docs/img/font_roboto.png)
 - As back up font, traditional **Sans Serif**.
@@ -172,25 +216,85 @@ GitHub Project Management was used to manage the project.
 
 ## Deployment
 
-### On Heroku
+### Heroku
 
-- Log in to Heroku account.
-- Click on "New" button on dashboard.
-- Then "Create new app" and follow the steps.
-- Link app to GitHub repository in "Deploy" tab.
-- Set up config variables in "Settings" tab.
-- Click on "Deploy Bransch" in "Deploy" tab.
-- Heroku will now deploy the project.
+To deploy the project to Heroku, I took the following steps.
 
-### Local
+#### Requirements and Procfile
 
-- Run `python3 manage.py runserver` in the terminal window.
+In order to deploy the project, Heroku needs information about the technologies used. Before deployment, I create a Procfile and a list of requirements. In some cases, you may also need a runtime.txt file specifying the version of Python to use.
+
+* Create a plain file called Procfile without any file suffix, at the root level of the project.
+* Type ```web: gunicorn <your_app_name>.wsgi:application``` into the Procfile and save.
+* In your IDE terminal, type ```pip3 freeze local > requirements.txt``` to create the requirements.
+* (Optional) Create a runtime.txt and type ```python-3.12.1``` (or whichever version you use)
+* Commit and push these files to the project repository.
+
+#### Create the Heroku app:
+
+* Sign in or sign up to [Heroku](https://heroku.com/).
+* Click the button that says "Create new app."
+* Enter a unique app name.
+* Choose your region from the dropdown menu.
+* Click the "Create app" button.
+
+#### Heroku Settings:
+
+For Heroku to be able to process and render the project, you must define some environment variables.
+Deploying the project without these is like trying to start a car without the key.
+
+* Go to the settings page of your new app
+* Scroll down and open the Config Vars
+* Add a DATABASE_URL variable and assign it a link to your database
+* Add a SECRET_KEY variable and assign it a secret key of your choice
+* Add a CLOUDINARY_URL variable and assign it a link to your Cloudinary
+
+#### Project Settings:
+
+It's important that the environment variables and settings in the django project are compatible with the settings on Heroku. These are the steps to ensure a proper setup.
+
+* Include ```https://<your_app_name>.herokuapp.com``` in the ALLOWED_HOSTS and CSRF_TRUSTED_ORIGINS lists inside the settings.py file.
+* Make sure that the environment variables (DATABASE_URL, SECRET_KEY, and CLOUDINARY_URL) are correctly set to ```os.environ.get("<variable_name>")```
+* If making changes to static files or apps, make sure to run collectstatic or migrate as needed.
+* Commit and push to the repository.
+
+#### Connect the repository:
+
+Once your Heroku settings and GitHub repository are up to date, it's time to connect the two.
+
+* Go to the Deploy tab of your Heroku app.
+* Find the "Deployment method" section and click GitHub.
+* Type in the name of your repository to search for it
+* Click 'Connect' to connect the repository
+* (Optional) Enable automatic deployment to automatically update the Heroku app whenever you push to GitHub
+
+#### Deploy the project to Heroku:
+
+Now, all that's left to do is to deploy and open the app.
+
+* Click "Deploy branch"
+* Wait for Heroku to finish building the app.
+* Upon successful deployment, click the "View" button to open the app.
 
 ---
 
 ## Testing
 
 Please refer to the [TESTING.md](TESTING.md) file for all test-related documentation.
+
+### Bugs
+During the development of this project I've had lots of bugs to deal with. Unfortunately I've been working on two different computers (my private computer and the company computer), the documentation of relevant bugs was stored on the company computer wich I'm not longer have access to. 
+
+#### Solved bugd
+From top of mind here is a list of relevant bugs that is solved:
+- I had issues making the pizza slices (rating) in the review working properly. Debugged it with my mentor (who had made a similar rating structure in her project).
+- The booking app was raising an error when trying to submit the form since the input for time was missing. The user could not enter time and therefor the form submission failed.
+- I've had lots of issues with modals not prepopulating the form fields correctly.
+- There where also a lot of issues creating the events views since I wanted backend to raise errors that it's not possible to add event in the past or when the truck is booked.
+
+#### Unsolved bugs
+- Bootstrap modals not centered on screen
+- Cannot use the default image on the add event form
 
 ---
 
